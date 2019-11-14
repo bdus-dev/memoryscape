@@ -10,7 +10,6 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import MenuIcon from '@material-ui/icons/Menu';
-import theming from "../services/theming";
 
 class Bar extends Component {
   constructor(props) {
