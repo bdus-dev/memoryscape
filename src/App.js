@@ -1,49 +1,41 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
 import theming from "../src/services/theming";
 import { MuiThemeProvider, CssBaseline, Snackbar } from "@material-ui/core";
 import Bar from "./components/Bar";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+import TestDB from "./components/Tests/TestDB";
 
-    this.state = {
-        theme: theming.defaultTheme,
+export default function App (props) {
 
-        performingAction: false,
+  const [theme, setTheme] = useState(theming.defaultTheme);
+  const [performingAction, setPerformingAction] = useState(false);
+  const [snackbar, setSnackbar] = useState({
+    autoHideDuration: 0,
+    message: '',
+    open: false
+  });
 
-        snackbar: {
-            autoHideDuration: 0,
-            message: '',
-            open: false
-        }
-    };
-  }
 
-  render() {
-    const { theme, performingAction, snackbar } = this.state;
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <Bar
+        performingAction={performingAction}
+        // onSignUpClick={() =>    openDialog("signUpDialog")}
+        // onSignInClick={() =>    openDialog("signInDialog")}
+        onSettingsClick={() =>  console.log('onSettingsClick') }
+        onSignOutClick={() =>   console.log("onSignOutClick")}
+      />
 
-    return (
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Bar
-          performingAction={performingAction}
-          onSignUpClick={() => this.openDialog("signUpDialog")}
-          onSignInClick={() => this.openDialog("signInDialog")}
-          onSettingsClick={() => this.openDialog("settingsDialog")}
-          onSignOutClick={() => this.openDialog("signOutDialog")}
-        />
+      <TestDB />
 
-        <Snackbar
-          autoHideDuration={snackbar.autoHideDuration}
-          message={snackbar.message}
-          open={snackbar.open}
-          onClose={this.closeSnackbar}
-        />
-      </MuiThemeProvider>
-    );
-  }
+      <Snackbar
+        autoHideDuration={snackbar.autoHideDuration}
+        message={snackbar.message}
+        open={snackbar.open}
+        // onClose={this.closeSnackbar}
+      />
+    </MuiThemeProvider>
+  );  
 }
-
-export default App;
