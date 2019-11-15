@@ -10,6 +10,7 @@ import GetSimple from './DB/GetSimple'
 import GetAdv from './DB/GetAdv'
 import GetUniqueVal from './DB/GetUniqueVal'
 import GetByEncodedSql from './DB/GetByEncodedSql'
+import Decades from './DB/Decades'
 
 export default function TestDB (props) {
 
@@ -23,6 +24,7 @@ export default function TestDB (props) {
       <GetAdv />
       <GetUniqueVal />
       <GetByEncodedSql />
+      <Decades />
     </Container>
   );  
 }

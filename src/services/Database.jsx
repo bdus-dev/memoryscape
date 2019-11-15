@@ -175,4 +175,28 @@ export default class Database {
     }, d => { cb(d); });
   }
 
+
+  static getDecade(decade: integer, page: iteger, cb: function) {
+    if (![20, 30, 40, 50, 60, 70, 80, 90].includes(decade)){
+      console.log(`Invalid parameter decade: ${decade}`);
+      return false;
+    }
+    const start_y = parseInt(`19${decade}`) - 1;
+    const end_y = start_y + 10;
+    let d = {
+      verb: 'search',
+      type: 'advanced',
+      page: page,
+      "adv[a][fld]": "hm__ms:anno",
+      "adv[a][value]": start_y,
+      "adv[a][operator]": ">",
+      "adv[b][fld]": "hm__ms:anno",
+      "adv[b][value]": end_y,
+      "adv[b][operator]": "<",
+      "adv[b][connector]": "AND",
+    };
+
+    this._getData('ms', d, d => { cb(d); });
+  }
+
 }
