@@ -4,9 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-
 import MenuSharp from '@material-ui/icons/MenuSharp';
 import { makeStyles } from '@material-ui/styles';
 
@@ -32,17 +29,9 @@ export default function Bar() {
   return (
     <AppBar color="primary" position="fixed" className={classes.appBar}>
       <Toolbar variant="regular" className={classes.mainToolBar}>
-        <IconButton edge="end" color="inherit" aria-label="menu">
+        <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleSettingsClick}>
           <MenuSharp className={classes.iconMenu} />
         </IconButton>
-
-        <Menu>
-          <MenuItem
-            onClick={handleSettingsClick}
-          >
-            Settings
-          </MenuItem>
-        </Menu>
       </Toolbar>
     </AppBar>
   );
