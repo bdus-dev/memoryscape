@@ -6,9 +6,9 @@ export default class Database {
 
     let baseUrl = 'https://db-dev.bradypus.net';
 
-    // if (window.location.hostname === 'localhost'){
-    //   baseUrl = 'http://db.localhost';
-    // }
+    if (window.location.hostname === 'localhost'){
+      baseUrl = 'http://db.localhost';
+    }
 
     baseUrl += `/api/${ apiVersion === 2 ? 'v2/' : '' }hm/`;
 
@@ -197,6 +197,30 @@ export default class Database {
     };
 
     this._getData('ms', d, d => { cb(d); });
+  }
+
+  static getMsGeoJson(where, cb) {
+    let data = {
+      "join": "JOIN hm__geodata as g ON g.table_link = 'hm__ms' AND g.id_link = hm__ms.id ",
+      "fields[g.geometry]": "Geometry",
+      "fields[hm__ms.id]": "Id",
+      "fields[hm__ms.videoid]": "ID Video",
+      "fields[hm__ms.tit]": "Titolo",
+      "fields[hm__ms.aut]": "Autore",
+      "fields[hm__ms.anno]": "Anno",
+      "group": "hm__ms.id",
+      "limit_start": "0",
+      "limit_end": "500",
+      "q_encoded": btoa( ( where ? where.replace(/`id`/gi, '`hm__ms`.`id`') : " 1" ))
+    };
+
+    this._getData(
+      'ms?verb=search&geojson=true&type=encoded',
+      data,
+      d => {
+        cb( d );
+      }
+    );
   }
 
 }

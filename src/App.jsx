@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import theming from './services/theming';
+
 import Intro from './components/Intro/Intro';
+import Mappa from './components/Mappa/Mappa';
 
 export default function App() {
   const [theme] = useState(theming.defaultTheme);
@@ -15,6 +17,7 @@ export default function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Intro} />
+          <Route exact path="/mappa/" component={Mappa} />
         </Switch>
       </BrowserRouter>
     </MuiThemeProvider>
