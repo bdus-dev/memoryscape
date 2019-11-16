@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import theming from './services/theming';
-
 import Intro from './components/Intro/Intro';
 
 export default function App() {
