@@ -5,13 +5,27 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-
-
+import { makeStyles } from '@material-ui/core/styles';
 
 import Database from '../../services/Database';
+
+
+const useStyles = makeStyles({
+    GridListTileBar: {
+        background: 'rgba(123,30,207, .5)'
+    },
+    GridListTileBarTitle: {
+        textTransform: 'uppercase'
+    },
+    IconButton: {
+      color: 'rgba(255, 255, 255, 0.8)'
+    },
+  });
+
+
 
 
 export default function Results (props) {
@@ -20,6 +34,9 @@ export default function Results (props) {
 
     const page = props.page ? parseInt(props.page) : 1;
     const type = props.type ? props.type : 'all';
+
+    const classes = useStyles();
+
 
     useEffect( () => {
 
@@ -43,14 +60,15 @@ export default function Results (props) {
                     <GridListTile key={k}>
                     <img src={`https://img.youtube.com/vi/${row.videoid}/0.jpg`} alt={row.tit} />
                     <GridListTileBar
-                        style={{
-                            background: "rgba('#7B1ECF', .5)"
+                        classes={{
+                            root: classes.GridListTileBar,
+                            title:classes.GridListTileBarTitle
                         }}
-                        title={row.tit}
+                        title={<span>{row.tit} | <strong>{row.anno}</strong></span>}
                         subtitle={<span>di: {row.aut}</span>}
                         actionIcon={
-                        <IconButton aria-label={`info about ${row.tit}`}>
-                            <InfoIcon />
+                        <IconButton aria-label={`info about ${row.tit}`} classes={{ root: classes.IconButton }}>
+                            <KeyboardArrowRightIcon />
                         </IconButton>
                         }
                     />
