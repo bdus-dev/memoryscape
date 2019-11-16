@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default class Database {
 
-  static _getData(url: string, params: object, callback: function, apiVersion:integer) {
+  static _getData(url, params, callback, apiVersion) {
 
     let baseUrl = 'https://db-dev.bradypus.net';
 
@@ -42,7 +42,7 @@ export default class Database {
    * @param {function} cb Callback function
    * @memberof Database
    */
-  static inspect(cb: function) {
+  static inspect(cb) {
     this._getData('' , {
       tb: 'ms',
       'verb':'inspect'
@@ -55,7 +55,7 @@ export default class Database {
    * @param {function} cb Callback function
    * @memberof Database
    */
-  static getOne(id: integer, cb: function) {
+  static getOne(id, cb) {
     this._getData('', {
       tb : 'ms',
       verb : 'read',
@@ -71,7 +71,7 @@ export default class Database {
    * @param {function} cb     Callback function
    * @memberof Database
    */
-  static getStr(string: string, page: integer, cb: function) {
+  static getStr(string, page, cb) {
     this._getData('ms', {
       verb: 'search',
       type: 'fast',
@@ -86,7 +86,7 @@ export default class Database {
    * @param {function} cb     Callback function
    * @memberof Database
    */
-  static getAll(page: integer, cb: function) {
+  static getAll(page, cb) {
     this._getData('ms', {
       verb : 'search',
       type: 'all',
@@ -104,7 +104,7 @@ export default class Database {
    * @param {function} cb   Callback function
    * @memberof Database
    */
-  static getSimple(fld: string, val: string, strict: boolean, page: integer, cb: function){
+  static getSimple(fld, val, strict, page, cb){
     const data = {
       verb: 'search',
       type: 'advanced',
@@ -123,7 +123,7 @@ export default class Database {
    * @param  {function} cb   Callback function
    * @memberof Database
    */
-  static getAdv(data: object, page: integer, cb: function) {
+  static getAdv(data, page, cb) {
     let d = {
       verb: 'search',
       type: 'advanced',
@@ -148,7 +148,7 @@ export default class Database {
    * @param {function} cb   callback function
    * @memberof Database
    */
-  static getUniqueVal(fld: string, string: string, cb: function) {
+  static getUniqueVal(fld, string, cb) {
     this._getData('', {
       verb: 'getUniqueVal',
       tb: 'ms',
@@ -166,7 +166,7 @@ export default class Database {
    * @param {function} cb   Callback function
    * @memberof Database
    */
-  static getByEncodedSql(sql: string, page: integer, cb: function) {
+  static getByEncodedSql(sql, page, cb) {
     this._getData('ms', {
       verb: 'search',
       type: 'encoded',
@@ -176,7 +176,7 @@ export default class Database {
   }
 
 
-  static getDecade(decade: integer, page: iteger, cb: function) {
+  static getDecade(decade, page, cb) {
     if (![20, 30, 40, 50, 60, 70, 80, 90].includes(decade)){
       console.log(`Invalid parameter decade: ${decade}`);
       return false;
