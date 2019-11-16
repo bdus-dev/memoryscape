@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import _ from 'lodash';
 
 import red from '@material-ui/core/colors/red';
 import pink from '@material-ui/core/colors/pink';
@@ -24,127 +25,127 @@ const colors = {
   red: {
     id: 'red',
     name: 'Red',
-    import: red
+    import: red,
   },
 
   pink: {
     id: 'pink',
     name: 'Pink',
-    import: pink
+    import: pink,
   },
 
   purple: {
     id: 'purple',
     name: 'Purple',
-    import: purple
+    import: purple,
   },
 
   deepPurple: {
     id: 'deep-purple',
     name: 'Deep Purple',
-    import: deepPurple
+    import: deepPurple,
   },
 
   indigo: {
     id: 'indigo',
     name: 'Indigo',
-    import: indigo
+    import: indigo,
   },
 
   blue: {
     id: 'blue',
     name: 'Blue',
-    import: blue
+    import: blue,
   },
 
   lightBlue: {
     id: 'light-blue',
     name: 'Light Blue',
-    import: lightBlue
+    import: lightBlue,
   },
 
   cyan: {
     id: 'cyan',
     name: 'Cyan',
-    import: cyan
+    import: cyan,
   },
 
   teal: {
     id: 'teal',
     name: 'Teal',
-    import: teal
+    import: teal,
   },
 
   green: {
     id: 'green',
     name: 'Green',
-    import: green
+    import: green,
   },
 
   lightGreen: {
     id: 'light-green',
     name: 'Light Green',
-    import: lightGreen
+    import: lightGreen,
   },
 
   lime: {
     id: 'lime',
     name: 'Lime',
-    import: lime
+    import: lime,
   },
 
   yellow: {
     id: 'yellow',
     name: 'Yellow',
-    import: yellow
+    import: yellow,
   },
 
   amber: {
     id: 'amber',
     name: 'Amber',
-    import: amber
+    import: amber,
   },
 
   orange: {
     id: 'orange',
     name: 'Orange',
-    import: orange
+    import: orange,
   },
 
   deepOrange: {
     id: 'deep-orange',
     name: 'Deep Orange',
-    import: deepOrange
+    import: deepOrange,
   },
 
   brown: {
     id: 'brown',
     name: 'Brown',
-    import: brown
+    import: brown,
   },
 
   gray: {
     id: 'gray',
     name: 'Gray',
-    import: gray
+    import: gray,
   },
 
   blueGray: {
     id: 'blue-gray',
     name: 'Blue Gray',
-    import: blueGray
+    import: blueGray,
   }
 };
 
 const types = {
   light: {
     id: 'light',
-    name: 'Light'
+    name: 'Light',
   },
 
   dark: {
     id: 'dark',
-    name: 'Dark'
+    name: 'Dark',
   }
 };
 
@@ -152,10 +153,8 @@ const getColor = (colorId) => {
   if (!colorId) {
     return null;
   }
-  // Questa funzione è di lodash
-  // non vedevo il senso di importarlo nel progetto
-  // se qualcosa si pacca importarlo
-  //colorId = _.camelCase(colorId);
+  
+  colorId = _.camelCase(colorId);
 
   return colors[colorId];
 };
@@ -172,16 +171,29 @@ const defaultPrimaryColor = getColor(process.env.REACT_APP_THEME_PRIMARY_COLOR);
 const defaultSecondaryColor = getColor(process.env.REACT_APP_THEME_SECONDARY_COLOR);
 const defaultType = getType(process.env.REACT_APP_THEME_TYPE);
 
+// Dichiaro il font base per il sito
+
 const defaultTheme = createMuiTheme({
   palette: {
     primary: defaultPrimaryColor.import,
     secondary: defaultSecondaryColor.import,
-    type: defaultType.id
+    type: defaultType.id,
   },
 
   primaryColor: defaultPrimaryColor,
   secondaryColor: defaultSecondaryColor,
-  type: defaultType
+  type: defaultType,
+
+  typography: {
+    fontFamily: 'Poppins',
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': 'Poppins',
+      },
+    },
+  },
 });
 
 const theming = {};
@@ -223,10 +235,7 @@ theming.createTheme = (theme) => {
   if (!theme) {
     return null;
   }
-
-  let primaryColor = theme.primaryColor;
-  let secondaryColor = theme.secondaryColor;
-  let type = theme.type;
+  let { primaryColor, secondaryColor, type } = theme;
 
   if (!primaryColor || !secondaryColor || !type) {
     return null;
