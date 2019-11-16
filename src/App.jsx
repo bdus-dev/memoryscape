@@ -4,6 +4,8 @@ import { MuiThemeProvider, CssBaseline, Snackbar } from '@material-ui/core';
 import theming from './services/theming';
 import Bar from './components/Bar';
 
+import Results from './components/Results/Results';
+
 import TestDB from './components/Tests/TestDB';
 
 export default function App() {
@@ -26,6 +28,7 @@ export default function App() {
         onSignOutClick={() => console.log('onSignOutClick')}
       />
 
+      <Results page="1" type="all" />
       <TestDB />
 
       <Snackbar
