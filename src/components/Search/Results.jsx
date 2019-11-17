@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
+import Pagination from './Pagination';
 import Database from '../../services/Database';
 
 
@@ -72,6 +73,7 @@ export default function Results (props) {
 
     return (
         <Container>
+            <Pagination head={result.head} qs={qs} />
             <GridList cellHeight={280}  cols={cols} spacing={40}>
                 {result.records.map( (row, k) => (
 
