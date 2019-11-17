@@ -9,6 +9,9 @@ import onEachFeature from './OnEachFeature';
 import pointToLayer from './PointToLayer';
 import './Mappa.css';
 
+import qs from 'qs';
+
+
 
 export default function Mappa(props) {
 
@@ -17,6 +20,9 @@ export default function Mappa(props) {
   const [geoJson, setGeoJson] = useState();
   
   const [mapRef] = useState(React.createRef());
+
+  const qstring = qs.parse(props.location.search, {ignoreQueryPrefix: true});
+
 
 
   useEffect( () => {
@@ -35,7 +41,7 @@ export default function Mappa(props) {
         <TileLayer
           // url="https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png"
           // url="https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png"
-          url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          url={qstring.rockandroll ? "https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png" : "https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"}
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
         
