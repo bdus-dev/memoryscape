@@ -8,6 +8,7 @@ import theming from './services/theming';
 import Intro from './components/Intro/Intro';
 import Mappa from './components/Mappa/Mappa';
 import Search from './components/Search/Search';
+import Clip from './components/Clip/Clip';
 
 export default function App() {
   const [theme] = useState(theming.defaultTheme);
@@ -20,6 +21,7 @@ export default function App() {
           <Route exact path="/" component={Intro} />
           <Route exact path="/mappa/" component={Mappa} />
           <Route exact path="/search/" component={Search} />
+          <Route exact path="/clip/:id" component={Clip} />
         </Switch>
       </BrowserRouter>
     </MuiThemeProvider>

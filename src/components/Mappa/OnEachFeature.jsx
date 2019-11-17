@@ -5,7 +5,7 @@ export default  (feature, layer) => {
   <img src="https://img.youtube.com/vi/${props.videoid}/0.jpg" alt={row.tit} alt="${props.tit}" />
   <p>${props.aut}
   ${props.anno ? `<br /><strong>${props.anno}</strong>` : ''}</p>
-  <p class="button"><a href="/read/${props.id}">Apri</a></p>
+  <p class="button"><a href="/clip/${props.id}">Apri</a></p>
   `;
   
   layer.bindPopup(html

@@ -11,7 +11,7 @@ import backGroundImage from '../../img/internal-background.jpg';
 import qs from 'qs';
 
 
-import Results from '../Results/Results';
+import Results from './Results';
 
 
 const useStyles = makeStyles((theme) => ({
