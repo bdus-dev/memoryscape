@@ -7,6 +7,7 @@ import theming from './services/theming';
 
 import Intro from './components/Intro/Intro';
 import Mappa from './components/Mappa/Mappa';
+import Search from './components/Search/Search';
 
 export default function App() {
   const [theme] = useState(theming.defaultTheme);
@@ -18,6 +19,7 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Intro} />
           <Route exact path="/mappa/" component={Mappa} />
+          <Route exact path="/search/" component={Search} />
         </Switch>
       </BrowserRouter>
     </MuiThemeProvider>

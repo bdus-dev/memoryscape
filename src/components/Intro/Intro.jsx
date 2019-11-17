@@ -54,7 +54,7 @@ export default function Intro() {
             <h2 className={classes.mainTitle}>Viaggio in Italia</h2>
           </Box>
           <Box className={classes.languageContainer}>
-            <Button className={classes.buttomLang}>ITA</Button>
+            <Button className={classes.buttomLang} href="/search/">ITA</Button>
             <Button className={classes.buttomLang}>ENG</Button>
           </Box>
         </Typography>
