@@ -10,6 +10,7 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
 import Database from '../../services/Database';
@@ -39,6 +40,7 @@ export default function Results (props) {
 
     const qs = props.qs;
 
+    const cols = useMediaQuery('(min-width:960px)') ? 3 : 1;
 
     useEffect( () => {
 
@@ -62,14 +64,15 @@ export default function Results (props) {
         // TODO: grafica messaggio d'errore!!!
         return (
             <Container>
-                <p style={{ color: '#fff', fontSize: '2rem' }}>Nesun risultato trovato!</p>
+                <p style={{ color: '#fff', fontSize: '2rem' }}>Nessun risultato trovato!</p>
             </Container>
         );
     }
 
+
     return (
         <Container>
-            <GridList cellHeight={280}  cols={3} spacing={40}>
+            <GridList cellHeight={280}  cols={cols} spacing={40}>
                 {result.records.map( (row, k) => (
 
                     <GridListTile key={k}>
