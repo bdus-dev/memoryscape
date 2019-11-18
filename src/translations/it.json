@@ -1,4 +1,5 @@
 {
     "app.menu.map": "Mappa",
-    "app.menu.archive": "Archivio"
+    "app.menu.archive": "Archivio",
+    "app.search.filters": "Filtri"
 }

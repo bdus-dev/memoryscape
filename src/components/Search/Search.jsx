@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedHTMLMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -11,9 +12,7 @@ import backGroundImage from '../../img/internal-background.jpg';
 
 import qs from 'qs';
 
-
 import Results from './Results';
-
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    marginBottom: '3rem'
+    marginBottom: '3rem',
 
   },
   textBox: {
@@ -106,7 +105,7 @@ export default function Search(props) {
               </Grid>
 
               <Grid item className={classes.filterContainer}>
-                <Button color="primary" className={classes.filterBtn}>Filtri</Button>
+                <Button color="primary" className={classes.filterBtn}><FormattedHTMLMessage id="app.search.filters" /></Button>
               </Grid>
             </Grid>
             
