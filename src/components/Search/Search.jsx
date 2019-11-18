@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     maxWidth: '100%',
     backgroundAttachment: 'fixed',
-    minHeight: '100vh'
+    minHeight: '100vh',
   },
   boxContainer: {
     padding: theme.spacing(3, 2),
@@ -53,6 +53,17 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     fontWeight: '900',
   },
+  filterBtn: {
+    backgroundColor: '#fff',
+    padding: '.4em 2.3em',
+    fontSize: '1.1em',
+    borderRadius: '2px',
+    color: '#000',
+    fontWeight: '600',
+  },
+  filterContainer: {
+    marginRight: '1%',
+  }
 }));
 
 export default function Search(props) {
@@ -94,10 +105,8 @@ export default function Search(props) {
                   </Box>
               </Grid>
 
-              <Grid item>
-                <Button color="primary">
-                  Filtri
-                </Button>
+              <Grid item className={classes.filterContainer}>
+                <Button color="primary" className={classes.filterBtn}>Filtri</Button>
               </Grid>
             </Grid>
             
