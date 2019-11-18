@@ -1,6 +1,14 @@
 import React from 'react';
 
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import LastPageIcon from '@material-ui/icons/LastPage';
+
 
 import qString from 'qs';
 
@@ -40,17 +48,37 @@ export default function Pagination (props) {
         lastPageLink = `./?${qString.stringify(qsCopy)}`;
     }
 
+
     return (
-        <Box style={{padding: '3rem', background: '#fff'}}>
-            <p>recTotal: {recTotal}</p>
-            <p>recShownStart: {recShownStart}</p>
-            <p>recShownEnd: {recShownEnd}</p>
-            <p>pageCurr: {pageCurr}</p>
-            <p>pageTot: {pageTot}</p>
-            <p>prevPageLink: {prevPageLink}</p>
-            <p>nextPageLink: {nextPageLink}</p>
-            <p>firstPageLink: {firstPageLink}</p>
-            <p>lastPageLink: {lastPageLink}</p>
+        <Box p={1} my={2} style={{background: '#fff'}}>
+            <Grid
+                justify="space-between"
+                container 
+                alignItems="center"
+                >
+                <Grid item>
+                    <Box component="div">
+                        Visualizati clip {recShownStart} - {recShownEnd} di {recTotal}
+                    </Box>
+                </Grid>
+
+                <Grid item>
+                    <ButtonGroup 
+                        size="small" 
+                        aria-label="small outlined button group"
+                        color="secondary"
+                        variant="contained"
+                        style={{ background: '#fff'}}
+                        >
+                        { firstPageLink && <Button href={firstPageLink}><FirstPageIcon /></Button> }
+                        { prevPageLink  && <Button href={prevPageLink}><KeyboardArrowLeft /></Button> }
+                        <Button disabled>Pagina {pageCurr}</Button>
+                        { nextPageLink  && <Button href={nextPageLink}><KeyboardArrowRight /></Button>}
+                        { lastPageLink && <Button href={lastPageLink}><LastPageIcon /></Button>}
+                    </ButtonGroup>
+                </Grid>
+            </Grid>
         </Box>
     );
 }
+

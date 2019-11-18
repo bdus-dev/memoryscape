@@ -1,8 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Container, Typography, Box, Button } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import Bar from '../Bar/Bar';
-import backGroundImage from '../../img/home-background.jpg';
+
+import Record from './Record';
+
+import backGroundImage from '../../img/internal-background.jpg';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
@@ -11,10 +16,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     maxWidth: '100%',
+    backgroundAttachment: 'fixed',
+    minHeight: '100vh',
+    paddingBottom: '2rem'
   },
   boxContainer: {
     padding: theme.spacing(3, 2),
-    height: 200,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -22,8 +29,7 @@ const useStyles = makeStyles((theme) => ({
   textBox: {
     textAlign: 'center',
     color: '#fff',
-    marginTop: 'auto',
-    paddingTop: '9em',
+    paddingTop: '1em',
   },
   mainTitle: {
     fontSize: '3.2em',
@@ -41,19 +47,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Intro() {
+export default function Clip(props) {
   const classes = useStyles();
+
+  const clipId = props.match.params.id;
 
   return (
     <div className={classes.homeContainer}>
       <Bar />
       <Container fixed>
-        <Typography className={classes.boxContainer} component="div" style={{ height: '100vh' }}>
+        <Typography className={classes.boxContainer} component="div">
           <Box className={classes.textBox}>
-            <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
-            <h2 className={classes.mainTitle}>TODO: CLIP View </h2>
+            <h5>HOME MOVIES DIGITAL ARCHIVE | Viaggio in Italia</h5>
           </Box>
         </Typography>
+
+        <Record id={clipId} />
+
       </Container>
     </div>
   );
