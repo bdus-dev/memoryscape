@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,7 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuSharp from '@material-ui/icons/MenuSharp';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
-import { Menu, MenuItem, Link } from '@material-ui/core';
+import { Menu, MenuItem } from '@material-ui/core';
+import { FormattedHTMLMessage } from 'react-intl';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -22,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
   popoverPaper: {
     width: '100%',
-    height: '100%',
-    maxHeight: 'unset',
+    height: '100vh',
+    maxHeight: '100vh',
     maxWidth: 'unset',
     top: '0 !important',
     backgroundColor: '#000000bf',
@@ -36,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuContent: {
+    maxHeight: '100vh',
     display: 'flex',
     flexDirection: 'row',
     [theme.breakpoints.down(800)]: {
@@ -91,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Bar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const history = useHistory();
 
   const handleMenuIconClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -98,6 +103,10 @@ export default function Bar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const gotoPage = (page) => {
+    history.push(page);
   };
 
   return (
@@ -117,24 +126,20 @@ export default function Bar() {
         >
           <div className={classes.closeMenuContainer}>
             <IconButton onClick={handleClose}>
-              <CloseIcon className={classes.iconMenu}/>
+              <CloseIcon className={classes.iconMenu} />
             </IconButton>
           </div>
           <div>
-            <Link href="/" className={classes.menuLink}>
-              <MenuItem onClick={handleClose} className={classes.menuItem}>Home</MenuItem>
-            </Link>
-            <Link href="/mappa/" className={classes.menuLink}>
-              <MenuItem className={classes.menuItem}>Mappa</MenuItem>
-            </Link>
+            <MenuItem onClick={() => gotoPage('/')} className={classes.menuItem}>Home</MenuItem>
+            <MenuItem onClick={() => gotoPage('/mappa')} className={classes.menuItem}>
+              <FormattedHTMLMessage id="app.menu.map" />
+            </MenuItem>
           </div>
           <div>
-            <Link href="/search/" className={classes.menuLink}>
-              <MenuItem onClick={handleClose} className={classes.menuItem}>Archivio</MenuItem>
-            </Link>
-            <Link href="/about/" className={classes.menuLink}>
-              <MenuItem className={classes.menuItem}>About</MenuItem>
-            </Link>
+            <MenuItem onClick={() => gotoPage('/search')} className={classes.menuItem}>
+              <FormattedHTMLMessage id="app.menu.archive" />
+            </MenuItem>
+            <MenuItem onClick={() => gotoPage('/about')} className={classes.menuItem}>About</MenuItem>
           </div>
           <div className={classes.colorWhite}>
             <h5 className={classes.titleMenu}>HOME MOVIES DIGITAL ARCHIVE</h5>

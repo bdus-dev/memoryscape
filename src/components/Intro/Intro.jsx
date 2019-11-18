@@ -1,5 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/styles';
+
 import { Container, Typography, Box, Button } from '@material-ui/core';
 import Bar from '../Bar/Bar';
 import backGroundImage from '../../img/home-background.jpg';
@@ -41,8 +43,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Intro() {
+export default function Intro({ changeLang }) {
   const classes = useStyles();
+  const history = useHistory();
+
+  const selectLang = (lang) => {
+    changeLang(lang);
+    history.push('/search');
+  };
 
   return (
     <div className={classes.homeContainer}>
@@ -54,8 +62,8 @@ export default function Intro() {
             <h2 className={classes.mainTitle}>Viaggio in Italia</h2>
           </Box>
           <Box className={classes.languageContainer}>
-            <Button className={classes.buttomLang} href="/search/">ITA</Button>
-            <Button className={classes.buttomLang}>ENG</Button>
+            <Button className={classes.buttomLang} onClick={() => selectLang('it')}>ITA</Button>
+            <Button className={classes.buttomLang} onClick={() => selectLang('en')}>ENG</Button>
           </Box>
         </Typography>
       </Container>
