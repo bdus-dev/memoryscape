@@ -13,6 +13,7 @@ import backGroundImage from '../../img/internal-background.jpg';
 import qs from 'qs';
 
 import Results from './Results';
+import FilterModal from './FilterModal';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
@@ -52,17 +53,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     fontWeight: '900',
   },
-  filterBtn: {
-    backgroundColor: '#fff',
-    padding: '.4em 2.3em',
-    fontSize: '1.1em',
-    borderRadius: '2px',
-    color: '#000',
-    fontWeight: '600',
-  },
   filterContainer: {
     marginRight: '1%',
-  }
+  },
 }));
 
 export default function Search(props) {
@@ -105,7 +98,7 @@ export default function Search(props) {
               </Grid>
 
               <Grid item className={classes.filterContainer}>
-                <Button color="primary" className={classes.filterBtn}><FormattedHTMLMessage id="app.search.filters" /></Button>
+                <FilterModal />
               </Grid>
             </Grid>
             
