@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 import Bar from '../Bar/Bar';
@@ -70,20 +71,36 @@ export default function Search(props) {
             <h1 className={classes.mainTitle}>Viaggio in Italia</h1>
           </Box>
           <Box>
-          <Button
-                classes={{root: classes.buttomLang}}
-                className={ !qstring.decade ? 'active' : ''}
-                href={`/search/`}>All</Button>
-            {
-              [20, 30, 40, 50, 60, 70, 80].map((e, i) => {
-                return (
-                  <Button
-                    classes={{root: classes.buttomLang}}
-                    className={ qstring.decade == e ? 'active' : ''}
-                    key={i}
-                    href={`/search/?decade=${e}`}>'{e}</Button>
-              )})
-            }
+            <Grid
+              justify="space-between"
+              container 
+              alignItems="center"
+              >
+              <Grid item>
+                <Box component="div">
+                  <Button classes={{root: classes.buttomLang}} className={ !qstring.decade ? 'active' : ''} href={`/search/`}>
+                    All
+                  </Button>
+                  {
+                    [20, 30, 40, 50, 60, 70, 80].map((e, i) => {
+                      return (
+                        <Button
+                          classes={{root: classes.buttomLang}}
+                          className={ qstring.decade == e ? 'active' : ''}
+                          key={i}
+                          href={`/search/?decade=${e}`}>'{e}</Button>
+                          )})
+                    }
+                  </Box>
+              </Grid>
+
+              <Grid item>
+                <Button color="primary">
+                  Filtri
+                </Button>
+              </Grid>
+            </Grid>
+            
           </Box>
         </Typography>
 
