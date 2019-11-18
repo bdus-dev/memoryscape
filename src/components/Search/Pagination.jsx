@@ -52,7 +52,7 @@ export default function Pagination (props) {
     return (
         <Box p={1} my={2} style={{background: '#fff'}}>
             <Grid
-                justify="space-between" // Add it here :)
+                justify="space-between"
                 container 
                 alignItems="center"
                 >

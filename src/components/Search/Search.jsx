@@ -86,7 +86,7 @@ export default function Search(props) {
                       return (
                         <Button
                           classes={{root: classes.buttomLang}}
-                          className={ qstring.decade == e ? 'active' : ''}
+                          className={ Number(qstring.decade) === e ? 'active' : ''}
                           key={i}
                           href={`/search/?decade=${e}`}>'{e}</Button>
                           )})
