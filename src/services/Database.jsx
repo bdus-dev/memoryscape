@@ -143,17 +143,30 @@ export default class Database {
   /**
    * Gets list of unique values for a field from database
    *
-   * @param {string} fld    fiald name
-   * @param {string} string value filter
+   * @param {string} fld    field name
    * @param {function} cb   callback function
    * @memberof Database
    */
-  static getUniqueVal(fld, string, cb) {
+  static getUniqueVal(fld, cb) {
     this._getData('', {
       verb: 'getUniqueVal',
       tb: 'ms',
-      fld: fld,
-      s: string
+      fld: fld
+    }, d => { cb(d); }, 2);
+
+  }
+
+  /**
+   * Gets list of unique values for a vocabulary
+   *
+   * @param {string} voc    vocabulary name
+   * @param {function} cb   callback function
+   * @memberof Database
+   */
+  static getVocabulary(voc, cb) {
+    this._getData('', {
+      verb: 'getVocabulary',
+      voc: voc
     }, d => { cb(d); }, 2);
 
   }

@@ -11,6 +11,7 @@ import GetAdv from './DB/GetAdv'
 import GetUniqueVal from './DB/GetUniqueVal'
 import GetByEncodedSql from './DB/GetByEncodedSql'
 import Decades from './DB/Decades'
+import GetVocabulary from './DB/GetVocabulary'
 
 export default function TestDB (props) {
 
@@ -25,6 +26,7 @@ export default function TestDB (props) {
       <GetUniqueVal />
       <GetByEncodedSql />
       <Decades />
+      <GetVocabulary />
     </Container>
   );  
 }
