@@ -8,6 +8,8 @@ import LabelIcon from '@material-ui/icons/Label';
 import YouTube from 'react-youtube';
 
 import Database from '../../services/Database';
+import Results from '../Search/Results';
+
 
 
 
@@ -78,9 +80,9 @@ export default function Record(props) {
             })
           }
         </Grid>
-
-
       </Grid>
+      
+      <Results qs={{ author: item.aut.val }} suppressEmpty={true} title="Clip dello stesso autore" />
     </Box>
   );
 }

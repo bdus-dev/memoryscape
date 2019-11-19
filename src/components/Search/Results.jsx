@@ -34,6 +34,8 @@ export default function Results(props) {
   const classes = useStyles();
 
   const qs = props.qs;
+  const suppressEmpty = props.suppressEmpty;
+  const title = props.title;
 
   const cols = useMediaQuery('(min-width:960px)') ? 3 : 1;
 
@@ -71,6 +73,7 @@ export default function Results(props) {
             'o': 'LIKE',
             'c': 'AND'
           }
+          return false;
         })
       }
       if (qs.themes){
@@ -81,6 +84,7 @@ export default function Results(props) {
             'o': 'LIKE',
             'c': 'AND'
           }
+          return false;
         })
       }
       Database.getAdv(p, 1, result => {
@@ -104,9 +108,15 @@ export default function Results(props) {
   if (!result) {
     return <CircularProgress />;
   }
+  
+  console.log(result);
 
   if (result.head.total_rows === 0) {
     // TODO: grafica messaggio d'errore!!!
+    
+    if (suppressEmpty){
+      return null;
+    }
     return (
       <Container>
         <p style={{ color: '#fff', fontSize: '2rem' }}>
@@ -118,7 +128,8 @@ export default function Results(props) {
 
   return (
     <Container>
-      <Pagination head={result.head} qs={qs} />
+      { title && <h2>{title}</h2>}
+      {!suppressEmpty && <Pagination head={result.head} qs={qs} /> }
       <GridList cellHeight={280} cols={cols} spacing={40}>
         {result.records.map((row, k) => (
           <GridListTile key={k}>
