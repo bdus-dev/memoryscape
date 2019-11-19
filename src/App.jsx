@@ -7,7 +7,7 @@ import { IntlProvider } from 'react-intl';
 import theming from './services/theming';
 
 import Intro from './components/Intro/Intro';
-import Mappa from './components/Mappa/Mappa';
+import Map from './components/Map/Map';
 import Search from './components/Search/Search';
 import Clip from './components/Clip/Clip';
 import itMessages from './translations/it.json';
@@ -28,7 +28,7 @@ export default function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={() => <Intro changeLang={setLang} />} />
-            <Route exact path="/mappa/" component={Mappa} />
+            <Route exact path="/mappa/" component={Map} />
             <Route exact path="/search/" component={Search} />
             <Route exact path="/clip/:id" component={Clip} />
           </Switch>

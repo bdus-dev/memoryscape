@@ -48,6 +48,8 @@ export default function Pagination (props) {
         lastPageLink = `./?${qString.stringify(qsCopy)}`;
     }
 
+    
+
 
     return (
         <Box p={1} my={2} style={{background: '#fff'}}>
@@ -72,7 +74,7 @@ export default function Pagination (props) {
                         >
                         { firstPageLink && <Button href={firstPageLink}><FirstPageIcon /></Button> }
                         { prevPageLink  && <Button href={prevPageLink}><KeyboardArrowLeft /></Button> }
-                        <Button disabled>Pagina {pageCurr}</Button>
+                        { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button disabled>Pagina {pageCurr}</Button>}
                         { nextPageLink  && <Button href={nextPageLink}><KeyboardArrowRight /></Button>}
                         { lastPageLink && <Button href={lastPageLink}><LastPageIcon /></Button>}
                     </ButtonGroup>

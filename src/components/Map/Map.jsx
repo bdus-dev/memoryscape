@@ -7,7 +7,7 @@ import Bar from '../Bar/Bar';
 import Database from '../../services/Database';
 import onEachFeature from './OnEachFeature';
 import pointToLayer from './PointToLayer';
-import './Mappa.css';
+import './Map.css';
 
 import qs from 'qs';
 
