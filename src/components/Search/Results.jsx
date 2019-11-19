@@ -38,16 +38,67 @@ export default function Results(props) {
   const cols = useMediaQuery('(min-width:960px)') ? 3 : 1;
 
   useEffect(() => {
+    // Ricerca per decade
     if (qs.decade) {
       Database.getDecade(parseInt(qs.decade), qs.page, result => {
         setResult(result);
       });
+    // Ricerca year_start || year__end || luogo || temi
+    } else if (qs.year_start || qs.year_end || qs.places || qs.themes) {
+      let p = {};
+
+      if (qs.year_start){
+        p.ys = {
+          'f': 'hm__ms:anno',
+          'v': qs.year_start,
+          'o': '>=',
+          'c': 'AND'
+        };
+      }
+      if (qs.year_end){
+        p.ye = {
+          'f': 'hm__ms:anno',
+          'v': qs.year_end,
+          'o': '<=',
+          'c': 'AND'
+        };
+      }
+      if (qs.places){
+        qs.places.split(",").map( (e, i) => {
+          p[`p${i}`] = {
+            'f': 'hm__ms:luogo',
+            'v': e,
+            'o': 'LIKE',
+            'c': 'AND'
+          }
+        })
+      }
+      if (qs.themes){
+        qs.themes.split(",").map( (e, i) => {
+          p[`p${i}`] = {
+            'f': 'hm__ms:temi',
+            'v': e,
+            'o': 'LIKE',
+            'c': 'AND'
+          }
+        })
+      }
+      Database.getAdv(p, 1, result => {
+        setResult(result);
+      });
+    
+    // Ricerca per autore
+    } else if (qs.author) {
+      Database.getSimple('hm__ms:aut', qs.author, true, 1, result => {
+        setResult(result);
+      });
+    // Ricerca tutto!
     } else {
       Database.getAll(qs.page, result => {
         setResult(result);
       });
     }
-    // else if: altri tipi di query...
+
   }, [qs]);
 
   if (!result) {
