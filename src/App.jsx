@@ -28,9 +28,9 @@ export default function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={() => <Intro changeLang={setLang} />} />
-            <Route exact path="/mappa/" component={Map} />
-            <Route exact path="/search/" component={Search} />
-            <Route exact path="/clip/:id" component={Clip} />
+            <Route exact path="/:lang(en|it)/map/" component={Map} />
+            <Route exact path="/:lang(en|it)/search/" component={Search} />
+            <Route exact path="/:lang(en|it)/clip/:id" component={Clip} />
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>

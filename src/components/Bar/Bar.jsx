@@ -92,10 +92,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Bar() {
+export default function Bar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const history = useHistory();
+
+  const lang = props.lang;
 
   const handleMenuIconClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -131,15 +133,15 @@ export default function Bar() {
           </div>
           <div>
             <MenuItem onClick={() => gotoPage('/')} className={classes.menuItem}>Home</MenuItem>
-            <MenuItem onClick={() => gotoPage('/mappa')} className={classes.menuItem}>
+            <MenuItem onClick={() => gotoPage(`/${lang}/map`)} className={classes.menuItem}>
               <FormattedHTMLMessage id="app.menu.map" />
             </MenuItem>
           </div>
           <div>
-            <MenuItem onClick={() => gotoPage('/search')} className={classes.menuItem}>
+            <MenuItem onClick={() => gotoPage(`/${lang}/search/`)} className={classes.menuItem}>
               <FormattedHTMLMessage id="app.menu.archive" />
             </MenuItem>
-            <MenuItem onClick={() => gotoPage('/about')} className={classes.menuItem}>About</MenuItem>
+            <MenuItem onClick={() => gotoPage(`/${lang}/about`)} className={classes.menuItem}>About</MenuItem>
           </div>
           <div className={classes.colorWhite}>
             <h5 className={classes.titleMenu}>HOME MOVIES DIGITAL ARCHIVE</h5>

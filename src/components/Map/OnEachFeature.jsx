@@ -1,4 +1,4 @@
-
+// tODO: uare history per il bottone? come?
 export default  (feature, layer) => {
   const props = feature.properties;
   let html = `<h3>${props.tit}</h3>
@@ -8,9 +8,5 @@ export default  (feature, layer) => {
   <p class="button"><a href="/clip/${props.id}">Apri</a></p>
   `;
   
-  layer.bindPopup(html
-    
-    // `<hr><strong>${info.name}</strong><br>
-    // <a href="${info.info}" title="More information">${info.info}</a>`
-    );
+  layer.bindPopup(html);
 }

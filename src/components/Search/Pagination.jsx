@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useHistory } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -14,6 +14,10 @@ import qString from 'qs';
 
 
 export default function Pagination (props) {
+
+    const history = useHistory();
+
+    const go2page = page => history.push(page);
 
     const qs = props.qs;
     const head = props.head;
@@ -72,11 +76,11 @@ export default function Pagination (props) {
                         variant="contained"
                         style={{ background: '#fff'}}
                         >
-                        { firstPageLink && <Button href={firstPageLink}><FirstPageIcon /></Button> }
-                        { prevPageLink  && <Button href={prevPageLink}><KeyboardArrowLeft /></Button> }
+                        { firstPageLink && <Button onClick={()=>go2page(firstPageLink)}><FirstPageIcon /></Button> }
+                        { prevPageLink  && <Button onClick={()=>go2page(prevPageLink)}><KeyboardArrowLeft /></Button> }
                         { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button disabled>Pagina {pageCurr}</Button>}
-                        { nextPageLink  && <Button href={nextPageLink}><KeyboardArrowRight /></Button>}
-                        { lastPageLink && <Button href={lastPageLink}><LastPageIcon /></Button>}
+                        { nextPageLink  && <Button onClick={()=>go2page(nextPageLink)}><KeyboardArrowRight /></Button>}
+                        { lastPageLink && <Button onClick={()=>go2page(lastPageLink)}><LastPageIcon /></Button>}
                     </ButtonGroup>
                 </Grid>
             </Grid>

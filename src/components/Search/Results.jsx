@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -32,6 +33,7 @@ export default function Results(props) {
   const [result, setResult] = useState();
 
   const classes = useStyles();
+  const history = useHistory();
 
   const qs = props.qs;
   const suppressEmpty = props.suppressEmpty;
@@ -109,8 +111,6 @@ export default function Results(props) {
     return <CircularProgress />;
   }
   
-  console.log(result);
-
   if (result.head.total_rows === 0) {
     // TODO: grafica messaggio d'errore!!!
     
@@ -154,7 +154,7 @@ export default function Results(props) {
               subtitle={<span>di: {row.aut}</span>}
               actionIcon={(
                 <IconButton
-                  href={`/clip/${row.id}`}
+                  onClick={ ()=> history.push(`../clip/${row.id}`)}
                   aria-label={`info about ${row.tit}`}
                   classes={{ root: classes.IconButton }}
                 >

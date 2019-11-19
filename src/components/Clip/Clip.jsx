@@ -51,10 +51,11 @@ export default function Clip(props) {
   const classes = useStyles();
 
   const clipId = props.match.params.id;
+  const lang = props.match.params.lang;
 
   return (
     <div className={classes.homeContainer}>
-      <Bar />
+      <Bar lang={lang} />
       <Container fixed>
         <Typography className={classes.boxContainer} component="div">
           <Box className={classes.textBox}>

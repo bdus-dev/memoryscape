@@ -15,6 +15,8 @@ import qs from 'qs';
 
 export default function Mappa(props) {
 
+  const lang = props.lang || props.match.params.lang;
+  
   const position = [44.4943823,11.3418609]
 
   const [geoJson, setGeoJson] = useState();
@@ -34,7 +36,7 @@ export default function Mappa(props) {
 
   return (
     <div className="mapContainer">
-      <Bar />
+      <Bar lang={lang} />
 
       <Map center={position} zoom={13} style={{ width: '100%', height: '100%'}}
           ref={mapRef}>

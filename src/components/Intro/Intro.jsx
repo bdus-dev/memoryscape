@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/styles';
 
 import { Container, Typography, Box, Button } from '@material-ui/core';
-import Bar from '../Bar/Bar';
 import backGroundImage from '../../img/home-background.jpg';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,12 +48,11 @@ export default function Intro({ changeLang }) {
 
   const selectLang = (lang) => {
     changeLang(lang);
-    history.push('/search');
+    history.push(`/${lang}/search/`);
   };
 
   return (
     <div className={classes.homeContainer}>
-      <Bar />
       <Container fixed>
         <Typography className={classes.boxContainer} component="div" style={{ height: '100vh' }}>
           <Box className={classes.textBox}>

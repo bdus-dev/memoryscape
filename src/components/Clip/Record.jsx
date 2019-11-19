@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
@@ -17,6 +18,7 @@ export default function Record(props) {
 
   const [result, setResult] = useState();
   const [viewVideo, setViewVideo] = useState();
+  const history = useHistory();
 
   const clipId = props.id;
 
@@ -76,7 +78,7 @@ export default function Record(props) {
         <Grid item xs={8} style={{ textAlign: 'center'}}>
           {
             item.temi.val.split(';').map( (e, i) =>  {
-              return <Fab key={i} variant="extended" size='small' href={`../../search?theme=${e.trim()}`}><LabelIcon />{e.trim()}</Fab>
+              return <Fab key={i} variant="extended" size='small' onClick={()=>history.push(`../search/?theme=${e.trim()}`)}><LabelIcon />{e.trim()}</Fab>
             })
           }
         </Grid>

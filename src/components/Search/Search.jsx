@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormattedHTMLMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
@@ -61,12 +62,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Search(props) {
 
   const classes = useStyles();
+  const history = useHistory();
   const qstring = qs.parse(props.location.search, {ignoreQueryPrefix: true});
+  const lang = props.lang || props.match.params.lang;
+
+  const go2page = (page)=>{ history.push(page)};
 
   // TODO: i bottoni .active devono avere il color viola!
   return (
     <div className={classes.homeContainer}>
-      <Bar />
+      <Bar lang={lang} />
       <Container fixed>
         <Typography className={classes.boxContainer} component="div">
           <Box className={classes.textBox}>
@@ -81,7 +86,10 @@ export default function Search(props) {
               >
               <Grid item>
                 <Box component="div">
-                  <Button classes={{root: classes.buttomLang}} className={ !qstring.decade ? 'active' : ''} href={`/search/`}>
+                  <Button classes={{root: classes.buttomLang}} 
+                          className={ !qstring.decade ? 'active' : ''} 
+                          onClick={() => go2page('./')}
+                          >
                     All
                   </Button>
                   {
@@ -91,7 +99,7 @@ export default function Search(props) {
                           classes={{root: classes.buttomLang}}
                           className={ Number(qstring.decade) === e ? 'active' : ''}
                           key={i}
-                          href={`/search/?decade=${e}`}>'{e}</Button>
+                          onClick={() => go2page(`./?decade=${e}`)}>'{e}</Button>
                           )})
                     }
                   </Box>
