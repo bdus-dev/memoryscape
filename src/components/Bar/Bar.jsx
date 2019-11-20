@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '100vh',
     maxWidth: 'unset',
     top: '0 !important',
-    backgroundColor: '#000000bf',
+    backgroundColor: '#000000cc',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

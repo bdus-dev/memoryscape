@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import Bar from '../Bar/Bar';
 
 import { Container, Typography, Box, Button } from '@material-ui/core';
 import backGroundImage from '../../img/internal-background.jpg';
@@ -30,12 +31,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function About() {
+export default function About(props) {
   const classes = useStyles();
-  
+  const lang = props.lang || props.match.params.lang;
 
   return (
     <div className={classes.homeContainer}>
+      <Bar lang={lang} />
       <Container fixed>
         <Typography className={classes.boxContainer} component="div" style={{ height: '100vh' }}>
           <Box className={classes.textBox}>
