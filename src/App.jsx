@@ -10,6 +10,7 @@ import Intro from './components/Intro/Intro';
 import Map from './components/Map/Map';
 import Search from './components/Search/Search';
 import Clip from './components/Clip/Clip';
+import About from './components/About/About';
 import itMessages from './translations/it.json';
 import enMessages from './translations/en.json';
 
@@ -31,6 +32,7 @@ export default function App() {
             <Route exact path="/:lang(en|it)/map/" component={Map} />
             <Route exact path="/:lang(en|it)/search/" component={Search} />
             <Route exact path="/:lang(en|it)/clip/:id" component={Clip} />
+            <Route exact path="/:lang(en|it)/about" component={About} />
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>
