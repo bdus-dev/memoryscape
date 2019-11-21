@@ -1,24 +1,18 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import Bar from '../Bar/Bar';
 
-import { Container, Typography, Box, Button } from '@material-ui/core';
-import backGroundImage from '../../img/internal-background.jpg';
+import { Typography, Box } from '@material-ui/core';
+import InternalTmpl from '../Templates/InternalTmpl';
 
 const useStyles = makeStyles((theme) => ({
-  homeContainer: {
-    backgroundImage: `url(${backGroundImage})`,
-    backgroundPosition: 'center center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    maxWidth: '100%',
-  },
   boxContainer: {
     padding: theme.spacing(3, 2),
-    height: 200,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    height: '100vh',
+    zIndex: 100,
+
   },
   textBox: {
     textAlign: 'center',
@@ -28,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '3.2em',
     letterSpacing: '0.1em',
     marginBlockStart: '0',
-  }
+  },
+  
 }));
 
 export default function About(props) {
@@ -36,16 +31,13 @@ export default function About(props) {
   const lang = props.lang || props.match.params.lang;
 
   return (
-    <div className={classes.homeContainer}>
-      <Bar lang={lang} />
-      <Container fixed>
-        <Typography className={classes.boxContainer} component="div" style={{ height: '100vh' }}>
-          <Box className={classes.textBox}>
-            <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
-            <h2 className={classes.mainTitle}>About: TODO</h2>
-          </Box>
-        </Typography>
-      </Container>
-    </div>
+    <InternalTmpl lang={lang}>
+      <Typography className={classes.boxContainer} component="div">
+        <Box className={classes.textBox}>
+          <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
+          <h2 className={classes.mainTitle}>About: TODO</h2>
+        </Box>
+      </Typography>
+    </InternalTmpl>
   );
 }
