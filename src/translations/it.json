@@ -1,5 +1,10 @@
 {
     "app.menu.map": "Mappa",
     "app.menu.archive": "Archivio",
-    "app.search.filters": "Filtri"
+    "app.search.filters": "Filtri",
+    "app.filterModal.year": "Anno",
+    "app.filterModal.places": "Luoghi",
+    "app.filterModal.themes": "Temi",
+    "app.filterModal.clear": "Svuota",
+    "app.filterModal.apply": "Applica"
 }

@@ -1,5 +1,10 @@
 {
     "app.menu.map" : "Map",
     "app.menu.archive": "Archive",
-    "app.search.filters": "Filters"
+    "app.search.filters": "Filters",
+    "app.filterModal.year": "Year",
+    "app.filterModal.places": "Places",
+    "app.filterModal.themes": "Themes",
+    "app.filterModal.clear": "Clear",
+    "app.filterModal.apply": "Apply"
 }
