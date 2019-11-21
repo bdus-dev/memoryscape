@@ -50,7 +50,7 @@ export default function Mappa(props) {
         {geoJson && <GeoJSON
               data={geoJson}
               pointToLayer={ (t, i) => pointToLayer(t, i) }
-              onEachFeature={ (feature, layer) => onEachFeature(feature, layer) }
+              onEachFeature={ (feature, layer) => onEachFeature(feature, layer, lang) }
               onAdd={ (a)=>{
                 const bounds = a.target.getBounds();
                 mapRef.current.leafletElement.fitBounds(bounds);
