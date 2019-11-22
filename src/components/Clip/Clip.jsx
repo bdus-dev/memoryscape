@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Bar from '../Bar/Bar';
+import InternalTmpl from '../Templates/InternalTmpl';
 
 import Record from './Record';
 
@@ -54,18 +55,14 @@ export default function Clip(props) {
   const lang = props.match.params.lang;
 
   return (
-    <div className={classes.homeContainer}>
-      <Bar lang={lang} />
-      <Container fixed>
-        <Typography className={classes.boxContainer} component="div">
-          <Box className={classes.textBox}>
-            <h5>HOME MOVIES DIGITAL ARCHIVE | Viaggio in Italia</h5>
-          </Box>
-        </Typography>
+    <InternalTmpl lang={lang}>
+      <Typography className={classes.boxContainer} component="div">
+        <Box className={classes.textBox}>
+          <h5>HOME MOVIES DIGITAL ARCHIVE | Viaggio in Italia</h5>
+        </Box>
+      </Typography>
 
-        <Record id={clipId} />
-
-      </Container>
-    </div>
+      <Record id={clipId} />
+    </InternalTmpl>
   );
 }
