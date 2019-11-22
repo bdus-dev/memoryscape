@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
   },
   video: {
+    background: '#000000',
     position: 'fixed',
     right: 0,
     bottom: 0,
@@ -32,12 +33,12 @@ export default function InternalTmpl(props) {
   const lang = props.lang;
 
   if (isMobile){
-    return <div className={classes.homeContainer}>
+    return <div>
       {props.children}
       </div>
   } else {
     return (
-      <div>
+      <div className={classes.darkBg}>
         <video autoPlay loop className={classes.video}>
           <source src={backGroundVideo} type="video/mp4" />
         </video>
