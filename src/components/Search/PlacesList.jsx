@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ThemesList(props) {
+export default function PlacesList(props) {
 
   const onPlaceSelect = props.onPlaceSelect;
 
