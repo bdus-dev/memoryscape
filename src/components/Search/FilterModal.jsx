@@ -7,6 +7,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { FormattedHTMLMessage } from 'react-intl';
 import ThemesList from './ThemesList';
 import PlacesList from './PlacesList';
+import YearsList from './YearsList';
 
 const useStyles = makeStyles((theme) => ({
   dialogContainer: {
@@ -98,6 +99,9 @@ export default function FilterModal() {
   const onPlaceSelect = (event) => {
     console.log(event);
   };
+  const onYearSelect = (event) => {
+    console.log(event);
+  };
 
   return (
     <div>
@@ -131,18 +135,12 @@ export default function FilterModal() {
           <Grid container spacing={3}>
             <Grid item sm={12} md={4}>
               <Paper className={classes.paper}>
-                <h2>
-                  <FormattedHTMLMessage id="app.filterModal.year" />
-                </h2>
+                <YearsList onYearSelect={onYearSelect} />
               </Paper>
             </Grid>
             <Grid item sm={12} md={8}>
               <Paper className={classes.paper}>
                 <PlacesList onPlaceSelect={onPlaceSelect} />
-
-                <h2>
-                  <FormattedHTMLMessage id="app.filterModal.places" />
-                </h2>
               </Paper>
             </Grid>
             <Grid item xs={12}>
