@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import _ from 'lodash';
 
-import { Button, Dialog, AppBar, Toolbar, IconButton, Slide, DialogActions, DialogContent, Grid, Paper, Fab } from '@material-ui/core';
+import { Button, Dialog, AppBar, Toolbar, IconButton, Slide, DialogActions, DialogContent, Grid, Paper } from '@material-ui/core';
 
 import CloseIcon from '@material-ui/icons/Close';
 import { FormattedHTMLMessage } from 'react-intl';
-import Database from '../../services/Database';
+import ThemesList from './ThemesList';
+import PlacesList from './PlacesList';
 
 const useStyles = makeStyles((theme) => ({
   dialogContainer: {
@@ -53,16 +53,6 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
     },
   },
-  fabTheme: {
-    borderRadius: '0 !important',
-    padding: '0.5em',
-    margin: '0.2em',
-    textTransform: 'capitalize',
-    '&:hover': {
-      backgroundColor: '#7a1dcf',
-      color: '#fff',
-    },
-  },
   footerContainer: {
     padding: '0',
   },
@@ -93,7 +83,6 @@ export default function FilterModal() {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
-  const [themes, setThemes] = useState(null);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -102,17 +91,11 @@ export default function FilterModal() {
   const handleClose = () => {
     setOpen(false);
   };
-  useEffect(() => {
-    Database.getUniqueVal('luogo', (result) => {
-      console.log(result);
-    });
-
-    Database.getVocabulary('temi-ms', (result) => {
-      setThemes(result);
-    });
-  }, []);
-
-  const selectTheme = (event) => {
+  
+  const onThemeSelect = (event) => {
+    console.log(event);
+  };
+  const onPlaceSelect = (event) => {
     console.log(event);
   };
 
@@ -155,6 +138,8 @@ export default function FilterModal() {
             </Grid>
             <Grid item sm={12} md={8}>
               <Paper className={classes.paper}>
+                <PlacesList onPlaceSelect={onPlaceSelect} />
+
                 <h2>
                   <FormattedHTMLMessage id="app.filterModal.places" />
                 </h2>
@@ -162,16 +147,7 @@ export default function FilterModal() {
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <h2>
-                  <FormattedHTMLMessage id="app.filterModal.themes" />
-                </h2>
-                {themes && themes.map((e, i) => {
-                  return (
-                    <Fab className={classes.fabTheme} key={i} variant="extended" size="small" onClick={selectTheme}>
-                      {e.trim()}
-                    </Fab>
-                  );
-                })}
+                <ThemesList onThemeSelect={onThemeSelect} />
               </Paper>
             </Grid>
           </Grid>
