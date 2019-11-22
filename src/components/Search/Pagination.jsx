@@ -8,6 +8,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import { FormattedHTMLMessage } from 'react-intl';
 
 
 import qString from 'qs';
@@ -64,7 +65,7 @@ export default function Pagination (props) {
                 >
                 <Grid item>
                     <Box component="div">
-                        Visualizati clip {recShownStart} - {recShownEnd} di {recTotal}
+                        <FormattedHTMLMessage id="app.pagination.recap" values={{start: recShownStart, end: recShownEnd, tot: recTotal}}/>
                     </Box>
                 </Grid>
 
@@ -78,7 +79,7 @@ export default function Pagination (props) {
                         >
                         { firstPageLink && <Button onClick={()=>go2page(firstPageLink)}><FirstPageIcon /></Button> }
                         { prevPageLink  && <Button onClick={()=>go2page(prevPageLink)}><KeyboardArrowLeft /></Button> }
-                        { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button disabled>Pagina {pageCurr}</Button>}
+                        { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button disabled><FormattedHTMLMessage id="app.pagination.page" values={{pageNo: pageCurr}}/> </Button>}
                         { nextPageLink  && <Button onClick={()=>go2page(nextPageLink)}><KeyboardArrowRight /></Button>}
                         { lastPageLink && <Button onClick={()=>go2page(lastPageLink)}><LastPageIcon /></Button>}
                     </ButtonGroup>
