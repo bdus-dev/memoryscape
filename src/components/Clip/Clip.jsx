@@ -1,26 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Bar from '../Bar/Bar';
 import InternalTmpl from '../Templates/InternalTmpl';
 
 import Record from './Record';
 
-import backGroundImage from '../../img/internal-background.jpg';
-
 const useStyles = makeStyles((theme) => ({
-  homeContainer: {
-    backgroundImage: `url(${backGroundImage})`,
-    backgroundPosition: 'center center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    maxWidth: '100%',
-    backgroundAttachment: 'fixed',
-    minHeight: '100vh',
-    paddingBottom: '2rem'
-  },
   boxContainer: {
     padding: theme.spacing(3, 2),
     display: 'flex',
@@ -31,21 +17,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: '#fff',
     paddingTop: '1em',
-  },
-  mainTitle: {
-    fontSize: '3.2em',
-    letterSpacing: '0.1em',
-    marginBlockStart: '0',
-  },
-  languageContainer: {
-    marginTop: 'auto',
-    marginBottom: '6em',
-    textAlign: 'center',
-  },
-  buttomLang: {
-    color: '#fff',
-    fontWeight: '900',
-  },
+  }
 }));
 
 export default function Clip(props) {
