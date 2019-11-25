@@ -13,6 +13,7 @@ import qs from 'qs';
 
 import Results from './Results';
 import FilterModal from './FilterModal';
+import { FilterContextComponent } from './FilterContext';
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
@@ -88,7 +89,9 @@ export default function Search(props) {
             </Grid>
 
             <Grid item className={classes.filterContainer}>
-              <FilterModal />
+              <FilterContextComponent>
+                <FilterModal />
+              </FilterContextComponent>
             </Grid>
           </Grid>
           

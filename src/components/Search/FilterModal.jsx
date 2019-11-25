@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
-
+import { useHistory } from 'react-router-dom';
 import { Button, Dialog, AppBar, Toolbar, IconButton, Slide, DialogActions, DialogContent, Grid, Paper } from '@material-ui/core';
 
 import CloseIcon from '@material-ui/icons/Close';
 import { FormattedHTMLMessage } from 'react-intl';
-import ThemesList from './ThemesList';
-import PlacesList from './PlacesList';
-import YearsList from './YearsList';
+import ThemesList from './Filters/ThemesList';
+import PlacesList from './Filters/PlacesList';
+import YearsList from './Filters/YearsList';
+import FilterContext from './FilterContext';
 
 const useStyles = makeStyles((theme) => ({
   dialogContainer: {
@@ -37,13 +38,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '2.5rem',
   },
   dialogContent: {
-    marginLeft: '24em',
-    [theme.breakpoints.down(960)]: {
-      marginLeft: '9em',
-    },
-    marginRight: '9em',
     '& h2': {
       fontSize: '3.2em',
+      marginBottom: '0.2em',
+      marginTop: '0',
     },
   },
   paper: {
@@ -81,9 +79,10 @@ const useStyles = makeStyles((theme) => ({
 const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 
 export default function FilterModal() {
+  const { getQueryFilters, initFilters } = useContext(FilterContext);
   const classes = useStyles();
-
   const [open, setOpen] = useState(false);
+  const history = useHistory();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -92,21 +91,22 @@ export default function FilterModal() {
   const handleClose = () => {
     setOpen(false);
   };
-  
-  const onThemeSelect = (event) => {
-    console.log(event);
+
+  const applyFilters = () => {
+    history.push(getQueryFilters());
+    handleClose();
   };
-  const onPlaceSelect = (event) => {
-    console.log(event);
-  };
-  const onYearSelect = (event) => {
-    console.log(event);
+
+  const clearFilters = () => {
+    initFilters();
+    history.push(window.location.pathname);
+    handleClose();
   };
 
   return (
     <div>
       <Button
-        color='primary'
+        color="primary"
         className={classes.filterBtn}
         onClick={handleClickOpen}
       >
@@ -122,10 +122,10 @@ export default function FilterModal() {
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton
-              edge='start'
-              color='inherit'
+              edge="start"
+              color="inherit"
               onClick={handleClose}
-              aria-label='close'
+              aria-label="close"
             >
               <CloseIcon className={classes.iconMenu} />
             </IconButton>
@@ -135,27 +135,27 @@ export default function FilterModal() {
           <Grid container spacing={3}>
             <Grid item sm={12} md={4}>
               <Paper className={classes.paper}>
-                <YearsList onYearSelect={onYearSelect} />
+                <YearsList />
               </Paper>
             </Grid>
             <Grid item sm={12} md={8}>
               <Paper className={classes.paper}>
-                <PlacesList onPlaceSelect={onPlaceSelect} />
+                <PlacesList />
               </Paper>
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <ThemesList onThemeSelect={onThemeSelect} />
+                <ThemesList />
               </Paper>
             </Grid>
           </Grid>
         </DialogContent>
         <DialogActions className={classes.footerContainer}>
-          <Button onClick={handleClose} className={classes.clearBtn}>
+          <Button onClick={clearFilters} className={classes.clearBtn}>
             <CloseIcon className={classes.clearIcon} />
             <FormattedHTMLMessage id="app.filterModal.clear" />
           </Button>
-          <Button className={classes.applyBtn} onClick={handleClose} autoFocus>
+          <Button className={classes.applyBtn} onClick={applyFilters} autoFocus>
             <FormattedHTMLMessage id="app.filterModal.apply" />
           </Button>
         </DialogActions>
