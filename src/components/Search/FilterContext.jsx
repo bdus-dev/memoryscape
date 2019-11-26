@@ -11,9 +11,15 @@ function toggleList(arrayList, value) {
   return arrayList;
 }
 
+function isValidDate(date) {
+  return /^(19|20)\d{2}$/.test(date);
+}
+
 export function FilterContextComponent({ children }) {
   const [themeList, setThemeList] = useState([]);
   const [placesList, setPlacesList] = useState([]);
+  const [yearFrom, setYearFrom] = useState(undefined);
+  const [yearTo, setYearTo] = useState(undefined);
 
   const toggleThemes = (theme) => setThemeList(toggleList(themeList, theme));
   const isThemeSelected = (theme) => themeList.includes(theme);
@@ -24,6 +30,21 @@ export function FilterContextComponent({ children }) {
   const getThemeQueryFilter = () => (themeList.length > 0 ? `themes=${themeList.map((theme) => theme)}` : '');
   const getPlaceQueryFilter = () => (placesList.length > 0 ? `places=${placesList.map((theme) => theme)}` : '');
 
+  const addYearFromToQuery = (date) => {
+    if (isValidDate(date)) {
+      setYearFrom(date);
+    }
+  };
+  const getYearFromQueryFilter = () => (yearFrom ? `year_start=${yearFrom}` : '');
+
+  const addYearToToQuery = (date) => {
+    if (isValidDate(date)) {
+      setYearTo(date);
+    }
+  };
+
+  const getYearToQueryFilter = () => (yearTo ? `year_end=${yearTo}` : '');
+
   const initFilters = () => {
     setThemeList([]);
     setPlacesList([]);
@@ -31,13 +52,15 @@ export function FilterContextComponent({ children }) {
 
   const getQueryFilters = () => {
     let query = getThemeQueryFilter();
-    query += query ? `&${getPlaceQueryFilter()}` : getPlaceQueryFilter();
+    query += query && placesList ? `&${getPlaceQueryFilter()}` : getPlaceQueryFilter();
+    query += query && yearFrom ? `&${getYearFromQueryFilter()}` : getYearFromQueryFilter();
+    query += query && yearTo ? `&${getYearToQueryFilter()}` : getYearToQueryFilter();
     return query ? `?${query}` : query;
   };
 
   return (
     <FilterContext.Provider
-      value={{ themeList, toggleThemes, isThemeSelected, getQueryFilters, togglePlaces, isPlaceSelected, initFilters }}
+      value={{ themeList, toggleThemes, isThemeSelected, getQueryFilters, togglePlaces, isPlaceSelected, initFilters, addYearFromToQuery, addYearToToQuery, yearFrom, yearTo }}
     >
       {children}
     </FilterContext.Provider>
