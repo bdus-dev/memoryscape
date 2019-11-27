@@ -6,8 +6,6 @@ import { Button, Dialog, AppBar, Toolbar, IconButton, Slide, DialogActions, Dial
 import CloseIcon from '@material-ui/icons/Close';
 import { FormattedHTMLMessage } from 'react-intl';
 import ThemesList from './Filters/ThemesList';
-import PlacesList from './Filters/PlacesList';
-import YearsList from './Filters/YearsList';
 import FilterContext from './FilterContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -110,7 +108,7 @@ export default function FilterModal() {
         className={classes.filterBtn}
         onClick={handleClickOpen}
       >
-        <FormattedHTMLMessage id="app.search.filters" />
+        <FormattedHTMLMessage id="app.filterModal.themes" />
       </Button>
       <Dialog
         className={classes.dialogContainer}
@@ -133,16 +131,6 @@ export default function FilterModal() {
         </AppBar>
         <DialogContent className={classes.dialogContent}>
           <Grid container spacing={3}>
-            <Grid item sm={12} md={4}>
-              <Paper className={classes.paper}>
-                <YearsList />
-              </Paper>
-            </Grid>
-            <Grid item sm={12} md={8}>
-              <Paper className={classes.paper}>
-                <PlacesList />
-              </Paper>
-            </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <ThemesList />
