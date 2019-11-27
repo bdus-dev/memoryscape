@@ -84,7 +84,7 @@ export default function Results(props) {
             'f': 'hm__ms:temi',
             'v': e,
             'o': 'LIKE',
-            'c': 'AND'
+            'c': 'OR'
           }
           return false;
         })
