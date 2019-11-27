@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '1em',
   },
   mainTitle: {
-    fontSize: '3.2em',
+    fontSize: '2.2em',
     letterSpacing: '0.1em',
     marginBlockStart: '0',
   },
@@ -59,7 +59,7 @@ export default function Search(props) {
       <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
           <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
-          <h1 className={classes.mainTitle}>Viaggio in Italia</h1>
+          <h1 className={classes.mainTitle}>Memoryscapes<br />Dall’Appennino al Po</h1>
         </Box>
         <Box>
           <Grid
