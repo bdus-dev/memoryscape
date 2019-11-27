@@ -9,12 +9,24 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { FormattedHTMLMessage } from 'react-intl';
-
+import { makeStyles } from '@material-ui/styles';
 
 import qString from 'qs';
 
 
+const useStyles = makeStyles((theme) => ({
+    button: {
+      backgroundColor: '#7a1dcf',
+      "&:hover":{
+        backgroundColor: '#7a1dcf'
+      }
+    }
+  }));
+
 export default function Pagination (props) {
+
+    const classes = useStyles();
+
 
     const history = useHistory();
 
@@ -77,11 +89,11 @@ export default function Pagination (props) {
                         variant="contained"
                         style={{ background: '#fff'}}
                         >
-                        { firstPageLink && <Button onClick={()=>go2page(firstPageLink)}><FirstPageIcon /></Button> }
-                        { prevPageLink  && <Button onClick={()=>go2page(prevPageLink)}><KeyboardArrowLeft /></Button> }
-                        { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button disabled><FormattedHTMLMessage id="app.pagination.page" values={{pageNo: pageCurr}}/> </Button>}
-                        { nextPageLink  && <Button onClick={()=>go2page(nextPageLink)}><KeyboardArrowRight /></Button>}
-                        { lastPageLink && <Button onClick={()=>go2page(lastPageLink)}><LastPageIcon /></Button>}
+                        { firstPageLink && <Button className={classes.button} onClick={()=>go2page(firstPageLink)}><FirstPageIcon /></Button> }
+                        { prevPageLink  && <Button className={classes.button} onClick={()=>go2page(prevPageLink)}><KeyboardArrowLeft /></Button> }
+                        { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button className={classes.button} disabled><FormattedHTMLMessage id="app.pagination.page" values={{pageNo: pageCurr}}/> </Button>}
+                        { nextPageLink  && <Button className={classes.button} onClick={()=>go2page(nextPageLink)}><KeyboardArrowRight /></Button>}
+                        { lastPageLink && <Button className={classes.button} onClick={()=>go2page(lastPageLink)}><LastPageIcon /></Button>}
                     </ButtonGroup>
                 </Grid>
             </Grid>
