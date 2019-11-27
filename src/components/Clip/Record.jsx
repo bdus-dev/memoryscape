@@ -56,8 +56,7 @@ export default function Record(props) {
       <Grid container spacing={1} justify="center">
         <Grid item xs={6} style={{ textAlign: 'center'}}>
           <h1>{item.tit.val}</h1>
-          { !viewVideo && <img src={`https://img.youtube.com/vi/${item.videoid.val}/0.jpg`} alt={item.tit.val} onClick={ ()=> setViewVideo(true) }/> }
-          { viewVideo && <YouTube videoId={item.videoid.val} onEnd={() => setViewVideo(false)} /> }
+          <YouTube videoId={item.videoid.val} />
         </Grid>
       </Grid>
 
