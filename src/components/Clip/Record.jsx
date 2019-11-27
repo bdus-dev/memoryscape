@@ -4,17 +4,32 @@ import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
-import LabelIcon from '@material-ui/icons/Label';
+import { makeStyles } from '@material-ui/styles';
 
 import YouTube from 'react-youtube';
 
 import Database from '../../services/Database';
 import Results from '../Search/Results';
 
-
+const useStyles = makeStyles(() => ({
+  fabTheme: {
+    borderRadius: '0 !important',
+    padding: '0.5em',
+    margin: '0.2em',
+    fontSize: '0.7rem',
+    textTransform: 'capitalize',
+    '&:hover': {
+      backgroundColor: '#7a1dcf',
+      color: '#fff',
+    },
+  }
+}));
 
 
 export default function Record(props) {
+
+  const classes = useStyles();
+
 
   const [result, setResult] = useState();
   const [viewVideo, setViewVideo] = useState();
@@ -61,8 +76,6 @@ export default function Record(props) {
           <Box my={5}>
             <h3>Formato</h3>
             { item.formato.val }
-            <h3>Inventario</h3>
-            { item.inv.val }
             <h3>Durata</h3>
             { item.durata.val }
           </Box>
@@ -78,7 +91,7 @@ export default function Record(props) {
         <Grid item xs={8} style={{ textAlign: 'center'}}>
           {
             item.temi.val.split(';').map( (e, i) =>  {
-              return <Fab key={i} variant="extended" size='small' onClick={()=>history.push(`../search/?theme=${e.trim()}`)}><LabelIcon />{e.trim()}</Fab>
+              return <Fab key={i} variant="extended" className={classes.fabTheme} onClick={()=>history.push(`../search/?theme=${e.trim()}`)}>{e.trim()}</Fab>
             })
           }
         </Grid>

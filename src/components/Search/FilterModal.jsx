@@ -13,7 +13,7 @@ import FilterContext from './FilterContext';
 const useStyles = makeStyles((theme) => ({
   dialogContainer: {
     '& .MuiDialog-paperFullScreen': {
-      backgroundColor: '#000000bf',
+      backgroundColor: '#000000f2',
     },
   },
   filterBtn: {

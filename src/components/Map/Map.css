@@ -27,3 +27,7 @@ body,
     color: #fff;
     text-decoration: none;
 }
+
+.leaflet-container a.leaflet-popup-close-button{
+    padding: 10px 25px !important;
+}

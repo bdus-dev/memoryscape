@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '100vh',
     maxWidth: 'unset',
     top: '0 !important',
-    backgroundColor: '#000000cc',
+    backgroundColor: '#000000f2',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   menuItem: {
     color: '#fff',
     fontSize: '3.4em',
-    fontWeight: '500',
+    fontWeight: '700',
     '&:hover': {
       color: '#7a1dcf',
     },
