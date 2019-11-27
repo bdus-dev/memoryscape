@@ -33,7 +33,7 @@ export default function Clip(props) {
           <h5>HOME MOVIES DIGITAL ARCHIVE | Viaggio in Italia</h5>
         </Box>
       </Typography> */}
-      <Box mt='5rem'>
+      <Box pt='5rem'>
         <Record id={clipId}/>
       </Box>
     </InternalTmpl>

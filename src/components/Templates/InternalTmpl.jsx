@@ -33,8 +33,11 @@ export default function InternalTmpl(props) {
   const lang = props.lang;
 
   if (isMobile){
-    return <div>
-      {props.children}
+    return <div className={classes.homeContainer}>
+      <Bar lang={lang} />
+        <Container fixed>
+          { props.children }
+        </Container>
       </div>
   } else {
     return (
