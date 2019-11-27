@@ -1,5 +1,5 @@
 {
-    "app.menu.map" : "Map",
+    "app.menu.map": "Map",
     "app.menu.archive": "Archive",
     "app.search.filters": "Filters",
     "app.search.all": "All",
@@ -9,5 +9,10 @@
     "app.filterModal.places": "Places",
     "app.filterModal.themes": "Themes",
     "app.filterModal.clear": "Clear",
-    "app.filterModal.apply": "Apply"
+    "app.filterModal.apply": "Apply",
+    "app.clip.author": "Author",
+    "app.clip.place": "Place",
+    "app.clip.year": "Year",
+    "app.clip.format": "Format",
+    "app.clip.duration": "Duration"
 }

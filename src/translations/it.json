@@ -9,5 +9,10 @@
     "app.filterModal.places": "Luoghi",
     "app.filterModal.themes": "Temi",
     "app.filterModal.clear": "Svuota",
-    "app.filterModal.apply": "Applica"
+    "app.filterModal.apply": "Applica",
+    "app.clip.author": "Autore",
+    "app.clip.place": "Luogo",
+    "app.clip.year": "Anno",
+    "app.clip.format": "Formato",
+    "app.clip.duration": "Durata"
 }

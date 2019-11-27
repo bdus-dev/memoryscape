@@ -28,13 +28,14 @@ export default function Clip(props) {
 
   return (
     <InternalTmpl lang={lang}>
-      <Typography className={classes.boxContainer} component="div">
+      {/* <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
           <h5>HOME MOVIES DIGITAL ARCHIVE | Viaggio in Italia</h5>
         </Box>
-      </Typography>
-
-      <Record id={clipId} />
+      </Typography> */}
+      <Box mt='5rem'>
+        <Record id={clipId}/>
+      </Box>
     </InternalTmpl>
   );
 }

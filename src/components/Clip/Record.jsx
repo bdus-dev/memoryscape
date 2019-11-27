@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import { makeStyles } from '@material-ui/styles';
+import { FormattedHTMLMessage } from 'react-intl';
 
 import YouTube from 'react-youtube';
 
@@ -54,7 +55,7 @@ export default function Record(props) {
     <Box style={{ color: '#fff' }}>
       <Grid container spacing={1} justify="center">
         <Grid item xs={6} style={{ textAlign: 'center'}}>
-          <h2>{item.tit.val}</h2>
+          <h1>{item.tit.val}</h1>
           { !viewVideo && <img src={`https://img.youtube.com/vi/${item.videoid.val}/0.jpg`} alt={item.tit.val} onClick={ ()=> setViewVideo(true) }/> }
           { viewVideo && <YouTube videoId={item.videoid.val} onEnd={() => setViewVideo(false)} /> }
         </Grid>
@@ -64,19 +65,19 @@ export default function Record(props) {
       <Grid container spacing={1} justify="center">
         <Grid item xs={2}>
           <Box my={5}>
-            <h3>Autore</h3>
+            <h3><FormattedHTMLMessage id="app.clip.author" /></h3>
             { item.aut.val }
-            <h3>Luogo</h3>
+            <h3><FormattedHTMLMessage id="app.clip.place" /></h3>
             { item.luogo.val }
-            <h3>Anno</h3>
+            <h3><FormattedHTMLMessage id="app.clip.year" /></h3>
             { item.anno.val }
           </Box>
         </Grid>
         <Grid item xs={2}>
           <Box my={5}>
-            <h3>Formato</h3>
+            <h3><FormattedHTMLMessage id="app.clip.format" /></h3>
             { item.formato.val }
-            <h3>Durata</h3>
+            <h3><FormattedHTMLMessage id="app.clip.duration" /></h3>
             { item.durata.val }
           </Box>
         </Grid>
@@ -89,6 +90,7 @@ export default function Record(props) {
 
       <Grid container spacing={1} justify="center">
         <Grid item xs={8} style={{ textAlign: 'center'}}>
+        <h3><FormattedHTMLMessage id="app.filterModal.themes" /></h3>
           {
             item.temi.val.split(';').map( (e, i) =>  {
               return <Fab key={i} variant="extended" className={classes.fabTheme} onClick={()=>history.push(`../search/?theme=${e.trim()}`)}>{e.trim()}</Fab>
