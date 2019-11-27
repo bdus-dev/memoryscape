@@ -14,5 +14,6 @@
     "app.clip.place": "Luogo",
     "app.clip.year": "Anno",
     "app.clip.format": "Formato",
-    "app.clip.duration": "Durata"
+    "app.clip.duration": "Durata",
+    "app.clip.coords": "Coordinate"
 }

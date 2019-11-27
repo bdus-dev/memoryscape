@@ -4,6 +4,10 @@ import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import RoomOutlined from '@material-ui/icons/RoomOutlined';
+
 import { makeStyles } from '@material-ui/styles';
 import { FormattedHTMLMessage } from 'react-intl';
 
@@ -23,8 +27,20 @@ const useStyles = makeStyles(() => ({
       backgroundColor: '#7a1dcf',
       color: '#fff',
     },
+  },
+  button: {
+    color: '#fff',
+    textTransform: 'none',
+    padding: 0,
+    textDecoration: 'underline'
   }
 }));
+
+const Wkt2Arr = function(wkt){
+  wkt = wkt.replace("POINT(", '');
+  wkt = wkt.replace(")", '');
+  return wkt.split(' ').map(e=>parseFloat(e));
+};
 
 
 export default function Record(props) {
@@ -33,7 +49,6 @@ export default function Record(props) {
 
 
   const [result, setResult] = useState();
-  const [viewVideo, setViewVideo] = useState();
   const history = useHistory();
 
   const clipId = props.id;
@@ -49,8 +64,8 @@ export default function Record(props) {
   }
 
   const item = result.core;
-  // const geoD = result.geodata;
-
+  const geoD = result.geodata[0];
+  
   return (
     <Box style={{ color: '#fff' }}>
       <Grid container spacing={1} justify="center">
@@ -67,7 +82,9 @@ export default function Record(props) {
             <h3><FormattedHTMLMessage id="app.clip.author" /></h3>
             { item.aut.val }
             <h3><FormattedHTMLMessage id="app.clip.place" /></h3>
-            { item.luogo.val }
+            <Button className={classes.button} onClick={ ()=>{
+              history.push(`../search/?places=${item.luogo.val}`)
+            }}><SearchOutlinedIcon fontSize="small" /> { item.luogo.val }</Button>
             <h3><FormattedHTMLMessage id="app.clip.year" /></h3>
             { item.anno.val }
           </Box>
@@ -78,6 +95,10 @@ export default function Record(props) {
             { item.formato.val }
             <h3><FormattedHTMLMessage id="app.clip.duration" /></h3>
             { item.durata.val }
+            <h3><FormattedHTMLMessage id="app.clip.coords" /></h3>
+            <Button className={classes.button} onClick={ ()=>{
+              history.push(`../map/?center=${Wkt2Arr(geoD.geometry).join(",")}`)
+            }}><RoomOutlined fontSize="small" /> { Wkt2Arr(geoD.geometry).join(", ") }</Button>
           </Box>
         </Grid>
         <Grid item xs={2}>
