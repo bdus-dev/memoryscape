@@ -15,15 +15,23 @@ import qs from 'qs';
 
 export default function Mappa(props) {
 
+  const qstring = qs.parse(props.location.search, {ignoreQueryPrefix: true});
+
   const lang = props.lang || props.match.params.lang;
   
-  const position = [44.4943823,11.3418609]
+  let center = false;
+  if (props.center){
+    center = props.center;
+  } else if(qstring.center){
+    center = qstring.center.split(',').reverse();
+  }  
+
+  const defCenter = center ? center : [44.4943823,11.3418609];
 
   const [geoJson, setGeoJson] = useState();
   
   const [mapRef] = useState(React.createRef());
 
-  const qstring = qs.parse(props.location.search, {ignoreQueryPrefix: true});
 
 
 
@@ -38,7 +46,7 @@ export default function Mappa(props) {
     <div className="mapContainer">
       <Bar lang={lang} />
 
-      <Map center={position} zoom={13} style={{ width: '100%', height: '100%'}}
+      <Map center={defCenter} zoom={13} style={{ width: '100%', height: '100%'}}
           ref={mapRef}>
         <TileLayer
           // url="https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png"
@@ -52,8 +60,10 @@ export default function Mappa(props) {
               pointToLayer={ (t, i) => pointToLayer(t, i) }
               onEachFeature={ (feature, layer) => onEachFeature(feature, layer, lang) }
               onAdd={ (a)=>{
-                const bounds = a.target.getBounds();
-                mapRef.current.leafletElement.fitBounds(bounds);
+                if (!center){
+                  const bounds = a.target.getBounds();
+                  mapRef.current.leafletElement.fitBounds(bounds);
+                }
               }}
               />}
       </Map>
