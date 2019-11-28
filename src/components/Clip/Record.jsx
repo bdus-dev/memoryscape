@@ -33,6 +33,20 @@ const useStyles = makeStyles(() => ({
     textTransform: 'none',
     padding: 0,
     textDecoration: 'underline'
+  },
+  videoWrapper: {
+    position: 'relative',
+    paddingBottom: '56.25%',
+    paddingTop: '25px',
+    height: 0,
+    overflow: 'hidden'
+  },
+  iframe: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%'
   }
 }));
 
@@ -69,15 +83,18 @@ export default function Record(props) {
   return (
     <Box style={{ color: '#fff' }}>
       <Grid container spacing={1} justify="center">
-        <Grid item xs={6} style={{ textAlign: 'center'}}>
+        <Grid item xs={12} md={6} style={{ textAlign: 'center'}}>
           <h1>{item.tit.val}</h1>
-          <YouTube videoId={item.videoid.val} />
+          <div className={classes.videoWrapper}>
+            <YouTube videoId={item.videoid.val} className={classes.iframe} />
+          </div>
+          
         </Grid>
       </Grid>
 
 
       <Grid container spacing={1} justify="center">
-        <Grid item xs={2}>
+        <Grid item xs={6} md={2}>
           <Box my={5}>
             <h3><FormattedHTMLMessage id="app.clip.author" /></h3>
             { item.aut.val }
@@ -89,7 +106,7 @@ export default function Record(props) {
             { item.anno.val }
           </Box>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={6} md={2}>
           <Box my={5}>
             <h3><FormattedHTMLMessage id="app.clip.format" /></h3>
             { item.formato.val }
@@ -101,7 +118,7 @@ export default function Record(props) {
             }}><RoomOutlined fontSize="small" /> { Wkt2Arr(geoD.geometry).join(", ") }</Button>
           </Box>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={12} md={2}>
           <Box my={5}>
             { item.descr.val }
           </Box>
