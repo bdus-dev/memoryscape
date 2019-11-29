@@ -141,7 +141,9 @@ export default function Bar(props) {
             <MenuItem onClick={() => gotoPage(`/${lang}/search/`)} className={classes.menuItem}>
               <FormattedHTMLMessage id="app.menu.archive" />
             </MenuItem>
-            <MenuItem onClick={() => gotoPage(`/${lang}/about`)} className={classes.menuItem}>About</MenuItem>
+            <MenuItem onClick={() => gotoPage(`/${lang}/about`)} className={classes.menuItem}>
+              <FormattedHTMLMessage id="app.menu.about" />
+            </MenuItem>
           </div>
           <div className={classes.colorWhite}>
             <h5 className={classes.titleMenu}>HOME MOVIES DIGITAL ARCHIVE</h5>

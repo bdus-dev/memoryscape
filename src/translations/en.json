@@ -1,6 +1,7 @@
 {
     "app.menu.map": "Map",
     "app.menu.archive": "Archive",
+    "app.menu.about": "Informazioni",
     "app.search.filters": "Filters",
     "app.search.all": "All",
     "app.pagination.page": "Page {pageNo}",
