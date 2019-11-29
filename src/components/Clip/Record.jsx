@@ -53,7 +53,7 @@ const useStyles = makeStyles(() => ({
 const Wkt2Arr = function(wkt){
   wkt = wkt.replace("POINT(", '');
   wkt = wkt.replace(")", '');
-  return wkt.split(' ').map(e=>parseFloat(e));
+  return wkt.split(' ').map(e=>Math.round(parseFloat(e) * 1000) / 1000);
 };
 
 
@@ -112,10 +112,10 @@ export default function Record(props) {
             { item.formato.val }
             <h3><FormattedHTMLMessage id="app.clip.duration" /></h3>
             { item.durata.val }
-            <h3><FormattedHTMLMessage id="app.clip.coords" /></h3>
+            {geoD && <React.Fragment><h3><FormattedHTMLMessage id="app.clip.coords" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../map/?center=${Wkt2Arr(geoD.geometry).join(",")}`)
-            }}><RoomOutlined fontSize="small" /> { Wkt2Arr(geoD.geometry).join(", ") }</Button>
+            }}><RoomOutlined fontSize="small" /> { Wkt2Arr(geoD.geometry).join(", ") }</Button></React.Fragment>}
           </Box>
         </Grid>
         <Grid item xs={12} md={2}>
