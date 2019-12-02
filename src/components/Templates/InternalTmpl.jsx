@@ -10,12 +10,12 @@ import backGroundVideo from '../../img/video-bg.mp4';
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
     backgroundImage: `url(${backGroundImage})`,
+    backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    maxWidth: '100%',
     backgroundAttachment: 'fixed',
     minHeight: '100vh',
+    
   },
   video: {
     background: '#000000',
