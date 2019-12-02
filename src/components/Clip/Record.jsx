@@ -51,6 +51,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Wkt2Arr = function(wkt){
+  wkt = wkt.trim();
   wkt = wkt.replace("POINT(", '');
   wkt = wkt.replace(")", '');
   return wkt.split(' ').map(e=>Math.round(parseFloat(e) * 1000) / 1000);
