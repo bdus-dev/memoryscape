@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": "Bradypus <info@bradypus.net>",
   "private": true,
-  "homepage": "http://ms-test.homemovies.it",
+  "homepage": "https://ms-emilia-romagna.homemovies.it/",
   "dependencies": {
     "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.5.1",
