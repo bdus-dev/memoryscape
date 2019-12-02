@@ -10,11 +10,14 @@ import backGroundVideo from '../../img/video-bg.mp4';
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
     backgroundImage: `url(${backGroundImage})`,
-    backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
-    minHeight: '100vh',
+    backgroundSize: 'cover',
+    maxWidth: '100%',
+    height: '100vh',
+    width: '100vw',
+    position: 'fixed',
+    overflow: 'scroll'
     
   },
   video: {
@@ -32,7 +35,7 @@ export default function InternalTmpl(props) {
   const classes = useStyles();
   const lang = props.lang;
 
-  if (isMobile){
+  if (!isMobile){
     return <div className={classes.homeContainer}>
       <Bar lang={lang} />
         <Container fixed>
