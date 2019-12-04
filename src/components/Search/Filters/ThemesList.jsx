@@ -11,7 +11,7 @@ export default function ThemesList() {
 
   useEffect(() => {
     Database.getVocabulary('temi-ms', (result) => {
-      setThemes(result);
+      setThemes(result.sort());
     });
   }, []);
 

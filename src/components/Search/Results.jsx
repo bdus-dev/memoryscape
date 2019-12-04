@@ -17,12 +17,19 @@ import Pagination from './Pagination';
 import Database from '../../services/Database';
 
 const useStyles = makeStyles({
+  GridListTitle: {
+    cursor: 'pointer',
+  },
   GridListTileBar: {
     background: 'rgba(123,30,207, .5)',
   },
   GridListTileBarTitle: {
     textTransform: 'uppercase',
     fontWeight: '900',
+    fontSize: '.9rem'
+  },
+  GridListTileBarSubtitle: {
+    lineHeight: 1.5
   },
   IconButton: {
     color: 'rgba(255, 255, 255, 0.8)',
@@ -132,7 +139,10 @@ export default function Results(props) {
       {!suppressEmpty && <Pagination head={result.head} qs={qs} /> }
       <GridList cellHeight={280} cols={cols} spacing={40}>
         {result.records.map((row, k) => (
-          <GridListTile key={k}>
+          <GridListTile key={k} className={classes.GridListTitle} onClick={ ()=> {
+            history.push(`../clip/${row.id}`);
+            window.scrollTo(0, 0);
+          }}>
             <img
               src={`https://img.youtube.com/vi/${row.videoid}/0.jpg`}
               alt={row.tit}
@@ -141,6 +151,7 @@ export default function Results(props) {
               classes={{
                 root: classes.GridListTileBar,
                 title: classes.GridListTileBarTitle,
+                subtitle: classes.GridListTileBarSubtitle,
               }}
               title={(
                 <span>
@@ -151,10 +162,13 @@ export default function Results(props) {
                   <strong>{row.anno}</strong>
                 </span>
               )}
-              subtitle={<span>di: {row.aut}</span>}
+              subtitle={row.temi}
               actionIcon={(
                 <IconButton
-                  onClick={ ()=> history.push(`../clip/${row.id}`)}
+                  onClick={ ()=> {
+                    history.push(`../clip/${row.id}`);
+                    window.scrollTo(0, 0);
+                  }}
                   aria-label={`info about ${row.tit}`}
                   classes={{ root: classes.IconButton }}
                 >

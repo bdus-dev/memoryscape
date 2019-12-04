@@ -1,7 +1,7 @@
 {
     "app.menu.map": "Mappa",
     "app.menu.archive": "Archivio",
-    "app.menu.about": "Informazioni",
+    "app.menu.about": "Il progetto",
     "app.search.filters": "Filtri",
     "app.search.all": "Tutto",
     "app.pagination.page": "Pagina {pageNo}",
@@ -15,6 +15,6 @@
     "app.clip.place": "Luogo",
     "app.clip.year": "Anno",
     "app.clip.format": "Formato",
-    "app.clip.duration": "Durata",
-    "app.clip.coords": "Coordinate"
+    "app.clip.map": "Mappa",
+    "app.clip.same_period": "Altre clip di questo periodo"
 }

@@ -31,22 +31,23 @@ const useStyles = makeStyles(() => ({
   button: {
     color: '#fff',
     textTransform: 'none',
+    textAlign: 'left',
     padding: 0,
     textDecoration: 'underline'
   },
   videoWrapper: {
-    position: 'relative',
-    paddingBottom: '56.25%',
-    paddingTop: '25px',
     height: 0,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    paddingBottom: '75%',
+    paddingTop: '30px',
+    position: 'relative',
   },
   iframe: {
+    height: '100%',
+    left: 0,
     position: 'absolute',
     top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%'
+    width: '100%'
   }
 }));
 
@@ -56,6 +57,14 @@ const Wkt2Arr = function(wkt){
   wkt = wkt.replace(")", '');
   return wkt.split(' ').map(e=>Math.round(parseFloat(e) * 1000) / 1000);
 };
+
+const decadeFromYear = function (year){
+  year = parseInt(year.slice(2));
+  year = (year+1)/10;
+  year = Math.ceil(year)*10;
+  year = year-10;
+  return year;
+}
 
 
 export default function Record(props) {
@@ -80,6 +89,8 @@ export default function Record(props) {
 
   const item = result.core;
   const geoD = result.geodata[0];
+  decadeFromYear(item.anno.val);
+  
   
   return (
     <Box style={{ color: '#fff' }}>
@@ -97,26 +108,31 @@ export default function Record(props) {
       <Grid container spacing={1} justify="center">
         <Grid item xs={6} md={2}>
           <Box my={5}>
+
             <h3><FormattedHTMLMessage id="app.clip.author" /></h3>
-            { item.aut.val }
+            <Button className={classes.button} onClick={ ()=>{
+              history.push(`../search/?author=${item.aut.val}`)
+            }}><SearchOutlinedIcon fontSize="small" /> { item.aut.val }</Button>
+            
             <h3><FormattedHTMLMessage id="app.clip.place" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../search/?places=${item.luogo.val}`)
             }}><SearchOutlinedIcon fontSize="small" /> { item.luogo.val }</Button>
-            <h3><FormattedHTMLMessage id="app.clip.year" /></h3>
-            { item.anno.val }
+
           </Box>
         </Grid>
         <Grid item xs={6} md={2}>
           <Box my={5}>
             <h3><FormattedHTMLMessage id="app.clip.format" /></h3>
             { item.formato.val }
-            <h3><FormattedHTMLMessage id="app.clip.duration" /></h3>
-            { item.durata.val }
-            {geoD && <React.Fragment><h3><FormattedHTMLMessage id="app.clip.coords" /></h3>
+
+            <h3><FormattedHTMLMessage id="app.clip.year" /></h3>
+            { item.anno.val }
+
+            {geoD && <React.Fragment><h3><FormattedHTMLMessage id="app.clip.map" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../map/?center=${Wkt2Arr(geoD.geometry).join(",")}`)
-            }}><RoomOutlined fontSize="small" /> { Wkt2Arr(geoD.geometry).join(", ") }</Button></React.Fragment>}
+            }}><RoomOutlined fontSize="small" /> </Button></React.Fragment>}
           </Box>
         </Grid>
         <Grid item xs={12} md={2}>
@@ -137,7 +153,7 @@ export default function Record(props) {
         </Grid>
       </Grid>
       
-      <Results qs={{ author: item.aut.val }} suppressEmpty={true} title="Clip dello stesso autore" />
+      <Results qs={{ decade: decadeFromYear(item.anno.val) }} suppressEmpty={true} title={<FormattedHTMLMessage id="app.clip.same_period" />} />
     </Box>
   );
 }

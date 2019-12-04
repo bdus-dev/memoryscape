@@ -51,6 +51,13 @@ export default function Intro({ changeLang }) {
     history.push(`/${lang}/search/`);
   };
 
+  /**
+   * <Box className={classes.languageContainer}>
+            <Button className={classes.buttomLang} onClick={() => selectLang('it')}>ITA</Button>
+            <Button className={classes.buttomLang} onClick={() => selectLang('en')}>ENG</Button>
+          </Box>
+   */
+
   return (
     <div className={classes.homeContainer}>
       <Container fixed>
@@ -60,8 +67,7 @@ export default function Intro({ changeLang }) {
             <h2 className={classes.mainTitle}>Memoryscapes:<br />Dall’Appennino al Po</h2>
           </Box>
           <Box className={classes.languageContainer}>
-            <Button className={classes.buttomLang} onClick={() => selectLang('it')}>ITA</Button>
-            <Button className={classes.buttomLang} onClick={() => selectLang('en')}>ENG</Button>
+            <Button className={classes.buttomLang} onClick={() => selectLang('it')}>Vai all'archivio</Button>
           </Box>
         </Typography>
       </Container>
