@@ -152,7 +152,7 @@ export default function Record(props) {
         <h3><FormattedHTMLMessage id="app.themes" /></h3>
           {
             item.temi.val.split(';').map( (e, i) =>  {
-              return <Fab key={i} variant="extended" className={classes.fabTheme} onClick={()=>history.push(`../search/?theme=${e.trim()}`)}>{e.trim()}</Fab>
+              return <Fab key={i} variant="extended" className={classes.fabTheme} onClick={()=>history.push(`../search/?themes=${e.trim()}`)}>{e.trim()}</Fab>
             })
           }
         </Grid>
