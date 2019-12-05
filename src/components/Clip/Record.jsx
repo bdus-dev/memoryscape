@@ -23,6 +23,7 @@ const useStyles = makeStyles(() => ({
     margin: '0.2em',
     fontSize: '0.7rem',
     textTransform: 'capitalize',
+    height: '2.2rem',
     '&:hover': {
       backgroundColor: '#7a1dcf',
       color: '#fff',
@@ -33,7 +34,10 @@ const useStyles = makeStyles(() => ({
     textTransform: 'none',
     textAlign: 'left',
     padding: 0,
-    textDecoration: 'underline'
+    textDecoration: 'none',
+    '&:hover': {
+      fontWeight: 'bold'
+    }
   },
   videoWrapper: {
     height: 0,
