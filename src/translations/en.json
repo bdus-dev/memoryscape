@@ -15,6 +15,8 @@
     "app.clip.place": "Place",
     "app.clip.year": "Year",
     "app.clip.format": "Format",
-    "app.clip.map": "Map"
-
+    "app.clip.map": "Map",
+    "app.clip.inv": "Inventory",
+    "app.clip.same_period": "Other clipa of the same period",
+    "app.clip.back2archive": "Torna all'archivio"
 }

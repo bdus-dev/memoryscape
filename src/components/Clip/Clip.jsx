@@ -30,7 +30,7 @@ export default function Clip(props) {
     <InternalTmpl lang={lang}>
       {/* <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
-          <h5>HOME MOVIES DIGITAL ARCHIVE | Dall’Appennino al Po</h5>
+          <h5>memoryscapes01 // Lungo la Via Emilia</h5>
         </Box>
       </Typography> */}
       <Box pt='5rem'>

@@ -17,7 +17,6 @@ import { FilterContextComponent } from './FilterContext';
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
-    padding: theme.spacing(3, 2),
     height: 200,
     display: 'flex',
     flexDirection: 'column',
@@ -32,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   },
   mainTitle: {
     fontSize: '2.2em',
-    letterSpacing: '0.1em',
     marginBlockStart: '0',
   },
   yearButton: {
@@ -61,8 +59,10 @@ export default function Search(props) {
     <InternalTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
-          <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
-          <h1 className={classes.mainTitle}>Memoryscapes<br />Dall’Appennino al Po</h1>
+          <h5>
+              HOME MOVIES DIGITAL ARCHIVES
+          </h5>
+          <h1 className={classes.mainTitle}>memoryscapes01//<br />lungo la via emilia</h1>
         </Box>
         <Box>
           <Grid
@@ -79,7 +79,7 @@ export default function Search(props) {
                   <FormattedHTMLMessage id="app.search.all" />
                 </Button>
                 {
-                  [20, 30, 40, 50, 60, 70, 80].map((e, i) => {
+                  [30, 40, 50, 60, 70, 80].map((e, i) => {
                     return (
                       <Button
                         classes={{root: classes.yearButton}}

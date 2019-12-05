@@ -5,7 +5,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import RoomOutlined from '@material-ui/icons/RoomOutlined';
 
 import { makeStyles } from '@material-ui/styles';
@@ -14,7 +13,6 @@ import { FormattedHTMLMessage } from 'react-intl';
 import YouTube from 'react-youtube';
 
 import Database from '../../services/Database';
-import Results from '../Search/Results';
 
 const useStyles = makeStyles(() => ({
   fabTheme: {
@@ -116,12 +114,15 @@ export default function Record(props) {
             <h3><FormattedHTMLMessage id="app.clip.author" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../search/?author=${item.aut.val}`)
-            }}><SearchOutlinedIcon fontSize="small" /> { item.aut.val }</Button>
+            }}>{ item.aut.val }</Button>
             
             <h3><FormattedHTMLMessage id="app.clip.place" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../search/?places=${item.luogo.val}`)
-            }}><SearchOutlinedIcon fontSize="small" /> { item.luogo.val }</Button>
+            }}>{ item.luogo.val }</Button>
+            
+            <h3><FormattedHTMLMessage id="app.clip.inv" /></h3>
+            { item.inv.val }
 
           </Box>
         </Grid>
@@ -156,13 +157,19 @@ export default function Record(props) {
           }
         </Grid>
       </Grid>
+
+      <Box my={5} py={3} borderTop={1} borderColor="grey.500" textAlign="center">
       
-      <Results
+      <Button className={classes.button} onClick={ ()=>{
+              history.push('../search/')
+            }}><FormattedHTMLMessage id="app.clip.back2archive" /></Button>
+      </Box>
+      {/* <Results
             qs={{ decade: decadeFromYear(item.anno.val) }} 
             exclude={item.id.val}
             suppressEmpty={true} 
             title={<FormattedHTMLMessage 
-            id="app.clip.same_period" />} />
+            id="app.clip.same_period" />} /> */}
     </Box>
   );
 }

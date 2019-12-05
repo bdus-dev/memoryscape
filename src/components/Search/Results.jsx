@@ -135,7 +135,7 @@ export default function Results(props) {
   }
 
   return (
-    <Container>
+    <Box container="div">
       { title && <h2>{title}</h2>}
       {!suppressEmpty && <Pagination head={result.head} qs={qs} /> }
       <GridList cellHeight={280} cols={cols} spacing={40}>
@@ -185,6 +185,6 @@ export default function Results(props) {
         )}})
       }
       </GridList>
-    </Container>
+    </Box>
   );
 }
