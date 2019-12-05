@@ -141,10 +141,8 @@ export default function Results(props) {
       <GridList cellHeight={280} cols={cols} spacing={40}>
         { 
         result.records.map((row, k) => {
-          console.log(`row: ${row.id}`);
-          
           if (exclude && exclude === row.id){
-            return <React.Fragment />
+            return null
           } else {
            return ( <GridListTile key={k} className={classes.GridListTitle} onClick={ ()=> {
             history.push(`../clip/${row.id}`);

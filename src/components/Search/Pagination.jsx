@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/styles';
 
 import qString from 'qs';
 
+import FilterApplied from './FilterApplied';
+
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -69,16 +71,15 @@ export default function Pagination (props) {
 
 
     return (
-        <Box p={1} my={2} style={{background: '#fff'}}>
+        <Box p={1} my={2} style={{background: 'rgba(255, 255, 255, .5)'}}>
+            <FilterApplied qs={qs} />
             <Grid
                 justify="space-between"
                 container 
                 alignItems="center"
                 >
                 <Grid item>
-                    <Box component="div">
-                        <FormattedHTMLMessage id="app.pagination.recap" values={{start: recShownStart, end: recShownEnd, tot: recTotal}}/>
-                    </Box>
+                    <FormattedHTMLMessage id="app.pagination.recap" values={{start: recShownStart, end: recShownEnd, tot: recTotal}}/>
                 </Grid>
 
                 <Grid item>
