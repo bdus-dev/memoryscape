@@ -148,7 +148,7 @@ export default function Record(props) {
 
       <Grid container spacing={1} justify="center">
         <Grid item xs={8} style={{ textAlign: 'center'}}>
-        <h3><FormattedHTMLMessage id="app.filterModal.themes" /></h3>
+        <h3><FormattedHTMLMessage id="app.themes" /></h3>
           {
             item.temi.val.split(';').map( (e, i) =>  {
               return <Fab key={i} variant="extended" className={classes.fabTheme} onClick={()=>history.push(`../search/?theme=${e.trim()}`)}>{e.trim()}</Fab>

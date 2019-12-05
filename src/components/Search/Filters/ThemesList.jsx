@@ -18,7 +18,7 @@ export default function ThemesList() {
   return (
     <React.Fragment>
       <h2>
-        <FormattedHTMLMessage id="app.filterModal.themes" />
+        <FormattedHTMLMessage id="app.themes" />
       </h2>
       {themes && themes.map((e, i) => {
         return (

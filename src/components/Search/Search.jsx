@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   yearButton: {
     color: '#fff',
     fontWeight: '900',
+    '&.active': {
+      backgroundColor: '#7a1dcf'
+    }
   },
   filterContainer: {
     marginRight: '1%',

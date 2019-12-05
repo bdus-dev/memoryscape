@@ -108,7 +108,7 @@ export default function FilterModal() {
         className={classes.filterBtn}
         onClick={handleClickOpen}
       >
-        <FormattedHTMLMessage id="app.filterModal.themes" />
+        <FormattedHTMLMessage id="app.themes" />
       </Button>
       <Dialog
         className={classes.dialogContainer}
