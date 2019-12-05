@@ -157,7 +157,12 @@ export default function Record(props) {
         </Grid>
       </Grid>
       
-      <Results qs={{ decade: decadeFromYear(item.anno.val) }} suppressEmpty={true} title={<FormattedHTMLMessage id="app.clip.same_period" />} />
+      <Results
+            qs={{ decade: decadeFromYear(item.anno.val) }} 
+            exclude={item.id.val}
+            suppressEmpty={true} 
+            title={<FormattedHTMLMessage 
+            id="app.clip.same_period" />} />
     </Box>
   );
 }

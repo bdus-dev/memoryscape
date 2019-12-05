@@ -45,6 +45,7 @@ export default function Results(props) {
   const qs = props.qs;
   const suppressEmpty = props.suppressEmpty;
   const title = props.title;
+  const exclude = props.exclude;
 
   const cols = useMediaQuery('(min-width:960px)') ? 3 : 1;
 
@@ -138,8 +139,14 @@ export default function Results(props) {
       { title && <h2>{title}</h2>}
       {!suppressEmpty && <Pagination head={result.head} qs={qs} /> }
       <GridList cellHeight={280} cols={cols} spacing={40}>
-        {result.records.map((row, k) => (
-          <GridListTile key={k} className={classes.GridListTitle} onClick={ ()=> {
+        { 
+        result.records.map((row, k) => {
+          console.log(`row: ${row.id}`);
+          
+          if (exclude && exclude === row.id){
+            return <React.Fragment />
+          } else {
+           return ( <GridListTile key={k} className={classes.GridListTitle} onClick={ ()=> {
             history.push(`../clip/${row.id}`);
             window.scrollTo(0, 0);
           }}>
@@ -177,7 +184,8 @@ export default function Results(props) {
               )}
             />
           </GridListTile>
-        ))}
+        )}})
+      }
       </GridList>
     </Container>
   );
