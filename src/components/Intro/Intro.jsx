@@ -63,7 +63,7 @@ export default function Intro({ changeLang }) {
         <Typography className={classes.boxContainer} component="div" style={{ height: '100vh' }}>
           <Box className={classes.textBox}>
             <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
-            <h2 className={classes.mainTitle}>memoryscapes01 //<br />lungo la via emilia</h2>
+            <h2 className={classes.mainTitle}>memoryscapes 01<br />lungo la via emilia</h2>
           </Box>
           <Box className={classes.languageContainer}>
             <Button className={classes.buttomLang} onClick={() => selectLang('it')}>Vai all'archivio</Button>

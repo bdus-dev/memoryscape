@@ -62,7 +62,7 @@ export default function Search(props) {
           <h5>
               HOME MOVIES DIGITAL ARCHIVES
           </h5>
-          <h1 className={classes.mainTitle}>memoryscapes01//<br />lungo la via emilia</h1>
+          <h1 className={classes.mainTitle}>memoryscapes 01<br />lungo la via emilia</h1>
         </Box>
         <Box>
           <Grid

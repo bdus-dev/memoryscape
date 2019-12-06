@@ -34,7 +34,7 @@ export default function About(props) {
         <Box className={classes.textBox}>
           <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
           <h2 className={classes.mainTitle}>
-            memoryscapes01 // lungo la via emilia
+            memoryscapes 01<br /> lungo la via emilia
           </h2>
           <p><strong>percorsi tematici, geografici e cronologici nel cinema privato</strong></p>
 
