@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '1em',
   },
   mainTitle: {
-    fontSize: '2.2em',
+    fontSize: '2em',
     marginBlockStart: '0',
   },
   yearButton: {
@@ -70,7 +70,7 @@ export default function Search(props) {
             container 
             alignItems="center"
             >
-            <Grid item xs={8}>
+            <Grid item xs={9}>
               <Box component="div">
                 <Button classes={{root: classes.yearButton}} 
                         className={ !qstring.decade ? 'active' : ''} 
@@ -91,7 +91,7 @@ export default function Search(props) {
                 </Box>
             </Grid>
 
-            <Grid item className={classes.filterContainer} xs={4}>
+            <Grid item className={classes.filterContainer} xs={3}>
               <FilterContextComponent>
                 <FilterModal />
               </FilterContextComponent>

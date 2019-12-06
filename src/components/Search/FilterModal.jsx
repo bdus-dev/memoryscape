@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
   filterBtn: {
     backgroundColor: '#fff',
-    padding: '.4em 2.3em',
-    fontSize: '1.1em',
+    padding: '.4em 2em',
+    fontSize: '1em',
     borderRadius: '2px',
     color: '#000',
     fontWeight: '600',
