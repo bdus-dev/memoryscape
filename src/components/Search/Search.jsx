@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   filterContainer: {
-    marginRight: '1%',
+    textAlign: 'right'
   },
 }));
 
@@ -70,7 +70,7 @@ export default function Search(props) {
             container 
             alignItems="center"
             >
-            <Grid item>
+            <Grid item xs={8}>
               <Box component="div">
                 <Button classes={{root: classes.yearButton}} 
                         className={ !qstring.decade ? 'active' : ''} 
@@ -91,7 +91,7 @@ export default function Search(props) {
                 </Box>
             </Grid>
 
-            <Grid item className={classes.filterContainer}>
+            <Grid item className={classes.filterContainer} xs={4}>
               <FilterContextComponent>
                 <FilterModal />
               </FilterContextComponent>
