@@ -100,7 +100,14 @@ export default function Record(props) {
         <Grid item xs={12} md={6} style={{ textAlign: 'center'}}>
           <h1>{item.tit.val}</h1>
           <div className={classes.videoWrapper}>
-            <YouTube videoId={item.videoid.val} className={classes.iframe} />
+            <YouTube 
+              videoId={item.videoid.val} 
+              className={classes.iframe} 
+              onEnd={ (e)=>{
+                e.target.seekTo(0);
+                e.target.stopVideo();
+              }}
+              />
           </div>
           
         </Grid>
