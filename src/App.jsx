@@ -15,6 +15,13 @@ import Search from './components/Search/Search';
 import Clip from './components/Clip/Clip';
 import About from './components/About/About';
 import Unused from './components/Tests/Unused';
+import ReactGA from 'react-ga';
+
+
+if(window.location.href.match(/ms-emilia-romagna\.homemovies\.it/g)){
+  ReactGA.initialize('UA-151640045-2');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 const messages = {
   it: itMessages,
