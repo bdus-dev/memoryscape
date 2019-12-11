@@ -2,20 +2,34 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 
 import { FormattedHTMLMessage } from 'react-intl';
+import { empty } from 'rxjs';
 
 
 export default function FilterApplied (props) {
 
     const qs = props.qs;
 
-    if (!qs.themes && !qs.author && !qs.places){
+    let filters = [];
+
+    
+
+    if (qs.themes) {
+        filters = filters.concat(qs.themes.split(','));
+    }
+    if (qs.author) {
+        filters = filters.concat(qs.author.split(','));
+    }
+    if (qs.places) {
+        filters = filters.concat(qs.places.split(','));
+    }
+
+    if (filters.length === 0){
         return null;
     }
+
     return (
-        <Box my={2}>
-            { qs.themes && <Box component="span" mr={1}><FormattedHTMLMessage id="app.themes" />: {qs.themes}</Box>}
-            { qs.author && <Box component="span" mr={1}><FormattedHTMLMessage id="app.clip.author" />: {qs.author}</Box>}
-            { qs.places && <Box component="span" mr={1}><FormattedHTMLMessage id="app.clip.place" />: {qs.places}</Box>}
+        <Box ml={1} component="span">
+            <FormattedHTMLMessage id="app.for" /> <em>{filters.join(', ')}</em>
         </Box>
     );
 }

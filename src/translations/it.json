@@ -18,5 +18,6 @@
     "app.clip.map": "Mappa",
     "app.clip.inv": "Inventario",
     "app.clip.same_place": "Altre clip girate a {place}",
-    "app.clip.back2archive": "Torna all'archivio"
+    "app.clip.back2archive": "Torna all'archivio",
+    "app.for": "per"
 }

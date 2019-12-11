@@ -19,6 +19,9 @@ import FilterApplied from './FilterApplied';
 const useStyles = makeStyles((theme) => ({
     button: {
       backgroundColor: '#7a1dcf',
+      '&:not(:last-child)': {
+        borderRight: '1px solid #fff'
+      },
       "&:hover":{
         backgroundColor: '#7a1dcf'
       }
@@ -72,7 +75,7 @@ export default function Pagination (props) {
 
     return (
         <Box p={1} my={2} style={{background: 'rgba(255, 255, 255, .5)'}}>
-            <FilterApplied qs={qs} />
+            
             <Grid
                 justify="space-between"
                 container 
@@ -80,6 +83,7 @@ export default function Pagination (props) {
                 >
                 <Grid item>
                     <FormattedHTMLMessage id="app.pagination.recap" values={{start: recShownStart, end: recShownEnd, tot: recTotal}}/>
+                    <FilterApplied qs={qs} />
                 </Grid>
 
                 <Grid item>
