@@ -58,26 +58,10 @@ export default function Results(props) {
       Database.getDecade(parseInt(qs.decade), qs.page, result => {
         setResult(result);
       });
-    // Ricerca year_start || year__end || luogo || temi
-    } else if (qs.year_start || qs.year_end || qs.places || qs.themes) {
+    // Ricerca luogo || temi
+    } else if (qs.places || qs.themes) {
       let p = {};
 
-      if (qs.year_start){
-        p.ys = {
-          'f': 'hm__ms:anno',
-          'v': qs.year_start,
-          'o': '>=',
-          'c': 'AND'
-        };
-      }
-      if (qs.year_end){
-        p.ye = {
-          'f': 'hm__ms:anno',
-          'v': qs.year_end,
-          'o': '<=',
-          'c': 'AND'
-        };
-      }
       if (qs.places){
         qs.places.split(",").map( (e, i) => {
           p[`p${i}`] = {
@@ -166,7 +150,7 @@ export default function Results(props) {
                   {row.tit}{" "}
                   <Box component="span" mx={2}> | </Box>
                   {" "}
-                  <strong>{row.anno}</strong>
+                  <strong>{row.annoda}{row.annoda !== row.annoa ? `-${row.annoa}` : ''}</strong>
                 </span>
               )}
               subtitle={(

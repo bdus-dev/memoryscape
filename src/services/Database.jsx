@@ -188,24 +188,30 @@ export default class Database {
     }, d => { cb(d); });
   }
 
-
+  /**
+   * 
+   * i film della decade 20 hanno:
+   *  annoda < 30 (max_limit)
+   *  annoa >=20 (min_limit)
+   */
   static getDecade(decade, page, cb) {
-    if (![20, 30, 40, 50, 60, 70, 80, 90].includes(decade)){
-      console.log(`Invalid parameter decade: ${decade}`);
+    const validDecades = [20, 30, 40, 50, 60, 70, 80, 90];
+    if (!validDecades.includes(decade)){
+      console.log(`Invalid parameter decade: ${decade}: only one of ${validDecades.join(',')} is allowed`);
       return false;
     }
-    const start_y = parseInt(`19${decade}`) - 1;
-    const end_y = start_y + 10;
+    const min_limit = parseInt(`19${decade}`);
+    const max_limit = min_limit + 10;
     let d = {
       verb: 'search',
       type: 'advanced',
       page: page,
-      "adv[a][fld]": "hm__ms:anno",
-      "adv[a][value]": start_y,
-      "adv[a][operator]": ">",
-      "adv[b][fld]": "hm__ms:anno",
-      "adv[b][value]": end_y,
-      "adv[b][operator]": "<",
+      "adv[a][fld]": "hm__ms:annoda",
+      "adv[a][value]": max_limit,
+      "adv[a][operator]": "<",
+      "adv[b][fld]": "hm__ms:annoa",
+      "adv[b][value]": min_limit,
+      "adv[b][operator]": ">=",
       "adv[b][connector]": "AND",
     };
 
@@ -220,7 +226,8 @@ export default class Database {
       "fields[hm__ms.videoid]": "ID Video",
       "fields[hm__ms.tit]": "Titolo",
       "fields[hm__ms.aut]": "Autore",
-      "fields[hm__ms.anno]": "Anno",
+      "fields[hm__ms.annoda]": "Anno da",
+      "fields[hm__ms.annoa]": "Anno a",
       "group": "hm__ms.id",
       "limit_start": "0",
       "limit_end": "500",

@@ -60,15 +60,6 @@ const Wkt2Arr = function(wkt){
   return wkt.split(' ').map(e=>Math.round(parseFloat(e) * 1000) / 1000);
 };
 
-const decadeFromYear = function (year){
-  year = parseInt(year.slice(2));
-  year = (year+1)/10;
-  year = Math.ceil(year)*10;
-  year = year-10;
-  return year;
-}
-
-
 export default function Record(props) {
 
   const classes = useStyles();
@@ -91,7 +82,6 @@ export default function Record(props) {
 
   const item = result.core;
   const geoD = result.geodata[0];
-  decadeFromYear(item.anno.val);
   
   
   return (
@@ -146,7 +136,8 @@ export default function Record(props) {
             { item.formato.val }
 
             <h3><FormattedHTMLMessage id="app.clip.year" /></h3>
-            { item.anno.val }
+            { item.annoda.val }
+            { item.annoda.val !== item.annoa.val ? `-${item.annoa.val}` : ''}
 
             {geoD && <React.Fragment><h3><FormattedHTMLMessage id="app.clip.map" /></h3>
             <Button className={classes.button} onClick={ ()=>{
