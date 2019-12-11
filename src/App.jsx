@@ -14,7 +14,7 @@ import Map from './components/Map/Map';
 import Search from './components/Search/Search';
 import Clip from './components/Clip/Clip';
 import About from './components/About/About';
-import Unused from './components/Tests/Unused';
+import Unused from './components/Tmp/Unused';
 import ReactGA from 'react-ga';
 
 
