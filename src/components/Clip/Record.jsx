@@ -11,7 +11,7 @@ import { FormattedHTMLMessage } from 'react-intl';
 import YouTube from 'react-youtube';
 import MetaTags from 'react-meta-tags';
 
-
+import Results from '../Search/Results';
 import Database from '../../services/Database';
 
 const useStyles = makeStyles(() => ({
@@ -166,7 +166,13 @@ export default function Record(props) {
         <h3><FormattedHTMLMessage id="app.themes" /></h3>
           {
             item.temi.val.split(';').map( (e, i) =>  {
-              return <Fab key={i} variant="extended" className={classes.fabTheme} onClick={()=>history.push(`../search/?themes=${e.trim()}`)}>{e.trim()}</Fab>
+              return <Fab 
+                  key={i} 
+                  variant="extended" 
+                  className={classes.fabTheme} 
+                  onClick={()=>history.push(`../search/?themes=${e.trim()}`)}>
+                    {e.trim()}
+                  </Fab>
             })
           }
         </Grid>
@@ -178,12 +184,12 @@ export default function Record(props) {
               history.push('../search/')
             }}><FormattedHTMLMessage id="app.clip.back2archive" /></Button>
       </Box>
-      {/* <Results
-            qs={{ decade: decadeFromYear(item.anno.val) }} 
+      <Results
+            qs={{ place: item.luogo.val }} 
             exclude={item.id.val}
             suppressEmpty={true} 
             title={<FormattedHTMLMessage 
-            id="app.clip.same_period" />} /> */}
+            id="app.clip.same_place" values={{ place: item.luogo.val }} />} />
     </Box>
   );
 }

@@ -21,8 +21,8 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#7a1dcf',
     color: '#fff',
     '&:hover': {
-      backgroundColor: '#e0e0e0',
-      color: '#000',
+      // backgroundColor: '#e0e0e0',
+      // color: '#000',
     },
   },
 }));

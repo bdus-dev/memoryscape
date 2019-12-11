@@ -17,6 +17,6 @@
     "app.clip.format": "Formato",
     "app.clip.map": "Mappa",
     "app.clip.inv": "Inventario",
-    "app.clip.same_period": "Altre clip di questo periodo",
+    "app.clip.same_place": "Altre clip girate a {place}",
     "app.clip.back2archive": "Torna all'archivio"
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import { Typography, Box } from '@material-ui/core';
-import InternalTmpl from '../Templates/InternalTmpl';
+import BlackTmpl from '../Templates/BlackTmpl';
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
@@ -29,7 +29,7 @@ export default function About(props) {
   const lang = props.lang || props.match.params.lang;
 
   return (
-    <InternalTmpl lang={lang}>
+    <BlackTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
           <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
@@ -86,6 +86,6 @@ export default function About(props) {
           Sguardi in Camera di Ravenna e Cineteca di Rimini.</p>
         </Box>
       </Typography>
-    </InternalTmpl>
+    </BlackTmpl>
   );
 }
