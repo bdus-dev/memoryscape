@@ -60,37 +60,13 @@ export default function Results(props) {
       });
     // Ricerca luogo || temi
     } else if (qs.places || qs.themes) {
-      let p = {};
-
-      if (qs.places){
-        qs.places.split(",").map( (e, i) => {
-          p[`p${i}`] = {
-            'f': 'hm__ms:luogo',
-            'v': e,
-            'o': 'LIKE',
-            'c': 'AND'
-          }
-          return false;
-        })
-      }
-      if (qs.themes){
-        qs.themes.split(",").map( (e, i) => {
-          p[`p${i}`] = {
-            'f': 'hm__ms:temi',
-            'v': e,
-            'o': 'LIKE',
-            'c': 'OR'
-          }
-          return false;
-        })
-      }
-      Database.getAdv(p, 1, result => {
+      Database.getByPlacesAndThemse(qs.places, qs.themes, qs.page, result => {
         setResult(result);
       });
     
     // Ricerca per autore
     } else if (qs.author) {
-      Database.getSimple('hm__ms:aut', qs.author, true, 1, result => {
+      Database.getByAuthor(qs.author, qs.page, result => {
         setResult(result);
       });
     // Ricerca tutto!
@@ -107,8 +83,7 @@ export default function Results(props) {
   }
   
   if (result.head.total_rows === 0) {
-    // TODO: grafica messaggio d'errore!!!
-    
+
     if (suppressEmpty){
       return null;
     }

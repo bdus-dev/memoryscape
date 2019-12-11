@@ -218,6 +218,45 @@ export default class Database {
     this._getData('ms', d, d => { cb(d); });
   }
 
+  /**
+   * 
+   * @param {string} places place or places separated by comma
+   * @param {string} themes theme or themes separated by comma
+   * @param {integer} page page to return 
+   * @param {function} cb callback function
+   */
+  static getByPlacesAndThemse(places, themes, page, cb) {
+    if (!places && !themes){
+      cb(false);
+    }
+    let q = {};
+    if (places){
+      places.split(",").forEach( (e, i) => {
+        q[`p${i}`] = {
+          'f': 'hm__ms:luogo',
+          'v': e,
+          'o': 'LIKE',
+          'c': 'AND'
+        }
+      });
+    }
+    if (themes){
+      themes.split(",").forEach( (e, i) => {
+        q[`t${i}`] = {
+          'f': 'hm__ms:temi',
+          'v': e,
+          'o': 'LIKE',
+          'c': 'AND'
+        }
+      });
+    }
+    this.getAdv(q, page, d => { cb(d) });
+  }
+
+  static getByAuthor(author, page, cb) {
+    Database.getSimple('hm__ms:aut', author, true, page, d => { cb(d); });
+  }
+
   static getMsGeoJson(where, cb) {
     let data = {
       "join": "JOIN hm__geodata as g ON g.table_link = 'hm__ms' AND g.id_link = hm__ms.id ",
