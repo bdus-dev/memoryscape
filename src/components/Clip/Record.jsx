@@ -6,11 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import RoomOutlined from '@material-ui/icons/RoomOutlined';
-
 import { makeStyles } from '@material-ui/styles';
 import { FormattedHTMLMessage } from 'react-intl';
-
 import YouTube from 'react-youtube';
+import MetaTags from 'react-meta-tags';
+
 
 import Database from '../../services/Database';
 
@@ -96,6 +96,13 @@ export default function Record(props) {
   
   return (
     <Box style={{ color: '#fff' }}>
+      <MetaTags>
+        <meta property="og:title" content={`Memoryscapes: ${item.tit.val}`} />
+        <meta property="og:description" content="Memoryscapes: la prima piattaforma online sul cinema privato in Italia" />
+        <meta property="og:image" content={`https://img.youtube.com/vi/${item.videoid.val}/0.jpg`} />
+        <meta property="og:url" content={window.location} />
+        <title>Memoryscapes: {item.tit.val}</title>
+      </MetaTags>
       <Grid container spacing={1} justify="center">
         <Grid item xs={12} md={6} style={{ textAlign: 'center'}}>
           <h1>{item.tit.val}</h1>
