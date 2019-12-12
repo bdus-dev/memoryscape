@@ -139,7 +139,7 @@ export default class Database {
       cb(false);
     }
     let where = [`(app LIKE '%${app}%')`];
-    let q = {};
+
     if (places){
       places.split(",").forEach( (e, i) => {
         where.push(` luogo LIKE '%${e}%' `);
