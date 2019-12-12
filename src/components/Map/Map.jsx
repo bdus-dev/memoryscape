@@ -20,10 +20,12 @@ export default function Mappa(props) {
   const lang = props.lang || props.match.params.lang;
   
   let center = false;
+  let zoom = 13;
   if (props.center){
     center = props.center;
   } else if(qstring.center){
     center = qstring.center.split(',').reverse();
+    zoom = 16;
   }  
 
   const defCenter = center ? center : [44.4943823,11.3418609];
@@ -46,12 +48,12 @@ export default function Mappa(props) {
     <div className="mapContainer">
       <Bar lang={lang} />
 
-      <Map center={defCenter} zoom={13} style={{ width: '100%', height: '100%'}}
+      <Map center={defCenter} zoom={zoom} style={{ width: '100%', height: '100%'}}
           ref={mapRef}>
         <TileLayer
           // url="https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png"
-          // url="https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png"
-          url={qstring.rockandroll ? "https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png" : "https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"}
+          url="https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png"
+          // url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
         
