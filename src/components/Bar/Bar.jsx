@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import Fab from '@material-ui/core/Fab';
+
 
 import MenuSharp from '@material-ui/icons/MenuSharp';
 import CloseIcon from '@material-ui/icons/Close';
@@ -17,8 +18,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'transparent',
     boxShadow: 'none',
   },
-  mainToolBar: {
-    flexDirection: 'row-reverse',
+  fabButton: {
+    position: 'absolute',
+    right:'1rem',
+    top:'1rem',
+    background: 'transparent',
+    color: '#fff',
+    '&:hover': {
+      background: '#7D43CF !important',
+      color: '#fff',
+    }
   },
   iconMenu: {
     fontSize: '2.5rem',
@@ -113,53 +122,52 @@ export default function Bar(props) {
 
   return (
     <AppBar color="primary" position="fixed" className={classes.appBar}>
-      <Toolbar variant="regular" className={classes.mainToolBar}>
-        <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleMenuIconClick}>
-          <MenuSharp className={classes.iconMenu} />
-        </IconButton>
-        <Menu
-          PopoverClasses={{ paper: classes.popoverPaper }}
-          classes={{ list: classes.menuContent }}
-          id="main-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-          keepMounted
-        >
-          <div className={classes.closeMenuContainer}>
-            <IconButton onClick={handleClose}>
-              <CloseIcon className={classes.iconMenu} />
-            </IconButton>
-          </div>
-          <div>
-            <MenuItem onClick={() => gotoPage('/')} className={classes.menuItem}>Home</MenuItem>
-            <MenuItem onClick={() => gotoPage(`/${lang}/map`)} className={classes.menuItem}>
-              <FormattedHTMLMessage id="app.menu.map" />
-            </MenuItem>
-          </div>
-          <div>
-            <MenuItem onClick={() => gotoPage(`/${lang}/search/`)} className={classes.menuItem}>
-              <FormattedHTMLMessage id="app.menu.archive" />
-            </MenuItem>
-            <MenuItem onClick={() => gotoPage(`/${lang}/about`)} className={classes.menuItem}>
-              <FormattedHTMLMessage id="app.menu.about" />
-            </MenuItem>
-          </div>
-          <div className={classes.colorWhite}>
-            <h5 className={classes.titleMenu}>HOME MOVIES DIGITAL ARCHIVE</h5>
-            <p className={classes.contactParagraph}>
-              Home Movies
-              <br />
-              Via Sant’Isaia, 18 - 40123 Bologna, IT
-              <br />
-              Call - (+39) 051 3397243
-              <br />
-              Email -
-              <span className={classes.colorWhite}>info@homemovies.it</span>
-            </p>
-          </div>
-        </Menu>
-      </Toolbar>
+      <Fab onClick={handleMenuIconClick} className={classes.fabButton}>
+        <MenuSharp className={classes.iconMenu} />
+      </Fab>
+
+      <Menu
+        PopoverClasses={{ paper: classes.popoverPaper }}
+        classes={{ list: classes.menuContent }}
+        id="main-menu"
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        keepMounted
+      >
+        <div className={classes.closeMenuContainer}>
+          <IconButton onClick={handleClose}>
+            <CloseIcon className={classes.iconMenu} />
+          </IconButton>
+        </div>
+        <div>
+          <MenuItem onClick={() => gotoPage('/')} className={classes.menuItem}>Home</MenuItem>
+          <MenuItem onClick={() => gotoPage(`/${lang}/map`)} className={classes.menuItem}>
+            <FormattedHTMLMessage id="app.menu.map" />
+          </MenuItem>
+        </div>
+        <div>
+          <MenuItem onClick={() => gotoPage(`/${lang}/search/`)} className={classes.menuItem}>
+            <FormattedHTMLMessage id="app.menu.archive" />
+          </MenuItem>
+          <MenuItem onClick={() => gotoPage(`/${lang}/about`)} className={classes.menuItem}>
+            <FormattedHTMLMessage id="app.menu.about" />
+          </MenuItem>
+        </div>
+        <div className={classes.colorWhite}>
+          <h5 className={classes.titleMenu}>HOME MOVIES DIGITAL ARCHIVE</h5>
+          <p className={classes.contactParagraph}>
+            Home Movies
+            <br />
+            Via Sant’Isaia, 18 - 40123 Bologna, IT
+            <br />
+            Call - (+39) 051 3397243
+            <br />
+            Email -
+            <span className={classes.colorWhite}>info@homemovies.it</span>
+          </p>
+        </div>
+      </Menu>
     </AppBar>
   );
 }

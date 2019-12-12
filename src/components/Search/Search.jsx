@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
+
 import InternalTmpl from '../Templates/InternalTmpl';
 
 import qs from 'qs';
@@ -59,9 +60,9 @@ export default function Search(props) {
     <InternalTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
-          <h5>
+            <Button  onClick={() => go2page('/')} style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 0}}>
               HOME MOVIES DIGITAL ARCHIVES
-          </h5>
+            </Button>
           <h1 className={classes.mainTitle}>memoryscapes 01<br />lungo la via emilia</h1>
         </Box>
         <Box>

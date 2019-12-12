@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 
 import { FormattedHTMLMessage } from 'react-intl';
-import { empty } from 'rxjs';
 
 
 export default function FilterApplied (props) {
