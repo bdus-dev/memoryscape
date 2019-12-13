@@ -4,7 +4,7 @@ export default class Database {
 
   static _getData(url, params, callback, apiVersion) {
 
-    let baseUrl = 'https://db-dev.bradypus.net';
+    let baseUrl = 'https://db.bradypus.net';
 
     if (window.location.hostname === 'localhost'){
       baseUrl = 'http://db.localhost';
