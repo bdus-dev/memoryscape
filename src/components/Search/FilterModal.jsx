@@ -133,7 +133,7 @@ export default function FilterModal() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <ThemesList />
+                <ThemesList applyFilter={applyFilters} />
               </Paper>
             </Grid>
           </Grid>
@@ -142,9 +142,6 @@ export default function FilterModal() {
           <Button onClick={clearFilters} className={classes.clearBtn}>
             <CloseIcon className={classes.clearIcon} />
             <FormattedHTMLMessage id="app.filterModal.clear" />
-          </Button>
-          <Button className={classes.applyBtn} onClick={applyFilters} autoFocus>
-            <FormattedHTMLMessage id="app.filterModal.apply" />
           </Button>
         </DialogActions>
       </Dialog>

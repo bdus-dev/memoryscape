@@ -29,13 +29,14 @@ const useStyles = makeStyles(() => ({
 
 export default function ThemeElement(props) {
   const { toggleThemes } = useContext(FilterContext);
-  const { themeValue, selected } = props;
+  const { themeValue, selected, applyFilter } = props;
   const [fabSelected, setFabSelected] = useState(selected);
   const classes = useStyles();
 
   const selectValue = () => {
     setFabSelected((!fabSelected));
     toggleThemes(themeValue);
+    applyFilter();
   };
 
   return (
@@ -53,9 +54,11 @@ export default function ThemeElement(props) {
 ThemeElement.defaultProps = {
   themeValue: null,
   selected: false,
+  applyFilter: null,
 };
 
 ThemeElement.propTypes = {
   themeValue: PropTypes.string,
   selected: PropTypes.bool,
+  applyFilter: PropTypes.func,
 };

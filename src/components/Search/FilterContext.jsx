@@ -5,8 +5,13 @@ const FilterContext = createContext({});
 
 function toggleList(arrayList, value) {
   if (arrayList.includes(value)) {
-    return arrayList.filter((el) => el !== value);
+//    return arrayList.filter((el) => el !== value);
+    arrayList.pop();
+    return arrayList;
   }
+  // Con la nuova modifica viene effettuata la ricerca direttamente con l'elemento selezionato
+  // Non cancello la logica ma rimuovo i valori presenti nella lista
+  arrayList.pop();
   arrayList.push(value);
   return arrayList;
 }
@@ -27,7 +32,7 @@ export function FilterContextComponent({ children }) {
   const togglePlaces = (place) => setPlacesList(toggleList(placesList, place));
   const isPlaceSelected = (place) => placesList.includes(place);
 
-  const getThemeQueryFilter = () => (themeList.length > 0 ? `themes=${themeList.map((theme) => theme)}` : '');
+  const getThemeQueryFilter = () => (themeList.length > 0 ? `themes=${themeList.map((theme) => theme)}` : ' ');
   const getPlaceQueryFilter = () => (placesList.length > 0 ? `places=${placesList.map((theme) => theme)}` : '');
 
   const addYearFromToQuery = (date) => {
