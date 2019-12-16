@@ -49,7 +49,8 @@ const shuffleArray = function (array) {
 }
 
 export default function Results(props) {
-  const [result, setResult] = useState();
+  const [result, setResult] = useState(false);
+  const [opacity, makeOpaque] = useState(1);
 
   const classes = useStyles();
   const history = useHistory();
@@ -62,26 +63,31 @@ export default function Results(props) {
   const cols = useMediaQuery('(min-width:960px)') ? 3 : 1;
 
   useEffect(() => {
+    makeOpaque(.3);
     // Ricerca per decade
     if (qs.decade) {
       Database.getDecade(parseInt(qs.decade), qs.page, result => {
-        setResult(result);
+        setResult(shuffleArray(result));
+        makeOpaque(1);
       });
     // Ricerca luogo || temi
     } else if (qs.places || qs.themes) {
       Database.getByPlacesAndThemse(qs.places, qs.themes, qs.page, result => {
-        setResult(result);
+        setResult(shuffleArray(result));
+        makeOpaque(1);
       });
     
     // Ricerca per autore
     } else if (qs.author) {
       Database.getByAuthor(qs.author, qs.page, result => {
-        setResult(result);
+        setResult(shuffleArray(result));
+        makeOpaque(1);
       });
     // Ricerca tutto!
     } else {
       Database.getAll(qs.page, result => {
-        setResult(result);
+        setResult(shuffleArray(result));
+        makeOpaque(1);
       });
     }
 
@@ -91,8 +97,6 @@ export default function Results(props) {
     return <CircularProgress />;
   }
 
-  result.records = shuffleArray(result.records);
-  
   if (result.head.total_rows === 0) {
 
     if (suppressEmpty){
@@ -108,7 +112,7 @@ export default function Results(props) {
   }
 
   return (
-    <Box container="div">
+    <Box container="div" style={{ opacity: opacity}}>
       { title && <h2>{title}</h2>}
       {!suppressEmpty && <Pagination head={result.head} qs={qs} /> }
       <GridList cellHeight={280} cols={cols} spacing={40}>
