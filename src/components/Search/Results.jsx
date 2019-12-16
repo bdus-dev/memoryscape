@@ -39,6 +39,15 @@ const useStyles = makeStyles({
   },
 });
 
+// https://stackoverflow.com/a/12646864/586449
+const shuffleArray = function (array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 export default function Results(props) {
   const [result, setResult] = useState();
 
@@ -81,6 +90,8 @@ export default function Results(props) {
   if (!result) {
     return <CircularProgress />;
   }
+
+  result.records = shuffleArray(result.records);
   
   if (result.head.total_rows === 0) {
 
