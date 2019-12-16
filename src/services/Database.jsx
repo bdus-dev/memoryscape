@@ -142,7 +142,7 @@ export default class Database {
 
     if (places){
       places.split(",").forEach( (e, i) => {
-        where.push(` luogo LIKE '%${e}%' `);
+        where.push(` luogo = '${e}' `);
       });
     }
     if (themes){
