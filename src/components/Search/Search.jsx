@@ -57,7 +57,6 @@ export default function Search(props) {
 
   const go2page = (page)=>{ history.push(page)};
 
-  // TODO: i bottoni .active devono avere il color viola!
   return (
     <InternalTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">

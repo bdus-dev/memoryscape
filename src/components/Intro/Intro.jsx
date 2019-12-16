@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/styles';
 
 import { Container, Typography, Box, Button } from '@material-ui/core';
+// TODO: differenziare ER e ITALIA?
 import backGroundImage from '../../img/home-background.jpg';
 import {title} from '../../cfg';;
 

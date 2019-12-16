@@ -1,4 +1,4 @@
-// tODO: uare history per il bottone? come?
+// TODO: usare history per il bottone? come?
 export default  (feature, layer, lang) => {
   const props = feature.properties;
   let html = `<h3>${props.tit}</h3>

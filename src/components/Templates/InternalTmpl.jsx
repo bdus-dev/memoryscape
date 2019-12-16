@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import Bar from '../Bar/Bar';
 
 import { Container } from '@material-ui/core';
+// TODO: differenziare ER e ITALIA?
 import backGroundImage from '../../img/internal-background.jpg';
 import backGroundVideo from '../../img/video-bg.mp4';
 
