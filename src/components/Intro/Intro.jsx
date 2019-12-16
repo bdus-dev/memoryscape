@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import { Container, Typography, Box, Button } from '@material-ui/core';
 import backGroundImage from '../../img/home-background.jpg';
+import {title} from '../../cfg';;
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
@@ -63,7 +64,7 @@ export default function Intro({ changeLang }) {
         <Typography className={classes.boxContainer} component="div" style={{ height: '100vh' }}>
           <Box className={classes.textBox}>
             <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
-            <h2 className={classes.mainTitle}>memoryscapes 01<br />lungo la via emilia</h2>
+            <h2 className={classes.mainTitle}>{title.main}<br />{title.sub}</h2>
           </Box>
           <Box className={classes.languageContainer}>
             <Button className={classes.buttomLang} onClick={() => selectLang('it')}>Vai all'archivio</Button>

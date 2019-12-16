@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Fab } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import FilterContext from '../FilterContext';
+import {col} from '../../../cfg';
 
 const useStyles = makeStyles(() => ({
   fabTheme: {
@@ -13,12 +14,12 @@ const useStyles = makeStyles(() => ({
     fontSize: '0.7rem',
     textTransform: 'capitalize',
     '&:hover': {
-      backgroundColor: '#7a1dcf',
+      backgroundColor: col,
       color: '#fff',
     },
   },
   selected: {
-    backgroundColor: '#7a1dcf',
+    backgroundColor: col,
     color: '#fff',
     '&:hover': {
       // backgroundColor: '#e0e0e0',

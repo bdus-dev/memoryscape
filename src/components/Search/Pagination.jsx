@@ -15,15 +15,17 @@ import qString from 'qs';
 
 import FilterApplied from './FilterApplied';
 
+import {col} from '../../cfg';
+
 
 const useStyles = makeStyles((theme) => ({
     button: {
-      backgroundColor: '#7a1dcf',
+      backgroundColor: col,
       '&:not(:last-child)': {
         borderRight: '1px solid #fff'
       },
       "&:hover":{
-        backgroundColor: '#7a1dcf'
+        backgroundColor: col
       }
     }
   }));

@@ -8,6 +8,8 @@ import { FormattedHTMLMessage } from 'react-intl';
 import ThemesList from './Filters/ThemesList';
 import FilterContext from './FilterContext';
 
+import {col} from '../../cfg';
+
 const useStyles = makeStyles((theme) => ({
   dialogContainer: {
     '& .MuiDialog-paperFullScreen': {
@@ -63,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.2em',
   },
   applyBtn: {
-    backgroundColor: '#7a1dcf',
+    backgroundColor: col,
     color: '#fff',
     padding: '0.4em 3em',
     fontSize: '1.6em',

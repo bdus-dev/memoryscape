@@ -16,6 +16,8 @@ import Results from './Results';
 import FilterModal from './FilterModal';
 import { FilterContextComponent } from './FilterContext';
 
+import {col, title} from '../../cfg';
+
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
     height: 200,
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     fontWeight: '900',
     '&.active': {
-      backgroundColor: '#7a1dcf'
+      backgroundColor: col
     }
   },
   filterContainer: {
@@ -63,7 +65,7 @@ export default function Search(props) {
             <Button  onClick={() => go2page('/')} style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 0}}>
               HOME MOVIES DIGITAL ARCHIVES
             </Button>
-          <h1 className={classes.mainTitle}>memoryscapes 01<br />lungo la via emilia</h1>
+          <h1 className={classes.mainTitle}>{title.main}<br />{title.sub}</h1>
         </Box>
         <Box>
           <Grid

@@ -13,6 +13,7 @@ import MetaTags from 'react-meta-tags';
 
 import Results from '../Search/Results';
 import Database from '../../services/Database';
+import {col} from '../../cfg';
 
 const useStyles = makeStyles(() => ({
   fabTheme: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles(() => ({
     textTransform: 'capitalize',
     height: '2.2rem',
     '&:hover': {
-      backgroundColor: '#7a1dcf',
+      backgroundColor: col,
       color: '#fff',
     },
   },

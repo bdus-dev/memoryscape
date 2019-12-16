@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/styles';
 import { Menu, MenuItem } from '@material-ui/core';
 import { FormattedHTMLMessage } from 'react-intl';
 
+import {col} from '../../cfg';
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: 'transparent',
@@ -68,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '3.4em',
     fontWeight: '700',
     '&:hover': {
-      color: '#7a1dcf',
+      color: col,
     },
   },
   colorWhite: {

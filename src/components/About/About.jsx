@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/styles';
 import { Typography, Box } from '@material-ui/core';
 import BlackTmpl from '../Templates/BlackTmpl';
 
+import {title} from '../../cfg';
+
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
     padding: theme.spacing(3, 2),
@@ -34,7 +36,7 @@ export default function About(props) {
         <Box className={classes.textBox}>
           <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
           <h2 className={classes.mainTitle}>
-            memoryscapes 01<br /> lungo la via emilia
+            {title.main}<br /> {title.sub}
           </h2>
           <p><strong>percorsi tematici, geografici e cronologici nel cinema privato</strong></p>
 

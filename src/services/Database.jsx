@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const app = 'er';
+import {app} from '../cfg';
 
 export default class Database {
 
@@ -142,12 +142,12 @@ export default class Database {
 
     if (places){
       places.split(",").forEach( (e, i) => {
-        where.push(` luogo = '${e}' `);
+        where.push(` luogo = "${e}" `);
       });
     }
     if (themes){
       themes.split(",").forEach( (e, i) => {
-        where.push(` temi LIKE '%${e}%' `);
+        where.push(` temi LIKE "%${e}%" `);
       });
     }
     this._getData('ms', {
