@@ -40,12 +40,12 @@ const useStyles = makeStyles({
 });
 
 // https://stackoverflow.com/a/12646864/586449
-const shuffleArray = function (array) {
-  for (let i = array.length - 1; i > 0; i--) {
+const shuffleArray = function (result) {
+  for (let i = result.records.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+      [result.records[i], result.records[j]] = [result.records[j], result.records[i]];
   }
-  return array;
+  return result;
 }
 
 export default function Results(props) {
