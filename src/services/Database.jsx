@@ -76,14 +76,18 @@ export default class Database {
    * Gets list of unique values for a field from database
    *
    * @param {string} fld    field name
+   * @param {string} str    filtering string
+   * @param {string} where  where statement
    * @param {function} cb   callback function
    * @memberof Database
    */
-  static getUniqueVal(fld, cb) {
+  static getUniqueVal(fld, str, where, cb) {
     this._getData('', {
       verb: 'getUniqueVal',
       tb: 'ms',
-      fld: fld
+      fld: fld,
+      s: str,
+      w: where
     }, d => { cb(d); }, 2);
 
   }
