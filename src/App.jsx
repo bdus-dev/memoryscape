@@ -14,7 +14,6 @@ import Map from './components/Map/Map';
 import Search from './components/Search/Search';
 import Clip from './components/Clip/Clip';
 import About from './components/About/About';
-import Unused from './components/Tmp/Unused';
 import ReactGA from 'react-ga';
 
 
@@ -42,7 +41,6 @@ export default function App() {
             <Route exact path="/:lang(en|it)/search/" component={Search} />
             <Route exact path="/:lang(en|it)/clip/:id" component={Clip} />
             <Route exact path="/:lang(en|it)/about" component={About} />
-            <Route exact path="/unused" component={Unused} />
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>
