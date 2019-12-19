@@ -4,12 +4,13 @@ import { makeStyles } from '@material-ui/styles';
 
 import { Container, Typography, Box, Button } from '@material-ui/core';
 // TODO: differenziare ER e ITALIA?
-import backGroundImage from '../../img/home-background.jpg';
-import {title} from '../../cfg';;
+import backGroundImageEr from '../../img/home-background-er.jpg';
+import backGroundImageItalia from '../../img/home-background-italia.jpg';
+import {app, title} from '../../cfg';;
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
-    backgroundImage: `url(${backGroundImage})`,
+    backgroundImage: `url(${app === 'er' ? backGroundImageEr : backGroundImageItalia})`,
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',

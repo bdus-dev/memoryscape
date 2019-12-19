@@ -4,13 +4,15 @@ import { makeStyles } from '@material-ui/styles';
 import Bar from '../Bar/Bar';
 
 import { Container } from '@material-ui/core';
-// TODO: differenziare ER e ITALIA?
-import backGroundImage from '../../img/internal-background.jpg';
-import backGroundVideo from '../../img/video-bg.mp4';
+import {app} from '../../cfg';
+import backGroundImageEr from '../../img/internal-background-er.jpg';
+import backGroundImageItalia from '../../img/internal-background-er.jpg';
+import backGroundVideoEr from '../../img/video-bg-er.mp4';
+import backGroundVideoItalia from '../../img/video-bg-er.mp4';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
-    backgroundImage: `url(${backGroundImage})`,
+    backgroundImage: `url(${app === 'er' ? backGroundImageEr : backGroundImageItalia})`,
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
@@ -47,7 +49,7 @@ export default function InternalTmpl(props) {
     return (
       <div className={classes.darkBg}>
         <video autoPlay loop className={classes.video}>
-          <source src={backGroundVideo} type="video/mp4" />
+          <source src={app === 'er' ? backGroundVideoEr : backGroundVideoItalia} type="video/mp4" />
         </video>
         <Bar lang={lang} />
         <Container fixed>
