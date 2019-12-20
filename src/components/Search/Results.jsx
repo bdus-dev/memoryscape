@@ -17,13 +17,14 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Pagination from './Pagination';
 import Database from '../../services/Database';
+import {col} from '../../cfg';
 
 const useStyles = makeStyles({
   GridListTitle: {
     cursor: 'pointer',
   },
   GridListTileBar: {
-    background: 'rgba(123,30,207, .5)',
+    background: `${col}7f`,
     height: '100px'
   },
   GridListTileBarTitle: {
