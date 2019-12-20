@@ -6,13 +6,15 @@ import Database from '../../../services/Database';
 import ThemeElement from './ThemeElement';
 import FilterContext from '../FilterContext';
 
+import {app} from '../../../cfg';
+
 export default function ThemesList(props) {
   const { isThemeSelected } = useContext(FilterContext);
   const { applyFilter } = props;
   const [themes, setThemes] = useState(null);
 
   useEffect(() => {
-    Database.getVocabulary('temi-ms', (result) => {
+    Database.getUniqueVal('temi', false, `app LIKE '%${app}%'`, (result) => {
       setThemes(result.sort());
     });
   }, []);
