@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'transparent',
     color: '#fff',
     '&:hover': {
-      background: '#7D43CF !important',
+      background: `${col} !important`,
       color: '#fff',
     }
   },
