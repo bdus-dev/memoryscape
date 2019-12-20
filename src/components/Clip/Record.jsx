@@ -177,7 +177,7 @@ export default function Record(props) {
             }}><FormattedHTMLMessage id="app.clip.back2archive" /></Button>
       </Box>
       <Results
-            qs={{ place: item.luogo.val }} 
+            qs={{ places: item.luogo.val }} 
             exclude={item.id.val}
             suppressEmpty={true} 
             title={<FormattedHTMLMessage 
