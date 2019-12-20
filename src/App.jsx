@@ -17,7 +17,7 @@ import About from './components/About/About';
 import ReactGA from 'react-ga';
 
 
-if(window.location.href.match(/ms-emilia-romagna\.homemovies\.it/g)){
+if(window.location.href.match(/homemovies\.it/g)){
   ReactGA.initialize('UA-151640045-2');
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
