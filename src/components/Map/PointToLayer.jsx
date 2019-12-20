@@ -1,10 +1,11 @@
 import L from 'leaflet';
+import {col} from '../../cfg';
 
 export default  (t, i) => {
   return new L.CircleMarker(i, {
     radius: 6,
     weight: 1,
-    color: 'rgb(123,30,207)', //#7b1ecf
+    color: col,
     fillOpacity: .7
   });
 }
