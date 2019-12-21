@@ -65,7 +65,7 @@ export default function Intro({ changeLang }) {
       <Container fixed>
         <Typography className={classes.boxContainer} component="div" style={{ height: '100vh' }}>
           <Box className={classes.textBox}>
-            <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
+            <h5>HOME MOVIES DIGITAL ARCHIVES</h5>
             <h2 className={classes.mainTitle}>{title.main}<br />{title.sub}</h2>
           </Box>
           <Box className={classes.languageContainer}>

@@ -2,6 +2,16 @@ import axios from 'axios';
 
 import {app} from '../cfg';
 
+// https://stackoverflow.com/a/30106551/586449
+const b64EncodeUnicode = function(str) {
+  // first we use encodeURIComponent to get percent-encoded UTF-8,
+  // then we convert the percent encodings into raw bytes which
+  // can be fed into btoa.
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+      function toSolidBytes(match, p1) {
+          return String.fromCharCode('0x' + p1);
+  }));
+}
 export default class Database {
 
 
@@ -66,7 +76,7 @@ export default class Database {
     this._getData('ms', {
       verb: 'search',
       type: 'encoded',
-      q_encoded: btoa( `app LIKE  '%${app}%'` ),
+      q_encoded: b64EncodeUnicode( `app LIKE  '%${app}%'` ),
       page: page
     }, d => { cb(d); });
   }
@@ -124,7 +134,7 @@ export default class Database {
     let d = {
       verb: 'search',
       type: 'encoded',
-      q_encoded: btoa( `(app LIKE  '%${app}%') AND annoda < ${max_limit} AND annoa >= ${min_limit}` ),
+      q_encoded: b64EncodeUnicode( `(app LIKE  '%${app}%') AND annoda < ${max_limit} AND annoa >= ${min_limit}` ),
       page: page
     };
 
@@ -157,7 +167,7 @@ export default class Database {
     this._getData('ms', {
       verb: 'search',
       type: 'encoded',
-      q_encoded: btoa( where.join(' AND ') ),
+      q_encoded: b64EncodeUnicode( where.join(' AND ') ),
       page: page
     }, d => { cb(d) });
   }
@@ -166,7 +176,7 @@ export default class Database {
     this._getData('ms', {
       verb: 'search',
       type: 'encoded',
-      q_encoded: btoa( `(app LIKE  '%${app}%') AND aut LIKE '%${author}%'` ),
+      q_encoded: b64EncodeUnicode( `(app LIKE  '%${app}%') AND aut LIKE '%${author}%'` ),
       page: page
     }, d => { cb(d); });
   }
@@ -184,7 +194,7 @@ export default class Database {
       "group": "hm__ms.id",
       "limit_start": "0",
       "limit_end": "500",
-      "q_encoded": btoa( ( where ? '(' + where.replace(/`id`/gi, '`hm__ms`.`id`') + `) AND app LIKE '%${app}%'`: `app LIKE '%${app}%'` ))
+      "q_encoded": b64EncodeUnicode( ( where ? '(' + where.replace(/`id`/gi, '`hm__ms`.`id`') + `) AND app LIKE '%${app}%'`: `app LIKE '%${app}%'` ))
     };
 
     this._getData(

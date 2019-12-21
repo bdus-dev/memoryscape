@@ -36,7 +36,7 @@ export default function About(props) {
     <BlackTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
-          <h5>HOME MOVIES DIGITAL ARCHIVE</h5>
+          <h5>HOME MOVIES DIGITAL ARCHIVES</h5>
           <h2 className={classes.mainTitle}>
             {title.main}<br /> {title.sub}
           </h2>

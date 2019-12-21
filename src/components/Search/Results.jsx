@@ -98,7 +98,11 @@ export default function Results(props) {
     return <CircularProgress />;
   }
 
-  if (result.head.total_rows === 0) {
+  if (
+    result.head.total_rows === 0 
+    || 
+    (result.head.total_rows === 1 && exclude)
+    ) {
 
     if (suppressEmpty){
       return null;

@@ -99,6 +99,9 @@ export default function Record(props) {
           <h1>{item.tit.val}</h1>
           <div className={classes.videoWrapper}>
             <YouTube 
+              opts={{
+                rel: 0
+              }}
               videoId={item.videoid.val} 
               className={classes.iframe} 
               onEnd={ (e)=>{

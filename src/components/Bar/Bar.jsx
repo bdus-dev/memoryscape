@@ -157,7 +157,7 @@ export default function Bar(props) {
           </MenuItem>
         </div>
         <div className={classes.colorWhite}>
-          <h5 className={classes.titleMenu}>HOME MOVIES DIGITAL ARCHIVE</h5>
+          <h5 className={classes.titleMenu}>HOME MOVIES DIGITAL ARCHIVES</h5>
           <p className={classes.contactParagraph}>
             Home Movies
             <br />
