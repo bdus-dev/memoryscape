@@ -41,13 +41,13 @@ const useStyles = makeStyles({
 });
 
 // https://stackoverflow.com/a/12646864/586449
-const shuffleArray = function (result) {
-  for (let i = result.records.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [result.records[i], result.records[j]] = [result.records[j], result.records[i]];
-  }
-  return result;
-}
+// const shuffleArray = function (result) {
+//   for (let i = result.records.length - 1; i > 0; i--) {
+//       const j = Math.floor(Math.random() * (i + 1));
+//       [result.records[i], result.records[j]] = [result.records[j], result.records[i]];
+//   }
+//   return result;
+// }
 
 export default function Results(props) {
   const [result, setResult] = useState(false);
@@ -68,26 +68,28 @@ export default function Results(props) {
     // Ricerca per decade
     if (qs.decade) {
       Database.getDecade(parseInt(qs.decade), qs.page, result => {
-        setResult(shuffleArray(result));
+        setResult(result);
         makeOpaque(1);
       });
     // Ricerca luogo || temi
     } else if (qs.places || qs.themes) {
       Database.getByPlacesAndThemse(qs.places, qs.themes, qs.page, result => {
-        setResult(shuffleArray(result));
+        setResult(result);
         makeOpaque(1);
       });
     
     // Ricerca per autore
     } else if (qs.author) {
       Database.getByAuthor(qs.author, qs.page, result => {
-        setResult(shuffleArray(result));
+        setResult(result);
         makeOpaque(1);
       });
     // Ricerca tutto!
     } else {
+      console.log('here I am');
+      
       Database.getAll(qs.page, result => {
-        setResult(shuffleArray(result));
+        setResult(result);
         makeOpaque(1);
       });
     }
