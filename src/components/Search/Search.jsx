@@ -61,7 +61,7 @@ export default function Search(props) {
     <InternalTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
-            <Button  onClick={() => go2page('/')} style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 0}}>
+            <Button href="https://homemovies.it/digital-archives/ " target="_blank" style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 0}}>
               HOME MOVIES DIGITAL ARCHIVES
             </Button>
           <h1 className={classes.mainTitle}>{title.main}<br />{title.sub}</h1>
