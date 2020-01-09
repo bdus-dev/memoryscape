@@ -100,7 +100,9 @@ export default function Record(props) {
           <div className={classes.videoWrapper}>
             <YouTube 
               opts={{
-                rel: 0
+                playerVars:{
+                  rel: 0
+                }
               }}
               videoId={item.videoid.val} 
               className={classes.iframe} 
