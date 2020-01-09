@@ -86,8 +86,6 @@ export default function Results(props) {
       });
     // Ricerca tutto!
     } else {
-      console.log('here I am');
-      
       Database.getAll(qs.page, result => {
         setResult(result);
         makeOpaque(1);
