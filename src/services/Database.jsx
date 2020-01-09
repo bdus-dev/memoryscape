@@ -73,10 +73,11 @@ export default class Database {
    * @memberof Database
    */
   static getAll(page, cb) {
+    const random = page ? '' : ' ORDER BY random()';
     this._getData('ms', {
       verb: 'search',
       type: 'encoded',
-      q_encoded: b64EncodeUnicode( `app LIKE  '%${app}%'` ),
+      q_encoded: b64EncodeUnicode( `app LIKE  '%${app}%'${random}` ),
       page: page
     }, d => { cb(d); });
   }
