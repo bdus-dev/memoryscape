@@ -6,17 +6,17 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { TextField } from '@material-ui/core';
+import qs from 'qs';
 
 import InternalTmpl from '../Templates/InternalTmpl';
-
-import qs from 'qs';
 
 import Results from './Results';
 import FilterModal from './FilterModal';
 import { FilterContextComponent } from './FilterContext';
-
 import {col, title} from '../../cfg';
+import PlacesAutocomplete from './PlacesAutocomplete';
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
@@ -40,11 +40,11 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     fontWeight: '900',
     '&.active': {
-      backgroundColor: col
-    }
+      backgroundColor: col,
+    },
   },
   filterContainer: {
-    textAlign: 'right'
+    textAlign: 'right',
   },
 }));
 
@@ -54,9 +54,7 @@ export default function Search(props) {
   const history = useHistory();
   const qstring = qs.parse(props.location.search, {ignoreQueryPrefix: true});
   const lang = props.lang || props.match.params.lang;
-
   const go2page = (page)=>{ history.push(page)};
-
   return (
     <InternalTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
@@ -69,10 +67,10 @@ export default function Search(props) {
         <Box>
           <Grid
             justify="space-between"
-            container 
+            container
             alignItems="center"
             >
-            <Grid item xs={9}>
+            <Grid item xs={7}>
               <Box component="div">
                 <Button classes={{root: classes.yearButton}} 
                         className={ !qstring.decade ? 'active' : ''} 
@@ -90,16 +88,20 @@ export default function Search(props) {
                         onClick={() => go2page(`./?decade=${e}`)}>'{e}</Button>
                         )})
                   }
-                </Box>
+              </Box>
             </Grid>
 
             <Grid item className={classes.filterContainer} xs={3}>
+              <PlacesAutocomplete />
+            </Grid>
+
+            <Grid item className={classes.filterContainer} xs={2}>
               <FilterContextComponent>
                 <FilterModal />
               </FilterContextComponent>
             </Grid>
           </Grid>
-          
+
         </Box>
       </Typography>
 

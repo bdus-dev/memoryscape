@@ -11,8 +11,10 @@
   "dependencies": {
     "@material-ui/core": "^4.9.1",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.42",
     "@material-ui/styles": "^4.9.0",
     "axios": "^0.19.2",
+    "ci": "^1.0.0",
     "classnames": "^2.2.6",
     "detect-browser": "^4.8.0",
     "gh-pages": "^2.2.0",
