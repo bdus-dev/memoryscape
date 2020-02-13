@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {app} from '../../cfg';
+import { FormattedMessage } from 'react-intl';
+import { app, col } from '../../cfg';
 import Database from '../../services/Database';
+import { makeStyles } from '@material-ui/styles';
+import FilterContext from './FilterContext';
+import { useHistory } from 'react-router-dom';
 
 // TODO:
-// Gestione multilingua
-// Wrap del context per effettuare la ricerca correttamente
-// Load del valore
-// Test gestione del loading
-// Dargli uno stile
+// Modificare lo stile
+
+const useStyles = makeStyles((theme) => ({
+  overrides: {
+    MuiFormLabel: {
+      root: {
+        '&$focused': {
+          color: col,
+        },
+      },
+    },
+  },
+  autocomplete: {
+    backgroundColor: '#fff',
+  },
+}));
 
 export default function PlacesAutocomplete() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [places, setPlaces] = useState([]);
+  const classes = useStyles();
+  const { togglePlaces, getQueryFilters } = useContext(FilterContext);
+  const history = useHistory();
 
   const searchPlace = (place) => {
     setLoading(true);
@@ -25,10 +43,19 @@ export default function PlacesAutocomplete() {
     });
   };
 
+  const applyFilters = () => {
+    history.push(getQueryFilters());
+  };
+
+  const doSearch = (el) => {
+    togglePlaces(el);
+    applyFilters();
+  };
 
   return (
     <Autocomplete
       id="place"
+      className={classes.autocomplete}
       open={open}
       onOpen={() => {
         setOpen(true);
@@ -36,29 +63,36 @@ export default function PlacesAutocomplete() {
       onClose={() => {
         setOpen(false);
       }}
+      onChange={ (event, values) => {
+        doSearch(values);
+      }}
       //getOptionSelected={(option, value) => option.name === value.name}
       //getOptionLabel={option => option.name}
       options={places}
       loading={loading}
       renderInput={params => (
-        <TextField
-          {...params}
-          label="Luogo"
-          fullWidth
-          onChange={ (event) => {
-            searchPlace(event.target.value);
-          }} 
-          variant="outlined"
-          InputProps={{
-            ...params.InputProps,
-            endAdornment: (
-              <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                {params.InputProps.endAdornment}
-              </React.Fragment>
-            ),
-          }}
-        />
+        <FormattedMessage id="app.filterModal.places">
+          {placeholder => (
+            <TextField
+              {...params}
+              label={placeholder}
+              fullWidth
+              onChange={ (event) => {
+                searchPlace(event.target.value);
+              }} 
+              variant="outlined"
+              InputProps={{
+                ...params.InputProps,
+                endAdornment: (
+                  <React.Fragment>
+                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                    {params.InputProps.endAdornment}
+                  </React.Fragment>
+                ),
+              }}
+            />
+          )}
+        </FormattedMessage>
       )}
     />
   );

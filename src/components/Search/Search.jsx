@@ -92,7 +92,9 @@ export default function Search(props) {
             </Grid>
 
             <Grid item className={classes.filterContainer} xs={3}>
-              <PlacesAutocomplete />
+              <FilterContextComponent>
+                <PlacesAutocomplete />
+              </FilterContextComponent>
             </Grid>
 
             <Grid item className={classes.filterContainer} xs={2}>
