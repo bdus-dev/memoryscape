@@ -14,12 +14,8 @@ export default function ThemesList(props) {
   const [themes, setThemes] = useState(null);
 
   useEffect(() => {
-    console.log("bubu");
-    
-    // Database.getUniqueVal('temi', 'rovin', `app|LIKE|%${app}%`, (result) => {
-    Database.getUniqueVal('temi', false, `app LIKE '%${app}%'`, (result) => {
-      console.log(result);
-      
+    Database.getUniqueVal('temi', false, `app|LIKE|%${app}%`, (result) => {
+    // Database.getUniqueVal('temi', false, `app LIKE '%${app}%'`, (result) => {
       setThemes(result.sort());
     });
   }, []);
