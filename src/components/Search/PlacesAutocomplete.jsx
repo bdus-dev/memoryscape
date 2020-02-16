@@ -3,27 +3,27 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FormattedMessage } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 import { app, col } from '../../cfg';
 import Database from '../../services/Database';
 import { makeStyles } from '@material-ui/styles';
 import FilterContext from './FilterContext';
-import { useHistory } from 'react-router-dom';
 
 // TODO:
 // Modificare lo stile
 
-const useStyles = makeStyles((theme) => ({
-  overrides: {
-    MuiFormLabel: {
-      root: {
-        '&$focused': {
-          color: col,
-        },
-      },
-    },
-  },
-  autocomplete: {
+const useStyles = makeStyles(theme => ({
+  autoComplete: {
     backgroundColor: '#fff',
+    '&.Mui-focused': {
+      color: col,
+    },
+    '& .MuiFormLabel-root.Mui-focused': {
+      color: col,
+    },
+    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: col,
+    },
   },
 }));
 
@@ -32,12 +32,12 @@ export default function PlacesAutocomplete() {
   const [loading, setLoading] = useState(false);
   const [places, setPlaces] = useState([]);
   const classes = useStyles();
-  const { togglePlaces, getQueryFilters } = useContext(FilterContext);
+  const { togglePlaces, getQueryFilters, initFilters } = useContext(FilterContext);
   const history = useHistory();
 
   const searchPlace = (place) => {
     setLoading(true);
-    Database.getUniqueVal('luogo', place, `app LIKE '%${app}%'`, (result) => {
+    Database.getUniqueVal('luogo', place, `app|LIKE|%${app}%`, (result) => {
       setPlaces(result.sort());
       setLoading(false);
     });
@@ -48,14 +48,18 @@ export default function PlacesAutocomplete() {
   };
 
   const doSearch = (el) => {
-    togglePlaces(el);
+    if (el === '') {
+      initFilters('places');
+    } else {
+      togglePlaces(el);
+    }
     applyFilters();
   };
 
   return (
     <Autocomplete
       id="place"
-      className={classes.autocomplete}
+      className={classes.autoComplete}
       open={open}
       onOpen={() => {
         setOpen(true);

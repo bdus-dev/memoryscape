@@ -98,9 +98,8 @@ export default function FilterModal() {
   };
 
   const clearFilters = () => {
-    initFilters();
-    history.push(window.location.pathname);
-    handleClose();
+    initFilters('theme');
+    applyFilters()
   };
 
   return (

@@ -45,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
   },
   filterContainer: {
     textAlign: 'right',
+    marginTop: '1em',
+    marginBottom: '1em',
   },
 }));
 
@@ -70,38 +72,36 @@ export default function Search(props) {
             container
             alignItems="center"
             >
-            <Grid item xs={7}>
-              <Box component="div">
-                <Button classes={{root: classes.yearButton}} 
-                        className={ !qstring.decade ? 'active' : ''} 
-                        onClick={() => go2page('./')}
-                        >
-                  <FormattedHTMLMessage id="app.search.all" />
-                </Button>
-                {
-                  [30, 40, 50, 60, 70, 80].map((e, i) => {
-                    return (
-                      <Button
-                        classes={{root: classes.yearButton}}
-                        className={ Number(qstring.decade) === e ? 'active' : ''}
-                        key={i}
-                        onClick={() => go2page(`./?decade=${e}`)}>'{e}</Button>
-                        )})
-                  }
-              </Box>
-            </Grid>
+            <FilterContextComponent>
+              <Grid item xs={12} md={7}>
+                <Box component="div">
+                  <Button classes={{root: classes.yearButton}} 
+                          className={ !qstring.decade ? 'active' : ''} 
+                          onClick={() => go2page('./')}
+                          >
+                    <FormattedHTMLMessage id="app.search.all" />
+                  </Button>
+                  {
+                    [30, 40, 50, 60, 70, 80].map((e, i) => {
+                      return (
+                        <Button
+                          classes={{root: classes.yearButton}}
+                          className={ Number(qstring.decade) === e ? 'active' : ''}
+                          key={i}
+                          onClick={() => go2page(`./?decade=${e}`)}>'{e}</Button>
+                          )})
+                    }
+                </Box>
+              </Grid>
 
-            <Grid item className={classes.filterContainer} xs={3}>
-              <FilterContextComponent>
+              <Grid item className={classes.filterContainer} xs={9} md={3}>
                 <PlacesAutocomplete />
-              </FilterContextComponent>
-            </Grid>
+              </Grid>
 
-            <Grid item className={classes.filterContainer} xs={2}>
-              <FilterContextComponent>
+              <Grid item className={classes.filterContainer} xs={3} md={2}>
                 <FilterModal />
-              </FilterContextComponent>
-            </Grid>
+              </Grid>
+            </FilterContextComponent>
           </Grid>
 
         </Box>

@@ -50,9 +50,21 @@ export function FilterContextComponent({ children }) {
 
   const getYearToQueryFilter = () => (yearTo ? `year_end=${yearTo}` : '');
 
-  const initFilters = () => {
-    setThemeList([]);
-    setPlacesList([]);
+  const initFilters = (filterToInit) => {
+    switch (filterToInit) {
+      case 'theme':
+        themeList.pop();
+        break;
+
+      case 'places':
+        setPlacesList([]);
+        break;
+
+      default:
+        setThemeList();
+        setPlacesList();
+        break;
+    }
   };
 
   const getQueryFilters = () => {
@@ -65,7 +77,7 @@ export function FilterContextComponent({ children }) {
 
   return (
     <FilterContext.Provider
-      value={{ themeList, toggleThemes, isThemeSelected, getQueryFilters, togglePlaces, isPlaceSelected, initFilters, addYearFromToQuery, addYearToToQuery, yearFrom, yearTo }}
+      value={{ themeList, toggleThemes, isThemeSelected, setThemeList, getQueryFilters, togglePlaces, isPlaceSelected, initFilters, addYearFromToQuery, addYearToToQuery, yearFrom, yearTo }}
     >
       {children}
     </FilterContext.Provider>
