@@ -17,7 +17,7 @@ export default function ThemesList(props) {
     Database.getUniqueVal('temi', false, `app|LIKE|%${app}%${placesList[0] ? `||and|luogo|=|${placesList[0]}` : ''}`, (result) => {
       setThemes(result.sort());
     });
-  }, []);
+  }, [placesList]);
 
   return (
     <React.Fragment>

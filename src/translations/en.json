@@ -18,6 +18,7 @@
     "app.clip.map": "Map",
     "app.clip.inv": "Inventory",
     "app.clip.same_place": "Other clips filmed in {place}",
-    "app.clip.back2archive": "Torna all'archivio",
-    "app.for": "for"
+    "app.clip.back2archive": "Back to the archive",
+    "app.for": "for",
+    "app.autocomplete.type": "Start typing to find a place"
 }

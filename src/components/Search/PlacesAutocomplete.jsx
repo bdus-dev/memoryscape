@@ -8,7 +8,6 @@ import { app, col } from '../../cfg';
 import Database from '../../services/Database';
 import { makeStyles } from '@material-ui/styles';
 import FilterContext from './FilterContext';
-
 // TODO:
 // Modificare lo stile
 
@@ -61,6 +60,7 @@ export default function PlacesAutocomplete() {
       id="place"
       className={classes.autoComplete}
       open={open}
+      noOptionsText={<FormattedMessage id="app.autocomplete.type" />}
       onOpen={() => {
         setOpen(true);
       }}

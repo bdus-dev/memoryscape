@@ -19,5 +19,6 @@
     "app.clip.inv": "Inventario",
     "app.clip.same_place": "Altre clip girate a {place}",
     "app.clip.back2archive": "Torna all'archivio",
-    "app.for": "per"
+    "app.for": "per",
+    "app.autocomplete.type": "Comincia a digitare per cercare un luogo"
 }
