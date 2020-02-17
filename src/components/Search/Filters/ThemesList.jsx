@@ -9,13 +9,12 @@ import FilterContext from '../FilterContext';
 import {app} from '../../../cfg';
 
 export default function ThemesList(props) {
-  const { isThemeSelected } = useContext(FilterContext);
+  const { isThemeSelected, placesList } = useContext(FilterContext);
   const { applyFilter } = props;
   const [themes, setThemes] = useState(null);
 
   useEffect(() => {
-    Database.getUniqueVal('temi', false, `app|LIKE|%${app}%`, (result) => {
-    // Database.getUniqueVal('temi', false, `app LIKE '%${app}%'`, (result) => {
+    Database.getUniqueVal('temi', false, `app|LIKE|%${app}%${placesList[0] ? `||and|luogo|=|${placesList[0]}` : ''}`, (result) => {
       setThemes(result.sort());
     });
   }, []);
