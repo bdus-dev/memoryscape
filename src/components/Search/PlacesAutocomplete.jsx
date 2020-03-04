@@ -4,7 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router-dom';
-import { app, col } from '../../cfg';
+import { app } from '../../cfg';
 import Database from '../../services/Database';
 import { makeStyles } from '@material-ui/styles';
 import FilterContext from './FilterContext';
