@@ -13,15 +13,12 @@ import FilterContext from './FilterContext';
 
 const useStyles = makeStyles(theme => ({
   autoComplete: {
-    backgroundColor: '#fff',
-    '&.Mui-focused': {
-      color: col,
-    },
-    '& .MuiFormLabel-root.Mui-focused': {
-      color: col,
-    },
-    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: col,
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderBottom: '1px solid #fff',
+    color: '#fff !important',
+    '& .MuiAutocomplete-input, & .MuiAutocomplete-popupIndicator, & .MuiAutocomplete-clearIndicator, & .MuiFormLabel-root, & .MuiFormLabel-root.Mui-focused': {
+      color: '#fff !important',
     },
   },
 }));
@@ -84,7 +81,7 @@ export default function PlacesAutocomplete() {
               onChange={ (event) => {
                 searchPlace(event.target.value);
               }} 
-              variant="outlined"
+              variant="standard"
               InputProps={{
                 ...params.InputProps,
                 endAdornment: (
