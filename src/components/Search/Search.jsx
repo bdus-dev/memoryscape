@@ -22,23 +22,32 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    marginBottom: '3rem',
+    marginBottom: '4rem',
 
   },
   textBox: {
     color: '#fff',
     marginTop: '1em',
     paddingTop: '1em',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '2.5em',
+    },
   },
   mainTitle: {
     fontSize: '2em',
     marginBlockStart: '0',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.5em',
+    },
   },
   yearButton: {
     color: '#fff',
     fontWeight: '900',
     '&.active': {
       backgroundColor: col,
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '.7em',
     },
   },
   filterContainer: {
@@ -64,12 +73,11 @@ export default function Search(props) {
             </Button>
           <h1 className={classes.mainTitle}>{title.main}<br />{title.sub}</h1>
         </Box>
+
+        {/* Barra di ricerca */}
         <Box>
-          <Grid
-            justify="space-between"
-            container
-            alignItems="center"
-            >
+
+          <Grid container justify="space-between" alignItems="center">
             <FilterContextComponent>
               <Grid item xs={12} md={7}>
                 <Box component="div">
@@ -92,17 +100,19 @@ export default function Search(props) {
                 </Box>
               </Grid>
 
-              <Grid item className={classes.filterContainer} xs={9} md={3}>
+              <Grid item className={classes.filterContainer} xs={8} md={3}>
                 <PlacesAutocomplete />
               </Grid>
 
-              <Grid item className={classes.filterContainer} xs={3} md={2}>
+              <Grid item className={classes.filterContainer} xs={4} md={2}>
                 <FilterModal />
               </Grid>
             </FilterContextComponent>
           </Grid>
 
         </Box>
+        {/* Fine barra di ricerca */}
+
       </Typography>
 
       <Results qs={qstring} />

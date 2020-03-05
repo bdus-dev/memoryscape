@@ -32,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   mainTitle: {
     fontSize: '3.2em',
     marginBlockStart: '0',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.2em',
+    },
   },
   languageContainer: {
     marginTop: 'auto',
