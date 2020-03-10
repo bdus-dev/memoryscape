@@ -13,10 +13,11 @@ import FilterContext from './FilterContext';
 
 const useStyles = makeStyles(theme => ({
   autoComplete: {
-    backgroundColor: 'transparent',
     border: 'none',
     borderBottom: '1px solid #fff',
     color: '#fff !important',
+    backgroundColor: 'rgba(0,0,0,.3)',
+    padding: '0 .5rem',
     '& .MuiAutocomplete-input, & .MuiAutocomplete-popupIndicator, & .MuiAutocomplete-clearIndicator, & .MuiFormLabel-root, & .MuiFormLabel-root.Mui-focused': {
       color: '#fff !important',
     },
