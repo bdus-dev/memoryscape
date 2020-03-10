@@ -6,7 +6,7 @@ import { Container, Typography, Box, Button } from '@material-ui/core';
 // TODO: differenziare ER e ITALIA?
 import backGroundImageEr from '../../img/home-background-er.jpg';
 import backGroundImageItalia from '../../img/home-background-italia.jpg';
-import {app, title} from '../../cfg';;
+import {app, title} from '../../cfg';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
