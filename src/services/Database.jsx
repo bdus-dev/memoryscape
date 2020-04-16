@@ -187,7 +187,7 @@ export default class Database {
       "join": "JOIN hm__geodata as g ON g.table_link = 'hm__ms' AND g.id_link = hm__ms.id ",
       "fields[g.geometry]": "Geometry",
       "fields[hm__ms.id]": "Id",
-      "fields[hm__ms.videoid]": "ID Video",
+      "fields[hm__ms.vimeoimg]": "Immagine",
       "fields[hm__ms.tit]": "Titolo",
       "fields[hm__ms.aut]": "Autore",
       "fields[hm__ms.annoda]": "Anno da",

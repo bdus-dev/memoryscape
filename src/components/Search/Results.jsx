@@ -131,7 +131,7 @@ export default function Results(props) {
             window.scrollTo(0, 0);
           }}>
             <img
-              src={`https://img.youtube.com/vi/${row.videoid}/0.jpg`}
+              src={row.vimeoimg}
               alt={row.tit}
             />
             <GridListTileBar
