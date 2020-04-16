@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, Dialog, AppBar, Toolbar, IconButton, Slide, DialogActions, DialogContent, Grid, Paper } from '@material-ui/core';
 
 import CloseIcon from '@material-ui/icons/Close';
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import ThemesList from './Filters/ThemesList';
 import FilterContext from './FilterContext';
 
@@ -109,7 +109,7 @@ export default function FilterModal() {
         className={classes.filterBtn}
         onClick={handleClickOpen}
       >
-        <FormattedHTMLMessage id="app.themes" />
+        <FormattedMessage id="app.themes" />
       </Button>
       <Dialog
         className={classes.dialogContainer}
@@ -142,7 +142,7 @@ export default function FilterModal() {
         <DialogActions className={classes.footerContainer}>
           <Button onClick={clearFilters} className={classes.clearBtn}>
             <CloseIcon className={classes.clearIcon} />
-            <FormattedHTMLMessage id="app.filterModal.clear" />
+            <FormattedMessage id="app.filterModal.clear" />
           </Button>
         </DialogActions>
       </Dialog>

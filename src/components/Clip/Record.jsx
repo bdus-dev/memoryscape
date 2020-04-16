@@ -7,8 +7,7 @@ import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import RoomOutlined from '@material-ui/icons/RoomOutlined';
 import { makeStyles } from '@material-ui/styles';
-import { FormattedHTMLMessage } from 'react-intl';
-import YouTube from 'react-youtube';
+import { FormattedMessage } from 'react-intl';
 import MetaTags from 'react-meta-tags';
 
 import Results from '../Search/Results';
@@ -121,31 +120,31 @@ export default function Record(props) {
         <Grid item xs={6} md={2}>
           <Box my={5}>
 
-            <h3><FormattedHTMLMessage id="app.clip.author" /></h3>
+            <h3><FormattedMessage id="app.clip.author" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../search/?author=${item.aut.val}`)
             }}>{ item.aut.val }</Button>
             
-            <h3><FormattedHTMLMessage id="app.clip.place" /></h3>
+            <h3><FormattedMessage id="app.clip.place" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../search/?places=${item.luogo.val}`)
             }}>{ item.luogo.val }</Button>
             
-            <h3><FormattedHTMLMessage id="app.clip.inv" /></h3>
+            <h3><FormattedMessage id="app.clip.inv" /></h3>
             { item.inv.val }
 
           </Box>
         </Grid>
         <Grid item xs={6} md={2}>
           <Box my={5}>
-            <h3><FormattedHTMLMessage id="app.clip.format" /></h3>
+            <h3><FormattedMessage id="app.clip.format" /></h3>
             { item.formato.val }
 
-            <h3><FormattedHTMLMessage id="app.clip.year" /></h3>
+            <h3><FormattedMessage id="app.clip.year" /></h3>
             { item.annoda.val }
             { item.annoda.val !== item.annoa.val ? `-${item.annoa.val}` : ''}
 
-            {geoD && <React.Fragment><h3><FormattedHTMLMessage id="app.clip.map" /></h3>
+            {geoD && <React.Fragment><h3><FormattedMessage id="app.clip.map" /></h3>
             <Button className={classes.button} onClick={ ()=>{
               history.push(`../map/?center=${Wkt2Arr(geoD.geometry).join(",")}`)
             }}><RoomOutlined fontSize="small" /> </Button></React.Fragment>}
@@ -160,7 +159,7 @@ export default function Record(props) {
 
       <Grid container spacing={1} justify="center">
         <Grid item xs={8} style={{ textAlign: 'center'}}>
-        <h3><FormattedHTMLMessage id="app.themes" /></h3>
+        <h3><FormattedMessage id="app.themes" /></h3>
           {
             item.temi.val.split(';').map( (e, i) =>  {
               return <Fab 
@@ -179,13 +178,13 @@ export default function Record(props) {
       
       <Button className={classes.button} onClick={ ()=>{
               history.push('../search/')
-            }}><FormattedHTMLMessage id="app.clip.back2archive" /></Button>
+            }}><FormattedMessage id="app.clip.back2archive" /></Button>
       </Box>
       <Results
             qs={{ places: item.luogo.val }} 
             exclude={item.id.val}
             suppressEmpty={true} 
-            title={<FormattedHTMLMessage 
+            title={<FormattedMessage 
             id="app.clip.same_place" values={{ place: item.luogo.val }} />} />
     </Box>
   );

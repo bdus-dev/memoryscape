@@ -8,7 +8,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/styles';
 
 import qString from 'qs';
@@ -84,7 +84,7 @@ export default function Pagination (props) {
                 alignItems="center"
                 >
                 <Grid item>
-                    <FormattedHTMLMessage id="app.pagination.recap" values={{start: recShownStart, end: recShownEnd, tot: recTotal}}/>
+                    <FormattedMessage id="app.pagination.recap" values={{start: recShownStart, end: recShownEnd, tot: recTotal}}/>
                     <FilterApplied qs={qs} />
                 </Grid>
 
@@ -98,7 +98,7 @@ export default function Pagination (props) {
                         >
                         { firstPageLink && <Button className={classes.button} onClick={()=>go2page(firstPageLink)}><FirstPageIcon /></Button> }
                         { prevPageLink  && <Button className={classes.button} onClick={()=>go2page(prevPageLink)}><KeyboardArrowLeft /></Button> }
-                        { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button className={classes.button} disabled><FormattedHTMLMessage id="app.pagination.page" values={{pageNo: pageCurr}}/> </Button>}
+                        { (firstPageLink || prevPageLink || nextPageLink || lastPageLink) && <Button className={classes.button} disabled><FormattedMessage id="app.pagination.page" values={{pageNo: pageCurr}}/> </Button>}
                         { nextPageLink  && <Button className={classes.button} onClick={()=>go2page(nextPageLink)}><KeyboardArrowRight /></Button>}
                         { lastPageLink && <Button className={classes.button} onClick={()=>go2page(lastPageLink)}><LastPageIcon /></Button>}
                     </ButtonGroup>

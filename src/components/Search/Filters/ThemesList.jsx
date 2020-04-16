@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Database from '../../../services/Database';
 import ThemeElement from './ThemeElement';
@@ -22,7 +22,7 @@ export default function ThemesList(props) {
   return (
     <React.Fragment>
       <h2>
-        <FormattedHTMLMessage id="app.themes" />
+        <FormattedMessage id="app.themes" />
       </h2>
       {themes && themes.map((e, i) => {
         return (

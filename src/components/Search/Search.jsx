@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -85,7 +85,7 @@ export default function Search(props) {
                           className={ !qstring.decade ? 'active' : ''} 
                           onClick={() => go2page('./')}
                           >
-                    <FormattedHTMLMessage id="app.search.all" />
+                    <FormattedMessage id="app.search.all" />
                   </Button>
                   {
                     [30, 40, 50, 60, 70, 80].map((e, i) => {

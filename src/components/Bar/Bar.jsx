@@ -11,7 +11,7 @@ import MenuSharp from '@material-ui/icons/MenuSharp';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
 import { Menu, MenuItem } from '@material-ui/core';
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import {col} from '../../cfg';
 
@@ -145,15 +145,15 @@ export default function Bar(props) {
         <div>
           <MenuItem onClick={() => gotoPage('/')} className={classes.menuItem}>Home</MenuItem>
           <MenuItem onClick={() => gotoPage(`/${lang}/map`)} className={classes.menuItem}>
-            <FormattedHTMLMessage id="app.menu.map" />
+            <FormattedMessage id="app.menu.map" />
           </MenuItem>
         </div>
         <div>
           <MenuItem onClick={() => gotoPage(`/${lang}/search/`)} className={classes.menuItem}>
-            <FormattedHTMLMessage id="app.menu.archive" />
+            <FormattedMessage id="app.menu.archive" />
           </MenuItem>
           <MenuItem onClick={() => gotoPage(`/${lang}/about`)} className={classes.menuItem}>
-            <FormattedHTMLMessage id="app.menu.about" />
+            <FormattedMessage id="app.menu.about" />
           </MenuItem>
         </div>
         <div className={classes.colorWhite}>

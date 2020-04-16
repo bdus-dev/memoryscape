@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 
 export default function FilterApplied (props) {
@@ -28,7 +28,7 @@ export default function FilterApplied (props) {
 
     return (
         <Box ml={1} component="span">
-            <FormattedHTMLMessage id="app.for" /> <em>{filters.join(', ')}</em>
+            <FormattedMessage id="app.for" /> <em>{filters.join(', ')}</em>
         </Box>
     );
 }
