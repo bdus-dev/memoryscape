@@ -52,8 +52,9 @@ export default function Mappa(props) {
           ref={mapRef}>
         <TileLayer
           // url="https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png"
-          url="https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png"
-          // url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          // url="https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          opacity={.9}
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
         
