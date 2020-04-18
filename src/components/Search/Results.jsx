@@ -129,6 +129,9 @@ export default function Results(props) {
            return ( <GridListTile key={k} className={classes.GridListTitle} onClick={ ()=> {
             history.push(`../clip/${row.id}`);
             window.scrollTo(0, 0);
+            if (document.getElementsByClassName('MuiGrid-root').length > 0){
+              document.getElementsByClassName('MuiGrid-root')[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+            }
           }}>
             <img
               src={row.vimeoimg}
