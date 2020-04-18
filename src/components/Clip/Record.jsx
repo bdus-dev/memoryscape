@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import RoomOutlined from '@material-ui/icons/RoomOutlined';
 import { makeStyles } from '@material-ui/styles';
 import { FormattedMessage } from 'react-intl';
+import Vimeo from '@u-wave/react-vimeo';
+
 import MetaTags from 'react-meta-tags';
 
 import Results from '../Search/Results';
@@ -83,13 +85,12 @@ export default function Record(props) {
   const item = result.core;
   const geoD = result.geodata[0];
   
-  
   return (
     <Box style={{ color: '#fff' }}>
       <MetaTags>
         <meta property="og:title" content={`Memoryscapes: ${item.tit.val}`} />
         <meta property="og:description" content="Memoryscapes: la prima piattaforma online sul cinema privato in Italia" />
-        <meta property="og:image" content={`https://img.youtube.com/vi/${item.videoid.val}/0.jpg`} />
+        <meta property="og:image" content={ item.vimeoimg.val } />
         <meta property="og:url" content={window.location} />
         <title>Memoryscapes: {item.tit.val}</title>
       </MetaTags>
@@ -97,19 +98,10 @@ export default function Record(props) {
         <Grid item xs={12} md={6} style={{ textAlign: 'center'}}>
           <h1>{item.tit.val}</h1>
           <div className={classes.videoWrapper}>
-            <YouTube 
-              opts={{
-                playerVars:{
-                  rel: 0
-                }
-              }}
-              videoId={item.videoid.val} 
-              className={classes.iframe} 
-              onEnd={ (e)=>{
-                e.target.seekTo(0);
-                e.target.stopVideo();
-              }}
-              />
+            <Vimeo 
+              video={`https://vimeo.com/${item.vimeo.val}`}
+              responsive={true}
+               />
           </div>
           
         </Grid>
