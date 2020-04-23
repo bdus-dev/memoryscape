@@ -35,6 +35,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "postdeploy": "rsync -arvzu --delete ./build/ inmotion:public_html/homemovies.ms-italia --exclude='.well-known' --exclude='.htaccess' --exclude='.DS_Store' --dry-run",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
