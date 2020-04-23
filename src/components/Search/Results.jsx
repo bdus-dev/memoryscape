@@ -174,6 +174,7 @@ export default function Results(props) {
         )}})
       }
       </GridList>
+      {!suppressEmpty && <Pagination head={result.head} qs={qs} /> }
     </Box>
   );
 }

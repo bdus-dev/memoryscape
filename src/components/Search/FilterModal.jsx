@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-router-dom';
-import { Button, Dialog, AppBar, Toolbar, IconButton, Slide, DialogActions, DialogContent, Grid, Paper } from '@material-ui/core';
+import { Button, Dialog, AppBar, Toolbar, IconButton, Slide, DialogContent, Grid, Paper } from '@material-ui/core';
 
 import CloseIcon from '@material-ui/icons/Close';
 import { FormattedMessage } from 'react-intl';
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 
 export default function FilterModal() {
-  const { getQueryFilters, initFilters } = useContext(FilterContext);
+  const { getQueryFilters } = useContext(FilterContext);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const history = useHistory();
@@ -95,11 +95,6 @@ export default function FilterModal() {
   const applyFilters = () => {
     history.push(getQueryFilters());
     handleClose();
-  };
-
-  const clearFilters = () => {
-    initFilters('theme');
-    applyFilters()
   };
 
   return (
@@ -139,12 +134,6 @@ export default function FilterModal() {
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions className={classes.footerContainer}>
-          <Button onClick={clearFilters} className={classes.clearBtn}>
-            <CloseIcon className={classes.clearIcon} />
-            <FormattedMessage id="app.filterModal.clear" />
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

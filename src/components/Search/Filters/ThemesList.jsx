@@ -14,7 +14,7 @@ export default function ThemesList(props) {
   const [themes, setThemes] = useState(null);
 
   useEffect(() => {
-    Database.getUniqueVal('temi', false, `app|LIKE|%${app}%${placesList[0] ? `||and|luogo|=|${placesList[0]}` : ''}`, (result) => {
+    Database.getUniqueVal('temi', null, `app|LIKE|%${app}%${placesList[0] ? `||and|luogo|=|${placesList[0]}` : ''}`, (result) => {
       setThemes(result.sort());
     });
   }, [placesList]);
