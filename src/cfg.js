@@ -3,8 +3,7 @@ const variables = {
         app: 'er',
         col: '#7a1dcf',
         title: {
-            main: 'memoryscapes 01',
-            sub: 'lungo la via emilia'
+            main: '01. lungo la via emilia'
         }
     },
 
@@ -12,8 +11,7 @@ const variables = {
         app : 'italia',
         col : '#245344',
         title : {
-            main: 'memoryscapes 02',
-            sub: 'cartoline italiane'
+            main: '02. cartoline italiane'
         }
     }
 };

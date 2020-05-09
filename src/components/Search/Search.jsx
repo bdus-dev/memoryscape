@@ -67,10 +67,10 @@ export default function Search(props) {
     <InternalTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
         <Box className={classes.textBox}>
-            <Button href="https://homemovies.it/digital-archives/ " target="_blank" style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 0}}>
-              HOME MOVIES DIGITAL ARCHIVES
+            <Button href="https://homemovies.it/memoryscapes/ " target="_blank" style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 0}}>
+              memoryscapes
             </Button>
-          <h1 className={classes.mainTitle}>{title.main}<br />{title.sub}</h1>
+          <h1 className={classes.mainTitle}>{title.main}</h1>
         </Box>
 
         <Box>
