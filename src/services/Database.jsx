@@ -162,7 +162,7 @@ export default class Database {
     }
     if (themes){
       themes.split(",").forEach( (e, i) => {
-        where.push(` temi LIKE "%${e}%" `);
+        where.push(` (temi LIKE '%${e};%' OR temi LIKE '%${e}') `);
       });
     }
     this._getData('ms', {

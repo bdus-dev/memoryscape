@@ -77,7 +77,21 @@ export function FilterContextComponent({ children }) {
 
   return (
     <FilterContext.Provider
-      value={{ themeList, toggleThemes, isThemeSelected, setThemeList, getQueryFilters, togglePlaces, placesList, isPlaceSelected, initFilters, addYearFromToQuery, addYearToToQuery, yearFrom, yearTo }}
+      value={{ 
+        themeList, 
+        toggleThemes, 
+        isThemeSelected, 
+        setThemeList, 
+        getQueryFilters, 
+        togglePlaces, 
+        placesList, 
+        isPlaceSelected, 
+        initFilters, 
+        addYearFromToQuery, 
+        addYearToToQuery, 
+        yearFrom, 
+        yearTo 
+      }}
     >
       {children}
     </FilterContext.Provider>
