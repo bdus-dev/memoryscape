@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import FilterContext from './FilterContext';
 
 export default function Search(props) {
+
+  const { getQueryFilters } = useContext(FilterContext);
 
   const history = useHistory();
 
   const setDecade = (dec) => {
     history.push(`./?decade=${dec}`);
   };
+
+  if (getQueryFilters().length > 1){
+    return null;
+  }
 
   return (
     <React.Fragment>
