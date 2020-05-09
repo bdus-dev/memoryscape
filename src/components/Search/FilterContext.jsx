@@ -68,11 +68,15 @@ export function FilterContextComponent({ children }) {
   };
 
   const getQueryFilters = () => {
-    let query = getThemeQueryFilter();
-    query += query && placesList ? `&${getPlaceQueryFilter()}` : getPlaceQueryFilter();
-    query += query && yearFrom ? `&${getYearFromQueryFilter()}` : getYearFromQueryFilter();
-    query += query && yearTo ? `&${getYearToQueryFilter()}` : getYearToQueryFilter();
-    return query ? `?${query}` : query;
+    const q_arr = [
+      getThemeQueryFilter(),
+      getPlaceQueryFilter(),
+      getYearFromQueryFilter(),
+      getYearToQueryFilter()
+    ];
+    const query = q_arr.filter( e => e && e.trim() !== '').join('&');
+
+    return `?${query}`;
   };
 
   return (
@@ -85,6 +89,7 @@ export function FilterContextComponent({ children }) {
         getQueryFilters, 
         togglePlaces, 
         placesList, 
+        setPlacesList, 
         isPlaceSelected, 
         initFilters, 
         addYearFromToQuery, 

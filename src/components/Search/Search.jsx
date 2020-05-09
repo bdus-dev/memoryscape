@@ -1,6 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -15,6 +13,8 @@ import FilterModal from './FilterModal';
 import { FilterContextComponent } from './FilterContext';
 import {col, title} from '../../cfg';
 import PlacesAutocomplete from './PlacesAutocomplete';
+import ResetButton from './ResetButton';
+import Decades from './Decades';
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
@@ -60,10 +60,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Search(props) {
 
   const classes = useStyles();
-  const history = useHistory();
   const qstring = qs.parse(props.location.search, {ignoreQueryPrefix: true});
   const lang = props.lang || props.match.params.lang;
-  const go2page = (page)=>{ history.push(page)};
+
   return (
     <InternalTmpl lang={lang}>
       <Typography className={classes.boxContainer} component="div">
@@ -74,29 +73,13 @@ export default function Search(props) {
           <h1 className={classes.mainTitle}>{title.main}<br />{title.sub}</h1>
         </Box>
 
-        {/* Barra di ricerca */}
         <Box>
-
           <Grid container justify="space-between" alignItems="center">
             <FilterContextComponent>
               <Grid item xs={12} md={7}>
                 <Box component="div">
-                  <Button classes={{root: classes.yearButton}} 
-                          className={ !qstring.decade ? 'active' : ''} 
-                          onClick={() => go2page('./')}
-                          >
-                    <FormattedMessage id="app.search.all" />
-                  </Button>
-                  {
-                    [30, 40, 50, 60, 70, 80].map((e, i) => {
-                      return (
-                        <Button
-                          classes={{root: classes.yearButton}}
-                          className={ Number(qstring.decade) === e ? 'active' : ''}
-                          key={i}
-                          onClick={() => go2page(`./?decade=${e}`)}>'{e}</Button>
-                          )})
-                    }
+                  <ResetButton classes={{root: classes.yearButton}}  />
+                  <Decades classes={{root: classes.yearButton}} currDecade={ qstring.decade } />
                 </Box>
               </Grid>
 
