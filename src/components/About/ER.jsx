@@ -21,7 +21,7 @@ export default function ER() {
       descrizione, digitalizzazione ed edizione video di pellicole Super8, 8mm, 16mm e 9,5mm 
       girate tra gli anni ‘30 e gli anni ‘80 del XX secolo.</p>
       
-      <p>Per commenti e suggerimenti scrivi a: <a href="mailto: info@homemovies.it">info@homemovies.it</a></p>
+      <p>Per commenti e suggerimenti: <a href="https://www.homemovies.it">homemovies.it</a></p>
 
       <h3>Credits</h3>
 

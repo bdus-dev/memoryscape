@@ -150,7 +150,7 @@ export default function Bar(props) {
         </div>
         <div>
           <MenuItem onClick={() => gotoPage(`/${lang}/search/`)} className={classes.menuItem}>
-            <FormattedMessage id="app.menu.archive" />
+            <FormattedMessage id="app.menu.collection" />
           </MenuItem>
           <MenuItem onClick={() => gotoPage(`/${lang}/about`)} className={classes.menuItem}>
             <FormattedMessage id="app.menu.about" />

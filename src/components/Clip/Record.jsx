@@ -170,7 +170,7 @@ export default function Record(props) {
       
       <Button className={classes.button} onClick={ ()=>{
               history.push('../search/')
-            }}><FormattedMessage id="app.clip.back2archive" /></Button>
+            }}><FormattedMessage id="app.clip.back2collection" /></Button>
       </Box>
       <Results
             qs={{ places: item.luogo.val }} 

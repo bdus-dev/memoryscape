@@ -1,6 +1,6 @@
 {
     "app.menu.map": "Mappa",
-    "app.menu.archive": "Archivio",
+    "app.menu.collection": "Collezione",
     "app.menu.about": "Il progetto",
     "app.search.filters": "Filtri",
     "app.search.all": "Tutto",
@@ -18,7 +18,7 @@
     "app.clip.map": "Mappa",
     "app.clip.inv": "Inventario",
     "app.clip.same_place": "Altre clip girate a {place}",
-    "app.clip.back2archive": "Torna all'archivio",
+    "app.clip.back2collection": "Torna alla collezione",
     "app.for": "per",
     "app.autocomplete.type": "Comincia a digitare per cercare un luogo"
 }
