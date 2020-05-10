@@ -165,8 +165,8 @@ export default function Bar(props) {
             <br />
             Call - (+39) 051 3397243
             <br />
-            Email -
-            <span className={classes.colorWhite}>info@homemovies.it</span>
+            Web -
+            <span className={classes.colorWhite}><a href="https://homemovies.it">homemovies.it</a></span>
           </p>
         </div>
       </Menu>
