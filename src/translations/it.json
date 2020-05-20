@@ -20,5 +20,7 @@
     "app.clip.same_place": "Altre clip girate a {place}",
     "app.clip.back2collection": "Torna alla collezione",
     "app.for": "per",
-    "app.autocomplete.type": "scrivi il luogo che cerchi"
+    "app.autocomplete.type": "scrivi il luogo che cerchi",
+    "app.cookies.main": "Questo sito usa cookies di terze parti per un'ottimale esperienza.",
+    "app.cookies.accept": "Accetto"
 }

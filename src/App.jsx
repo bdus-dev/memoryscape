@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, FormattedMessage } from 'react-intl';
 import theming from './services/theming';
 
 import itMessages from './translations/it.json';
@@ -16,6 +16,10 @@ import Clip from './components/Clip/Clip';
 import About from './components/About/About';
 import ReactGA from 'react-ga';
 import { ga } from './cfg';
+import CookieConsent from "react-cookie-consent";
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+
 
 
 if(window.location.href.match(/homemovies\.it/g)){
@@ -43,6 +47,14 @@ export default function App() {
             <Route exact path="/:lang(en|it)/clip/:id" component={Clip} />
             <Route exact path="/:lang(en|it)/about" component={About} />
           </Switch>
+          <CookieConsent
+            buttonText={<FormattedMessage id="app.cookies.accept" />}
+          >
+          <FormattedMessage id="app.cookies.main" />{" "}
+          <IconButton color="primary" href="https://homemovies.it/cookie-policy/">
+            <InfoIcon />
+          </IconButton>
+          </CookieConsent>
         </BrowserRouter>
       </MuiThemeProvider>
     </IntlProvider>
