@@ -17,9 +17,6 @@ import About from './components/About/About';
 import ReactGA from 'react-ga';
 import { ga } from './cfg';
 import CookieConsent from "react-cookie-consent";
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-
 
 
 if(window.location.href.match(/homemovies\.it/g)){
@@ -47,13 +44,9 @@ export default function App() {
             <Route exact path="/:lang(en|it)/clip/:id" component={Clip} />
             <Route exact path="/:lang(en|it)/about" component={About} />
           </Switch>
-          <CookieConsent
-            buttonText={<FormattedMessage id="app.cookies.accept" />}
-          >
-          <FormattedMessage id="app.cookies.main" />{" "}
-          <IconButton color="primary" href="https://homemovies.it/cookie-policy/">
-            <InfoIcon />
-          </IconButton>
+          <CookieConsent buttonText={<FormattedMessage id="app.cookies.accept" />} >
+            <FormattedMessage id="app.cookies.main" 
+                values={{ link: <a style={{ color: 'white' }} target="_blank" rel="noopener noreferrer" href="https://homemovies.it/cookie-policy/">cookie policy</a> }}/>{" "}
           </CookieConsent>
         </BrowserRouter>
       </MuiThemeProvider>

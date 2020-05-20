@@ -21,6 +21,6 @@
     "app.clip.back2collection": "Back to the collection",
     "app.for": "for",
     "app.autocomplete.type": "type the place you are looking for",
-    "app.cookies.main": "This site uses third party cookies to enhance the user experience.",
+    "app.cookies.main": "This site uses third party cookies to enhance the user experience. By continuing the navigation you are accepting our {link}",
     "app.cookies.accept": "Accetto"
 }
